@@ -1,0 +1,721 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Vim для (PHP-)программистов</title>
+<style>
+body {
+	font-family: Tahoma, Helvetica, sans-serif;
+	font-size: 14px;
+	/*color: #333;*/
+	background: #fff;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	line-height: 1em;
+}
+
+code,
+kbd,
+pre {
+	font-family: "Lucida Console", Courier, monospace;
+	background: #e7e7e7;
+}
+
+code,
+kbd {
+	padding: 1px 5px;
+}
+
+pre {
+	padding: 5px;
+	overflow-x: auto;
+	word-wrap: normal;
+}
+
+pre code {
+	padding: 0;
+}
+
+blockquote {
+	border-left: 5px solid #e7e7e7;
+	margin: 1em 0;
+	padding-left: 10px;
+}
+
+hr {
+	border: 0;
+	border-top: 1px solid #e7e7e7;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+table thead {
+	border-bottom: 2px solid #e7e7e7;
+}
+
+table td,
+table th {
+	padding: 6px 13px;
+	border: 1px solid #e7e7e7;
+}
+
+table th {
+	font-weight: 700;
+}
+
+li p {
+	margin: .5em 0;
+}
+</style>
+<p>
+<a href="https://web.archive.org/web/20230605043103/https://givi.olnd.ru/index.shtml">Курилка</a>
+</p>
+<div style="text-align: center; margin-bottom: 2em;">
+  <p>
+  Перевод с английского © <a href="https://web.archive.org/web/20230605043103/https://givi.olnd.ru/">Гиви Хакеридзе</a>.
+  Слайды <a href="http://zmievski.org/talks">VIM for (PHP) Programmers</a>
+  на <i>zmievski.org</i>.<br>
+  См. также
+  <a href="https://web.archive.org/web/20230605043103/https://givi.olnd.ru/vim-galore/vim-galore-ru.html">Vim-galore — по-русски</a>,
+  <a href="https://web.archive.org/web/20230605043103/https://givi.olnd.ru/vim-galore/grok-vi.html">Ваша проблема с Vim заключается в том, что вы не въехали в vi</a>.
+  </p>
+</div>
+<div style="text-align: center;">
+<h1>Vim для (PHP-)программистов</h1>
+<h3>Андрей Змиевский (Andrei Zmievski)</h3>
+<p>Open Source Fellow, Digg<br>
+Twitter: @a<br>
+<a href="http://gravitonic.com/">http://gravitonic.com/</a></p>
+<p>PHP Québec Conf ~ March 5, 2009</p>
+</div>
+<hr>
+<h2>Справка</h2>
+<p>Научитесь эффективно использовать справку, <code>:help</code> — ваш друг.
+Используйте <code>CTRL-V</code> перед командами с <code>CTRL</code>.
+Используйте префиксы <code>i_</code> и <code>v_</code> для получения справки по последовательностям
+с <code>CTRL</code> в режиме <em>вставки</em> и <em>визуальном</em> режиме.
+В окне справки используйте <code>CTRL-]</code> (прыжок к тегу) и <code>CTRL-T</code> (перейти обратно).</p>
+<h2>Введение</h2>
+<p>Насколько хорошо вы знаете язык Vim-а?
+Какой у него алфавит?
+Посмотрите на вашу клавиатуру.
+Вы можете сказать, что делает каждая клавиша?
+Что такое режимы?
+Сколько вы их знаете?
+А сколько используете?</p>
+<p>Если язык вам не нравится, измените его.</p>
+<p><strong>Пример:</strong> Что вы делаете, чтобы быстро выйти из Vim-а?</p>
+<ul>
+<li><code>ZZ</code> (выход с сохранением)</li>
+<li><code>ZQ</code> (выход без сохранения)</li>
+</ul>
+<p>или</p>
+<ul>
+<li><code>:nmap ,w :x&lt;CR&gt;</code></li>
+<li><code>:nmap ,q :q!&lt;CR&gt;</code></li>
+</ul>
+<p><strong>Совет:</strong> <code>set showcmd</code> позволяет видеть частично введённые команды.</p>
+<h2>Где я?</h2>
+<p>Как узнать, где вы находитесь?</p>
+<ul>
+<li>просто — <code>CTRL-G</code></li>
+<li>подробности — <code>gCTRL-G</code></li>
+</ul>
+<p>Побалуйте себя и выполните <code>set ruler</code>, которая покажет в строке статуса номер
+строки, колонки и проценты. Или сконфигурируйте её так, как вам будет угодно,
+при помощи <code>'rulerformat'</code>.</p>
+<h2>Перемещение</h2>
+<p>Вы используете для перемещения <code>h</code>/<code>j</code>/<code>k</code>/<code>l</code>?
+Или застряли в стрелках мира GUI?
+Если так, переучивайтесь.
+Спасите себя от бессчётных миль перемещений между домашним рядом клавиш и стрелками.</p>
+<p>Как переместиться к:</p>
+<ul>
+<li>началу/концу буфера? <code>gg</code> и <code>G</code></li>
+<li>строке с номером <em>N</em>? <strong>N</strong><code>G</code> или <strong>N</strong><code>gg</code></li>
+<li><em>N</em>% в файле? <strong>N</strong><code>%</code></li>
+<li>первому не пробельному символу в строке? <code>^</code></li>
+<li>первому не пробельному символу в следующей строке? <code>&lt;CR&gt;</code></li>
+<li>первому не пробельному символу в предыдущей строке? <code>-</code></li>
+</ul>
+<h2>Метки</h2>
+<p>Мы можем запоминать положение в буфере:</p>
+<ul>
+<li><code>m&lt;буква&gt;</code> устанавливает метку с названием <code>&lt;буква&gt;</code> в текущей позиции</li>
+<li><code> `&lt;буква&gt;</code> переносит к этой метке точно</li>
+<li><code>'&lt;буква&gt;</code> переносит на строку с этой меткой</li>
+<li>буква в нижнем регистре: метка локальна для буфера</li>
+<li>буква в верхнем регистре: глобальная метка, буфер будет переключен на файл с этой меткой</li>
+<li><code>:marks</code> показывает все установленные метки</li>
+</ul>
+<p>Метки очень полезны в изменении текста.
+Установите метку (допустим <code>ma</code>).
+Теперь можно:</p>
+<ul>
+<li><code>c`a</code> — изменить текст от курсора до метки <code>a</code></li>
+<li><code>d`a</code> — удалить текст от курсора до метки <code>a</code></li>
+<li><code>='a</code> — переформатировать строки, начиная с текущей до строки с меткой <code>a</code></li>
+</ul>
+<p>Допустим, что вы куда-то перепрыгнули.
+Как вернуться обратно?
+<code>` `</code> переносит между двумя последними позициями.
+Можно явно установить <code>`</code> (метку контекста):
+<code>m` </code>, перепрыгнуть куда-нибудь, а затем вернуться назад при помощи <code>` `</code>.</p>
+<p><strong>Совет:</strong> <code>CTRL-O</code> и <code>CTRL-I</code> переносят между позициями во всей истории прыжков,
+но не могут быть использованы в качестве перемещений (как напр., <code>w</code>
+или <code>G</code> — <em>пер.</em>).</p>
+<p><code>'.</code> и <code> `.</code> — перепрыгнуть к строке или точному положению последнего изменения.</p>
+<h2>Вставка</h2>
+<p><code>gi</code> — невероятно удобная комбинация.
+Переводит в режим вставки в том месте, где она производилась в последний раз.
+Сценарий: измените что-нибудь, выйдите из режима вставки, посмотрите что-то
+в другом месте, а затем при помощи <code>gi</code> вернитесь назад и возобновите редактирование.</p>
+<p>Еще немного вкусностей:</p>
+<ul>
+<li><code>CTRL-Y</code> и <code>CTRL-E</code> (если можно, избегайте лишней работы) —
+вставляют символы над и под курсором</li>
+<li><code>CTRL-A</code> (эй, я хочу это повторить) — вставляет ранее вставленный текст</li>
+<li><code>CTRL-R=&lt;выражение&gt;</code> (встроенный калькулятор) — вставляет всё, что Vim может вычислить</li>
+<li><code>CTRL-T</code> и <code>CTRL-D</code> (табуляция и де-табуляция) — добавляет или удаляет
+отступ размером в ширину сдвига (<em>shiftwidth</em>) в начало строки</li>
+</ul>
+<h2>Удаление</h2>
+<p>Освободите ваш <code>&lt;Backspace&gt;</code>:</p>
+<pre><code class="language-Vim">:set backspace=start,indent,eol
+</code></pre>
+<p>позволяет удалять до начала вставки, автоотступы и даже символы новой строки.</p>
+<h2>Поиск</h2>
+<p>Поиск очень важен.
+Перемещение и информация.
+Как вы ищите?
+Чем-то вроде <code>f</code>/<code>F</code>/<code>t</code>/<code>T</code>?
+Что насчёт <code>*</code> и <code>#</code>?</p>
+<p>Поиск в строке:</p>
+<ul>
+<li><code>f</code>/<code>F</code> <code>&lt;символ&gt;</code> перемещает к первому <code>&lt;символу&gt;</code> справа/слева и устанавливает курсор на нём</li>
+<li><code>t</code>/<code>T</code> <code>&lt;символ&gt;</code> делает почти то же, но устанавливает курсор перед символом</li>
+<li><code>df;</code> — удалить текст от курсора до первого <code>;</code> справа</li>
+<li><code>cT$</code> — изменить текст от курсора до первого <code>$</code> слева</li>
+</ul>
+<p>Часто бывает нужно посмотреть другие употребления слова под курсором:</p>
+<ul>
+<li><code>*</code>/<code>#</code> — поиск следующего/предыдущего вхождения целого слова</li>
+<li><code>g*</code>/<code>g#</code> — найти следующее/предыдущее вхождение части слова</li>
+</ul>
+<p>Или найти строки с некоторым словом: <code>[I</code> и <code>]I</code> покажут их список.</p>
+<p>Для перехода к строке удобно использовать мапинг с включенными файлами:</p>
+<pre><code class="language-Vim">:map ,f [I:let nr = input("Which one: ")&lt;Bar&gt;exe "normal " . nr ."[\t"&lt;CR&gt;
+</code></pre>
+<p>И, конечно, есть поиск с использованием регулярных выражений:</p>
+<ul>
+<li><code>/&lt;шаблон&gt;</code> — поиск <code>&lt;шаблона&gt;</code> вперёд</li>
+<li><code>?&lt;шаблон&gt;</code> — поиск <code>&lt;шаблона&gt;</code> назад</li>
+<li><code>n</code> повторяет поиск</li>
+<li><code>N</code> повторяет поиск в противоположном направлении</li>
+</ul>
+<p>Язык регулярных выражений Vim-а слишком сложен для изложения здесь.</p>
+<p>Управляйте вашими настройками поиска:</p>
+<ul>
+<li><code>:set wrapscan</code> — для продолжения поиска с другого конца файла</li>
+<li><code>:set incsearch</code> — поиск по мере набора, <code>&lt;Enter&gt;</code> — принять,
+<code>&lt;Esc&gt;</code> — отменить</li>
+<li><code>:set ignorecase</code> — поиск без учёта регистра, или используйте внутри
+шаблона:
+<ul>
+<li><code>\c</code> — для поиска без учёта регистра</li>
+<li><code>\C</code> — для поиска с учётом регистра</li>
+</ul>
+</li>
+</ul>
+<p>Не забывайте, что любой поиск/прыжок можно использовать в качестве аргумента
+перемещения:</p>
+<ul>
+<li><code>d/^#</code> — удалить всё до строки, начинающейся с символа комментария</li>
+<li><code>y/^class/;?function</code> — скопировать всё, начиная с текущей позиции,
+до первой <code>function</code> перед первым <code>class</code></li>
+</ul>
+<h2>Замена</h2>
+<p><code>:[диапазон]s/&lt;шаблон&gt;/&lt;замена&gt;/{флаги}</code> — команда замены, используется
+обычно с диапазоном адресов, очень мощной вещью (читайте справку).
+Но кто захочет считать строки и делать что-то подобное <code>:-23,’ts/foo/bar/</code>?
+На самом деле вы будете использовать пару сокращений или просто визуальный режим.</p>
+<p>Часто используемые диапазоны:</p>
+<ul>
+<li><code>%</code> эквивалентно <code>1,$</code> (весь файл)</li>
+<li><code>.</code> — текущая строка</li>
+<li><code>/&lt;шаблон&gt;/</code> или <code>?&lt;шаблон&gt;?</code> — строка, совпадающая с <code>&lt;шаблон&gt;</code></li>
+<li><code>:%s/foo/bar/</code> — заменить первое <code>foo</code> на <code>bar</code> в каждой строке всего файла</li>
+<li><code>:.,/&lt;\/body&gt;/s,&lt;br&gt;,&lt;br/&gt;,gc</code> — исправить теги <code>br</code>, начиная с текущей
+строки, до строки с <code>&lt;/body&gt;</code>, с подтверждением (<code>c</code> - «cautious»,
+подтверждение)</li>
+<li><code>&amp;</code> — повторить предыдущую замену в текущей строке</li>
+<li><code>&amp;&amp;</code> — повторить замену, с флагами, которые использовались ранее</li>
+<li><code>g&amp;</code> — повторить замену глобально, используя флаги</li>
+</ul>
+<h2>Текстовые объекты</h2>
+<p>Познакомьтесь с ними поближе, потому что их фантастически удобно использовать
+после оператора или в визуальном режиме. Встречайте два типа —
+«inner» (внутри) и «ambient» (вокруг).
+«Внутри» всегда выбирает меньше текста, чем «вокруг».</p>
+<ul>
+<li><code>aw</code>, <code>aW</code> — вокруг <em>слова</em> или <em>СЛОВА</em> (см. документацию)</li>
+<li><code>iw</code>, <code>iW</code> — внутри <em>слова</em> или <em>СЛОВА</em> (см. документацию)</li>
+<li><code>as</code>, <code>is</code> — вокруг или внутри предложения</li>
+<li><code>ap</code>, <code>ip</code> — вокруг или внутри абзаца</li>
+<li><code>a{</code>, <code>i{</code> — весь блок <code>{..}</code> или текст внутри него</li>
+<li><code>a(</code>, <code>i(</code> — весь блок <code>(..)</code> или только текст внутри</li>
+<li><code>a&lt;</code>, <code>i&lt;</code> — весь блок <code>&lt;..&gt;</code> или только текст внутри</li>
+</ul>
+<p>Есть ещё более крутые:</p>
+<ul>
+<li><code>a'</code>, <code>i'</code> — строка в одинарных кавычках или текст внутри</li>
+<li><code>a"</code>, <code>i"</code> — строка в двойных кавычках или текст внутри</li>
+</ul>
+<p>Заметьте, что эти объекты знают об экранированных кавычках внутри строки.</p>
+<ul>
+<li><code>at</code>, <code>it</code> — весь блок тега или только текст внутри него
+(теги HTML и XML)</li>
+</ul>
+<p>Примеры:</p>
+<ul>
+<li><code>das</code> — удалить предложение и пробелы после него</li>
+<li><code>ci(</code> — изменить текст внутри блока <code>(..)</code></li>
+<li><code>yat</code> — скопировать весь окружающий ближайший тег, где находится курсор</li>
+<li><code>gUi'</code> — перевести в верхний регистр текст внутри одинарных кавычек</li>
+<li><code>vip</code> — визуально выделить абзац без последующих пробелов</li>
+</ul>
+<h2>Копирование/удаление/вставка</h2>
+<p>Это вы уже должны знать:</p>
+<ul>
+<li><code>y</code> — <em>yank</em> (копировать), <code>d</code> — <em>delete</em> (удалить),
+<code>p</code> <em>paste</em> (вставить) после, <code>P</code> — вставить перед</li>
+<li><code>]p</code>, <code>]P</code> — вставить после/до с расстановкой отступов</li>
+</ul>
+<p>Полезные мапинги для вставки и последующего переформатирования/расстановки отступов:</p>
+<pre><code class="language-Vim">:nnoremap &lt;Esc&gt;P  P'[v']=
+:nnoremap &lt;Esc&gt;p  p'[v']=
+</code></pre>
+<h2>Регистры</h2>
+<p>Регистры — ваш многоцелевой буфер обмена.
+Вы используете их, даже не зная о них.
+Каждая команда <code>y</code> или <code>d</code> копирует в регистр, не именованный или именованный.
+<code>"&lt;буква&gt;</code> перед командой копирования/удаления/вставки указывает регистр
+с именем <code>&lt;буква&gt;</code>.</p>
+<p>Копирование в регистр с буквой в верхнем регистре дополняет его содержимое,
+это полезно для сбора текста из нескольких буферов и последующей вставки
+как одного целого.</p>
+<ul>
+<li><code>"wyy</code> — скопировать текущую строку в регистр <code>w</code></li>
+<li><code>"WD</code> — удалить до конца строки и добавить удалённое в регистр <code>w</code></li>
+<li><code>"wp</code> — вставить содержимое регистра <code>w</code></li>
+<li><code>CTRL-Rw</code> — вставить содержимое регистра <code>w</code> (в режиме вставки)</li>
+</ul>
+<p>В регистры можно записывать макрокоманды:</p>
+<ul>
+<li><code>q&lt;буква&gt;</code> — начать запись набранного текста в регистр <code>&lt;буква&gt;</code></li>
+<li>последующая <code>q</code> останавливает запись</li>
+<li><code>@&lt;буква&gt;</code> проигрывает макро <code>&lt;буква&gt;</code></li>
+<li><code>@@</code> повторяет выполнение последнего выполненного макро</li>
+</ul>
+<p>Для просмотра содержимого регистров используйте <code>:reg</code>.</p>
+<h2>Отмена</h2>
+<p>У оригинального <strong>vi</strong> был только один уровень отмены.
+Ха!
+А Vim имеет бесконечное количество (ограниченное только памятью).
+Установите <code>'undolevels'</code> таким, какое вам нужно (по умолчанию — 1000).</p>
+<p>Простой пример: <code>u</code> — отмена, <code>CTRL-R</code> — повторение.</p>
+<p>В Vim 7-й версии добавлена отмена с ветвлениями.
+Если отменить что-то, а затем сделать изменения, то создаётся новая ветка.
+<code>g-</code>, <code>g+</code> — переход к более старому/новому состоянию текста (по всем веткам).</p>
+<p>Можно путешествовать во времени:</p>
+<ul>
+<li><code>:earlier Ns,m,h</code> — вернуться к состоянию текста каким он был <strong>N</strong>
+секунд, минут, часов назад</li>
+<li><code>:later Ns,m,h</code> — перейти к состоянию текста позднее похожим образом</li>
+</ul>
+<p><code>:earlier 10m</code> — вернуться на 10 минут назад до того, как я выпил
+банку <em>Red Bull</em> и сделал эти дурацкие изменения.
+Уфф.</p>
+<h2>Визуальный режим</h2>
+<p>Используйте его, потому что это проще, чем запоминать непонятные диапазоны
+или команды перемещения.</p>
+<p>Начните выделение с:</p>
+<ul>
+<li><code>v</code> — посимвольно</li>
+<li><code>V</code> — построчно</li>
+<li><code>CTRL-V</code> — блоком</li>
+</ul>
+<p>Используйте любую команду перемещения для изменения выделения.
+К выделению можно применить любую команду нормального режима или команду <strong>ex</strong> <code>:</code>.</p>
+<p>Блочный визуальный режим это — вообще что-то.
+Особенно для текста в виде таблиц.</p>
+<p><strong>Совет</strong>: <code>o</code> переносит курсор на другой конец выделения, где можно продолжить
+выделение.</p>
+<p>Как только вы оказались в блочном режиме:</p>
+<ul>
+<li><code>I&lt;текст&gt;&lt;Esc&gt;</code> — вставить <code>&lt;текст&gt;</code> перед блоком в каждой строке</li>
+<li><code>A&lt;текст&gt;&lt;Esc&gt;</code> — добавить <code>&lt;текст&gt;</code> после блока на каждой строке</li>
+<li><code>c&lt;текст&gt;&lt;Esc&gt;</code> — заменить каждую строку в блоке на <code>&lt;текст&gt;</code></li>
+<li><code>r&lt;символ&gt;&lt;Esc&gt;</code> — заменить все символы на <code>&lt;символ&gt;</code></li>
+</ul>
+<h2>Аббревиатуры</h2>
+<p>Замена строк в реальном времени.
+Подстановка выполняется, когда набран символ не ключевого слова:</p>
+<p><code>:ab tempalte template</code> — исправление опечатки</p>
+<p>Расширение посложнее:</p>
+<pre><code class="language-Vim">:iab techo &lt;?php echo ?&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;
+</code></pre>
+<h2>Окна</h2>
+<p>Научитесь работать с окнами.
+Как перемещаться между ними.
+<code>:new</code>, <code>:sp</code> должны быть на кончиках ваших пальцев.
+Очень важно изучить команды с <code>CTRL-W</code> для изменения размеров окон и перемещения
+между ними.</p>
+<h2>Страницы с табами</h2>
+<p>Начиная с 7-й версии, Vim поддерживает вкладки.</p>
+<ul>
+<li><code>:tabe &lt;файл&gt;</code> — редактировать файл в новой вкладке</li>
+<li><code>:tabn</code>, <code>:tabp</code> (или <code>gt</code>, <code>gT</code> — для переключения)</li>
+</ul>
+<p>Возможно, вы захотите замапить это для более удобной навигации,
+(если <code>gt</code>, <code>gT</code> для вас слишком сложно).</p>
+<h2>Дополнение</h2>
+<p>Vim очень дружественен в дополнении. В командной строке просто используйте <code>&lt;Tab&gt;</code>:</p>
+<ul>
+<li>для имён файлов настройте <code>'wildmenu'</code> и <code>'wildmode'</code>
+(мне нравится <code>"list:longest,full"</code>)</li>
+<li><code>:new ~/dev/fo&lt;Tab&gt;</code> — дополнить имя файла</li>
+<li><code>:help ‘comp&lt;Tab&gt;</code> — дополнить имя опции</li>
+<li><code>:re&lt;Tab&gt;</code> — дополнить команду</li>
+</ul>
+<p>Нажимайте <code>&lt;Tab&gt;</code> повторно для прохода в цикле, <code>CTRL-N</code> для следующего совпадения,
+<code>CTRL-P</code> — для предыдущего.</p>
+<p><code>CTRL-X</code>, за которым следуют комбинации с <code>CTRL-</code>, включает режим дополнения
+в режиме вставки. Я в основном использую дополнение имён файлов, идентификаторов
+и омни-дополнение. Когда имеется несколько совпадений, появляется окошечко
+с вариантами.</p>
+<ul>
+<li><code>CTRL-X CTRL-F</code> — дополнить имя файла</li>
+<li><code>CTRL-X CTRL-N</code> — дополнить идентификатор</li>
+</ul>
+<p>У меня есть отличный ремапинг для <code>&lt;Tab&gt;</code>:</p>
+<pre><code class="language-Vim">“ Вставить &lt;Tab&gt; или дополнить идентификатор,
+“ если курсор находится после символа ключевого слова
+function MyTabOrComplete()
+    let col = col('.') - 1
+    if !col || getline('.')[col-1] !~ '\k'
+        return "\&lt;tab&gt;"
+    else
+        return "\&lt;C-N&gt;"
+    endif
+endfunction
+
+inoremap &lt;Tab&gt; &lt;C-R&gt;=MyTabOrComplete()&lt;CR&gt;
+</code></pre>
+<p>Омни-дополнение основано на эвристике, которая угадывает, как вы хотите дополнить
+в соответствии с типом файла, который вы редактируете. Чуть поболее — позднее.</p>
+<h2>Мапинги</h2>
+<p>Сделали мапинги для каждого режима режимов и утомились менять текст в кавычках?</p>
+<pre><code class="language-Vim">:nmap X ci"
+</code></pre>
+<p>Сделать Vim похожим на браузер?</p>
+<pre><code class="language-Vim">:nmap &lt;Space&gt; &lt;PageDown&gt;
+</code></pre>
+<p>Быстро вставить ваш e-mail?</p>
+<pre><code class="language-Vim">:imap ;EM me@mydomain.com
+</code></pre>
+<p>Пусть <code>&lt;Backspase&gt;</code> в визуальном режиме работает как <code>&lt;Delete&gt;</code>?</p>
+<pre><code class="language-Vim">:vmap &lt;BS&gt; x
+</code></pre>
+<h2>Опции</h2>
+<p>У Vim-а — сотни опций.
+Изучите их, чтобы управлять ими так, как вам нужно.</p>
+<ul>
+<li><code>:options</code> позволяет изменять опции интерактивно</li>
+<li><code>:options | resize</code> — лучше (опций очень много)</li>
+</ul>
+<h2>Сессии</h2>
+<p>В сессии хранятся все виды окон и глобальные настройки.
+Можно сохранить сессию, а позднее восстановить её.
+Расположение окон будет прежним.</p>
+<ul>
+<li><code>:mksession &lt;файл&gt;</code> — сохранение сессии в <code>&lt;файле&gt;</code></li>
+<li><code>:source &lt;файл&gt;</code> — загрузить сессию из <code>&lt;файла&gt;</code></li>
+<li><code>vim -S &lt;файл&gt;</code> — возобновить редактирование сессии</li>
+</ul>
+<h2>Разное</h2>
+<ul>
+<li><code>gf</code> — перейти к файлу под курсором (<code>CTRL-W</code> <code>CTRL-F</code> — то же,
+в новом окне)</li>
+<li><code>:read</code> — прочитать содержимое файла или вывод процесса
+<ul>
+<li><code>:read foo.txt</code> — прочитать содержимое файла <em>foo.txt</em></li>
+<li><code>:read !wc %:h</code> — выполнить <strong>wc</strong> с текущим файлом и вставить
+результат в текст (IMHO <code>:h</code> здесь лишнее — <em>пер.</em>)</li>
+</ul>
+</li>
+<li>фильтрация текста: <code>:%!sort</code>, <code>:%!grep</code> или используйте <code>:!</code> в визуальном
+режиме</li>
+<li>мне нравится сортировать списки чем-то вроде этого: <code>vip:!sort</code></li>
+<li>используйте историю командной строки</li>
+<li>стрелки вверх/вниз после <code>:</code> и <code>/</code> перемещают по истории</li>
+<li>стрелки вверх/вниз после <code>:</code> и <code>/</code> с префиксом ограничивают перемещение этим
+префиксом</li>
+<li><code>q:</code> и <code>q/</code> открывают окно редактирования истории (<code>&lt;Enter&gt;</code> выполняет команду,
+<code>CTRL-C</code> копирует в командную строку)</li>
+<li><code>CTRL-A</code> и <code>CTRL-X</code> увеличивают/уменьшают число под курсором (шестнадцатеричные
+и восьмеричные — тоже)</li>
+<li><code>ga</code> — какой символ у меня под курсором?</li>
+<li><code>:set number</code> для включения нумерации строк</li>
+<li>или используйте для переключения нумерации <code>:nmap &lt;silent&gt; &lt;F6&gt; set number!&lt;CR&gt;</code></li>
+<li><code>:set autowrite</code> — убрать запросы Vim-а хотите ли вы сохранить файл,
+когда покидаете буфер</li>
+<li><code>CTRL-E</code>/<code>CTRL-Y</code> — скроллировать окно вниз/вверх без перемещения курсора</li>
+<li><code>:set scroloff=N</code> — начинать скроллинг, когда курсор находится
+на расстоянии <strong>N</strong> строк от верхнего/нижнего края</li>
+<li><code>:set updatecount=50</code> — сохранять своп-файл на диск каждые 50
+нажатий на клавиши</li>
+<li><code>:set showmatch matchtime=3</code> — когда вставляется скобка, кратковременно
+перепрыгнуть к парной. <strong>3</strong> — в десятых секунды</li>
+<li>в шелле: <code>fc</code> вызывает Vim с последней командой и запускает её после того,
+как вы выйдите из Vim (или <code>fc N</code> чтобы редактировать команду <strong>N</strong> в истории)</li>
+<li><code>vimdiff</code> в оболочке (<code>:help vimdiff</code>)</li>
+<li>замапте <code>CTRL-L</code> для фрагментного копирования строки над текущей:
+<code>imap &lt;C-L&gt; @@@&lt;ESC&gt;hhkywjl?@@@&lt;CR&gt;P/@@@&lt;CR&gt;3s</code></li>
+</ul>
+<h2>Настройки</h2>
+<p>Настройте Vim, разместив файлы в каталоге <em>~/.vim</em> (в этом каталоге <em>vimrc</em> д.б.
+без точки — <em>пер.</em>)</p>
+<ul>
+<li><code>filetype plugin on</code>, <code>filetype indent on</code></li>
+</ul>
+<pre><code class="language-Vim">.vimrc - глобальные настройки
+.vim/
+    after/ - файлы, которые загружаются в последнюю очередь
+    ftplugin/
+    plugin/
+    syntax/
+    ...
+    autoload/ - автоматически загружаемые скрипты
+    colors/ - пользовательские цветовые схемы
+    doc/ - документация к плагинам
+    ftdetect/ - скрипты для определения типа файла
+    ftplugin/ - плагины для типов файла
+    indent/ - скрипты для отступов
+    plugin/ - плагины
+    syntax/ - скрипты для подсветки синтаксиса
+</code></pre>
+<h2>PHP: линтинг</h2>
+<p>Vim поддерживает произвольные команды сборки/линтинга, если настроить
+<code>'makeprg'</code> и <code>'errorformat'</code> правильно:</p>
+<pre><code class="language-Vim">:set makeprg=php\ -l\ %
+:set errorformat=%m\ in\ %f\ on\ line\ %l
+</code></pre>
+<p>Теперь достаточно набрать <code>:make</code> (и пару раз <code>&lt;Enter&gt;</code>), и курсор будет
+помещён на строку с синтаксической ошибкой.</p>
+<h2>PHP: парные скобки</h2>
+<p>Вы уже должны быть знакомы с командой <code>%</code> (переместить курсор к паре),
+которая используется для <code>()</code>, <code>{}</code>, <code>[]</code> и т.д.
+Но такое можно использовать и для прыжков между тегами PHP и HTML.
+Используйте плагин <em>matchit.vim</em>.
+Но <em>syntax/php.vim</em> содержит ошибки и опечатки в правиле поиска соответствия.
+Я предлагаю своё.</p>
+<h2>PHP: блочные объекты</h2>
+<p>Схожие с Vim-овскими встроенными объектами:</p>
+<ul>
+<li><code>aP</code> — PHP-блок, включая теги</li>
+<li><code>iP</code> — текст внутри PHP-блока</li>
+</ul>
+<p><strong>Примеры:</strong></p>
+<ul>
+<li><code>vaP</code> — выделить текущий PHP-блок (с тегами)</li>
+<li><code>caP</code> — изменить текст внутри текущего PHP-блока</li>
+<li><code>yaP</code> — скопировать весь PHP-блок (с тегами)</li>
+</ul>
+<p>Всё это — в моём файле <em>.vim/ftplugin/php.vim</em>.</p>
+<h2>PHP: опции синтаксиса</h2>
+<p>У Vim-а есть очень полезные плагины для синтаксиса PHP,
+которые имеют несколько опций:</p>
+<ul>
+<li><code>let php_sql_query=1</code> для подсветки синтаксиса в строках SQL</li>
+<li><code>let php_htmlInStrings=1</code> для подсветки в строках HTML</li>
+<li><code>let php_noShortTags=1</code> для запрета коротких тегов</li>
+<li><code>let php_folding=1</code> для разрешения свёрток для классов и функций</li>
+</ul>
+<h2>PHP: свёртки</h2>
+<p>Научитесь управлять свёртками:</p>
+<ul>
+<li><code>zo</code> — раскрыть свёртку (если курсор на строке со свёрткой)</li>
+<li><code>zc</code> — свернуть ближайшую свёртку</li>
+<li><code>zR</code> — открыть все свёртки</li>
+<li><code>zM</code> — закрыть все свёртки</li>
+<li><code>zj</code> — перейти в начало следующей свёртки</li>
+<li><code>zk</code> — перейти к концу предыдущей свёртки</li>
+</ul>
+<h2>PHP: теги</h2>
+<p>Для Vim теги это — идентификаторы PHP (классы, функции, константы).
+Если у вас файл с тегами, то можно быстро переходить к определению любого тега.
+Установите
+<span id="ectags"><a href="https://web.archive.org/web/20230605043103/http://ctags.sourceforge.net/"><em>Exuberant Ctags</em></a></span>.
+Он умеет сканировать ваши скрипты и выводить файл с тегами, содержащий информацию
+об идентификаторах.
+В данный момент он не поддерживает информацию о членах класса (выводит методы
+как функции).
+Для исправления этого приходится применять сторонний патч.</p>
+<p>Для пересборки файла с тегами после редактирования используйте мапинг:</p>
+<pre><code class="language-Vim">nmap &lt;silent&gt; &lt;F4&gt;
+    \ :!ctags -f ./tags
+    \ --langmap="php:+.inc"
+    \ -h ".php.inc" -R --totals=yes
+    \ --tag-relative=yes --PHP-kinds=+cf-v .&lt;CR&gt;
+
+set tags=./tags,tags
+</code></pre>
+<p>Будут рекурсивно просканированы все PHP-файлы в текущем каталоге и подкаталогах.</p>
+<ul>
+<li><code>CTRL-]</code> — перейти к тегу под курсором</li>
+<li><code>CTRL-W</code> <code>CTRL-]</code> — перейти к тегу в новом окне</li>
+<li><code>:tag &lt;идентификатор&gt;</code> — перейти к произвольному тегу</li>
+<li><code>:tag /&lt;regexp&gt;</code> — перейти к или показать теги, совпадающие с <code>&lt;regexp&gt;</code>,
+при нескольких совпадениях — выбрать тег из списка</li>
+<li><code>:tselect &lt;идентификатор&gt;</code> или <code>/&lt;regexp&gt;</code> — вместо перехода показать
+список</li>
+<li><code>CTRL-T</code> — вернуться туда, где были ранее</li>
+</ul>
+<p>См. также плагин <a href="#taglist"><em>taglist.vim</em></a>.</p>
+<h2>PHP: дополнение</h2>
+<p>В Vim 7 появилось мощное омни-дополнение основанное на эвристике.
+<code>CTRL-X</code> <code>CTRL-O</code> начинает дополнение (я замапил это на <code>CTRL-F</code>).
+На основании контекста умно дополняет классы, переменные, методы.
+Встроенные функции дополняет тоже.
+Дополнение функции показывает прототип.
+<code>array_&lt;CTRL-X&gt;&lt;CTRL-O&gt;</code> покажет список функции для работы с массивами.
+Выберите одну из списка, и в окне предварительного просмотра будет показан прототип.
+<code>CTRL-W</code> <code>CTRL-Z</code> — чтобы закрыть окно предварительного просмотра.
+Вне блоков PHP переключается на дополнение HTML/CSS/JavaScript.</p>
+<p>Дополнительно см.:</p>
+<pre><code class="language-Vim">:help ins-completion
+:help popupmenu-completion
+:help popupmenu-keys
+:help ft-php-omni
+</code></pre>
+<h2>Плагины</h2>
+<p>Vim можно бесконечно настраивать и расширять при помощи плагинов.
+Их написано уже тысячи.
+Установка очень проста, просто бросьте их в каталог <em>.vim/plugin</em>.
+Однако сначала прочтите инструкции.</p>
+<h3>netrw</h3>
+<p>Позволяет читать, записывать и просматривать удалённые каталоги и файлы.
+Обычно я использую его по ssh-соединению при помощи протокола scp.
+Чтобы избежать постоянных запросов пароля, нужно запустить ssh-агента.
+Не используйте беспарольные ключи!
+Когда настроите, используйте:</p>
+<pre><code>vim scp://hostname/path/to/file
+:new scp://hostname/path/to/dir/
+</code></pre>
+<h3>NERDTree</h3>
+<p>Похож на браузер netrw, но больше похож на проводник по иерархии каталогов.
+Не поддерживает удалённые файловые операции.</p>
+<pre><code class="language-Vim">:nmap &lt;silent&gt; &lt;F7&gt; :NERDTreeToggle&lt;CR&gt;
+</code></pre>
+<h3 id="taglist">taglist</h3>
+<p>Обеспечивает обзор исходного кода.
+Предоставляет быстрый доступ к классам, функциям и константам.
+Автоматически обновляет окно при переключении буферов.
+Может показывать прототип и область видимости тега.
+Требует наличия <a href="#ectags"><em>Exuberant Ctags</em></a>.</p>
+<p>Сохраните это в <em>~/.vim/after/plugin/general.vim</em>:</p>
+<pre><code class="language-Vim">let Tlist_Ctags_Cmd = "/usr/local/bin/ctags-ex"
+let Tlist_Inc_Winwidth = 1
+let Tlist_Exit_OnlyWindow = 1
+let Tlist_File_Fold_Auto_Close = 1
+let Tlist_Process_File_Always = 1
+let Tlist_Enable_Fold_Column = 0
+let tlist_php_settings = 'php;c:class;d:constant;f:function'
+if exists('loaded_taglist')
+    nmap &lt;silent&gt; &lt;F8&gt; :TlistToggle&lt;CR&gt;
+endif
+</code></pre>
+<h3>snippetsEmu</h3>
+<p>Реализует некоторую функциональность снипетов TextMate.
+Поддерживает многие языки, включая PHP/HTML/CSS/JavaScript.
+По умолчанию привязывается к <code>&lt;Tab&gt;</code>, но это раздражает,
+приходится переназначать клавишу после его загрузки.</p>
+<p>Поместите это в <em>~/.vim/after/plugin/general.vim</em>:</p>
+<pre><code class="language-Vim">if exists('loaded_snippet')
+    imap &lt;C-B&gt; &lt;Plug&gt;Jumper
+endif
+inoremap &lt;Tab&gt; &lt;C-R&gt;=MyTabOrComplete()&lt;CR&gt;
+</code></pre>
+<h3>php documentor</h3>
+<p>Автоматически вставляет блоки PHP Documentor.
+Работает в одно- и много-строчном режиме.
+По умолчанию не предоставляет мапинги.
+Прочитайте документацию, чтобы настроить переменные по умолчанию для
+копирайта, пакета и т.д.</p>
+<p>Добавьте это в <em>~/.vim/ftplugin/php.vim</em>:</p>
+<pre><code class="language-Vim">inoremap &lt;buffer&gt; &lt;C-P&gt; &lt;Esc&gt;:call PhpDocSingle()&lt;CR&gt;i
+nnoremap &lt;buffer&gt; &lt;C-P&gt; :call PhpDocSingle()&lt;CR&gt;
+vnoremap &lt;buffer&gt; &lt;C-P&gt; :call PhpDocRange()&lt;CR&gt;
+let g:pdv_cfg_Uses = 1
+</code></pre>
+<h3>project</h3>
+<p>Предоставляет управление файлами проекта как в IDE.
+Позволяет группировать файлы и быстрый доступ к ним.
+Может искать и выполнять произвольные команды.</p>
+<h3>0scan</h3>
+<p>Поиск различной информации, основанный на тегах.
+Быстрый доступ к:</p>
+<ul>
+<li>буферам, файлам, окнам, табам</li>
+<li>объектам, методам</li>
+<li>элементам базы данных ctags</li>
+<li>регистрам для вставки текста из них</li>
+<li>изменениям в текущем файле для перемещения по ним</li>
+<li>меткам Vim-а для перехода к ним</li>
+</ul>
+<h3>xdebug-ger</h3>
+<p>Позволяет отладку при помощи xdebug по протоколу DBGp.
+Достаточно прост, но работу делает.
+Нужно, чтобы Vim был скомпилирован с опцией <code>+python</code>.
+См. <a href="#resources">раздел ресурсов</a> для ссылок на документацию.</p>
+<h3>vcscommand</h3>
+<p>Предоставляет интерфейс с CVS/SVN/git.
+Установите его, затем выполните <code>:help vcscommand</code>.</p>
+<h2>Заключение</h2>
+<p>Vim рулез!
+Это был лишь поверхностный взгляд с моей очень субъективной точки зрения.
+Не застревайте в колее, продолжайте читать и пробовать новые вещи.</p>
+<h2 id="resources">Ресурсы</h2>
+<ul>
+<li>Советы по Vim: <a href="https://web.archive.org/web/20230605043103/http://www.vim.org/tips/">http://www.vim.org/tips/</a></li>
+<li>Скрипты Vim: <a href="https://web.archive.org/web/20230605043103/http://www.vim.org/scripts/index.php">http://www.vim.org/scripts/index.php</a></li>
+<li>Exuberant Ctags: <a href="https://web.archive.org/web/20230605043103/http://ctags.sourceforge.net/">http://ctags.sourceforge.net</a></li>
+<li>Патч ctags для PHP (<code>404</code>): <a href="https://web.archive.org/web/20230605043103/http://www.live-emotion.com/memo/index.php?plugin=attach&amp;refer=%CA%AA%C3%D6&amp;openfile=ctags-5.6j-php.zip">http://www.live-emotion.com/memo/index.php?plugin=attach&amp;refer=%CA%AA%C3%D6&amp;openfile=ctags-5.6j-php.zip</a></li>
+<li>Статья об xdebug и Vim (<code>404</code>): <a href="https://web.archive.org/web/20230605043103/http://2bits.com/articles/using-vim-andxdebug-dbgp-for-debugging-drupal-or-any-php-application.html">http://2bits.com/articles/using-vim-andxdebug-dbgp-for-debugging-drupal-or-any-php-application.html</a></li>
+<li>Более крутые плагины:
+<ul>
+<li>Surround: <a href="https://web.archive.org/web/20230605043103/http://www.vim.org/scripts/script.php?script_id=1697">http://www.vim.org/scripts/script.php?script_id=1697</a></li>
+<li>ShowMarks: <a href="https://web.archive.org/web/20230605043103/http://www.vim.org/scripts/script.php?script_id=152">http://www.vim.org/scripts/script.php?script_id=152</a></li>
+<li>Vim Outliner: <a href="https://web.archive.org/web/20230605043103/http://www.vim.org/scripts/script.php?script_id=517">http://www.vim.org/scripts/script.php?script_id=517</a></li>
+<li>Tetris: <a href="https://web.archive.org/web/20230605043103/http://www.vim.org/scripts/script.php?script_id=172">http://www.vim.org/scripts/script.php?script_id=172</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<div style="text-align: center;">
+<h2>«Как и во всем остальном, лучше не заглядывать в это слишком глубоко»</h2>
+<h1>Спасибо!</h1>
+<p><a href="https://web.archive.org/web/20230605043103/http://joind.in/121">http://joind.in/121</a><br>
+<a href="https://web.archive.org/web/20230605043103/http://digg.com/">http://digg.com/</a><br>
+<a href="http://gravitonic.com/talks/">http://gravitonic.com/talks/</a></p>
+</div>
+</html>

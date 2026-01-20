@@ -1,0 +1,2975 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Vim-galore — по-русски</title>
+<style>
+body {
+	font-family: Tahoma, Helvetica, sans-serif;
+	font-size: 14px;
+	/*color: #333;*/
+	background: #fff;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	line-height: 1em;
+}
+code,
+kbd,
+pre {
+	font-family: "Lucida Console", Courier, monospace;
+	background: #e7e7e7;
+}
+code,
+kbd {
+	padding: 1px 5px;
+}
+pre {
+	padding: 5px;
+	overflow-x: auto;
+	word-wrap: normal;
+}
+pre code {
+	padding: 0;
+}
+blockquote {
+	border-left: 5px solid #e7e7e7;
+	margin: 1em 0;
+	padding-left: 10px;
+}
+hr {
+	border: 0;
+	border-top: 1px solid #e7e7e7;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+table thead {
+	border-bottom: 2px solid #e7e7e7;
+}
+table td,
+table th {
+	padding: 6px 13px;
+	border: 1px solid #e7e7e7;
+}
+table th {
+	font-weight: 700;
+}
+li p {
+	margin: .5em 0;
+}
+</style>
+<p>
+<a href="https://web.archive.org/web/20230605025202/http://givi.olnd.ru/index.shtml">Курилка</a>
+</p>
+<div align="center">
+  <a href="https://github.com/mhinz/vim-galore"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAk0AAAB6CAMAAACVxJdWAAABMlBMVEUAAAAAAACopaWppqYAAACopaUAAAAAAACloaEAAACQkJCopaUAAACopaWppaWkoqKopaWopaWfnJwAAACppqaopaWopqanpKSmo6OjoKCinp6hlpZSUlIAAACopaWopaWopaWppqaopaWopaUAAACopaWampqppqaopqaopKSppaUAAACnpKSppaUAAACopaUAAACnpaUAAACnpaUAAACppaWmo6OopaWppqampKSmoaEAAAAAAAAAAAAAAAAAAACopqYAAACopaWopaWnpKSppqYAAACkpKQAAAAAAAAAAAAAAACopaUAAAAAAAAAAAAAAAAAAACnpaUAAAAAAACopaUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACppqYKcDeCAAAAZHRSTlMA+/3x0PjxoCAJBvTY7MUcp2oQBr524E09FxIMA/fkrpv7idd1XwnIoWTMV1XnpXBbWlFE3tMxjto1J+LLqRSSgea5kkmxgizsZWC5fG4qDsCLhEYwlj44/ZodGKyiTCLFr9KyjGZsVgAAC/tJREFUeNrs209r4kAYx/EJSGQgt1zNLbdAkJBbNMGLqCH+QfFfV922v/f/GnbZsrgaHfNMpla3z+fsszOZ/RbK2AjGGGOMMcYYY4wxxhhjjDHG2CNoWvhgNQmfU4/KIHRsaLCdMJCiLtnu3lz++kO7UfNtgMsGb5t9S302Oiaj11sbtp1d5JZWJZxoaZbI80UF1vFkCZ9TjrYT1JC0RT2jHiorP3QQQ82JlGdD1yoGqCQOSqtWkowu7JisIyrAEeFzilE3RE07V+iTXZCIE24Tt2UtxdmQyRyVNV1xhOpCKU6BrvEVNblT1DbVz0n+BLkm8ubzlrma3KnuyYDgp3zOmkIYsBO6uqDXRN/8xlxNM5A0NYsIn7KmNoxoCz0jUOlNB6ZqWq5BE2gWMXrCmmQCIxIpdMgeqPSmY2mophxEsatXRCKfr6YAhgRCRxtkmtORmZrGIIs0iwier6YuDAkFif7ymtOhmZp8kO00iwifryYHhjiCQn95S3PaMVNTXuNk6pwonuK+yYYhttBhk2Nqak7bZmqKa5xMnRMFmeffvyYc0Rej/7eo581P48jMsnbFyRb5rM3vmGt64Jq2xeb1verkhGvimhRGFk5NhMIL18Q1KQzQ36ZbHFmd/tIVVxy4Jq5JXdPpdVPRTeDl/kJcMuaauCaFGaylmJ9ObtvNGPFsJUpWXBPXpDBxYC+G5clDkXtJdh7UkmvimlQOCez3i5OTqOv1ZmPxjznXxDUpbRvAtUkZvFo/R1L8FXFNXJOabEIxmfpv9mYhPrS5Jq7plqinnFyFXidoid+GXNPj1pQN7A+DTBx5qM4ysu00DdWTqd+LCylEcemsifh7Ov2aNF7UiVFdz8i2Z5k7d9ST7tAZ9FP/y2tC5z+oKXUIPzZaD3PUoJytkZr6aCxc374xGTU85+travwHNe1RQcdITUNQbFpGaoKVTV42FoBUqHoyUNOMa4oID1qvpoUHksxATT5+6w3dcXcNu58Sj59qxjXdraZ3EEX1ayrwRzx0F6+lnozXhDnXdKeaxqBKXFM1AUkxGYcWvOzwmTXFLtd0n5p8kAW1axqe/KHtIbNhdZefVxP2XNN9aspB1q1d0+jsAmtSxEBjKD+rph3XdJ+aYjNvj2i//+eJP1rzdwv2ZqXYcTbRL+Kb3zfdrSYbZF7tmoIL/5jY9mPA6Y+v7RjJXLeIwTe/C7/DfZNqlD5LEl15QWnZtIGGP764ao61r7vjb/49XbW78GetaX/1BULZzi0gzuaytEQrA/pc0+N8T/coNc1Vr6O+FNM14E37S3m2hA9EXBPXdGZ58itNWTrMPQBWJztdYoYG18Q1nVmVaiqR+8zBCSHcNjyuiWu6XlNPXPcSZB0Pf9n2GvjBNXFNv9g7g9YGgSCMjhAMC972mty8CbIHb0bBS2lSaFoqtFQLadn//xtKcym0rJldBGfle0dlwjN5h7CJ7h96Xk1Erda9uRsPdXJd6dzkCjWhJvdNlzVNke+fnk2viUi1Q7sjrBCgpqkbwivGD3pv95uHz5KIUBNq+s87t6ZCijFqklvTwH2Y3osUY9Qkt6aWW9OrFGPUJLemM7emRynGqEluTep38IumGKQYoya5Ne24f0ZTUoxvYL1J5daUWh5zfzbe7PNg4XRJ4/lryuTWlMVSkz0EC2dLGs9fUyO3piaamjbBwuWSxvPXVMitycRWUxHw9q+qpk7JrUl1kdWkav/dsVZV04nk1kSnyGryFza0ppoaklwTNZHVRKXvt6Y11XRRsmtSl8hq8t3Xd001jYpk10RqjKsm0h9ee47LrimxfLqjYzRxH3JOMM6HcewsC74566rDV29MxZupDP0gwNjJlvnCaTaas2M02ToPuScY5wNRZsxSy4Bpzrzq8JVlXZS3hNOsLDRdkWAMAAAAAAAAAACAb/bgQAAAAAAAyP+1EVRVVVVVVVUVdsxtN3EYiqJHiSJFQRBABAodES7iUgRCqCK0PCGg4qVPI/UT9v//wmTsAJnZTrnMVFM0XQ+2HB+fS7zrmH7xxRcnwJG/7lmIYlFuAuAzuPhwz11EoonQPe7RZ1ET8H7RjiM3AZA5cXtqyrbvYCWaFTrHPfoMQj9HTcVQboL/RE13GIlmjufjHt2Kmv4ejbIQ/0BN2WkAH1UCYHZ1RSYTuKp3MfmA9zbA3UG2A9VHYd4pbNPm9dYEGJmMkXAwXQ6bztODaNJzPOu24sHruLPmsjjQt2kTqJZSJXAppkBUEQ9LT063ZHLFBabTYBKrRsGa/poGr53AF41v3FW3FM7z7ebQPXjebdatSBTZb4NyZlqYqn6KN+MeeQt7tPQ29si/Rk0zhKIJMZOYWhsxVu9oXn9CzMMvxi+YmdRUUosxIzXx7DKPzLI50BsUnRNqokBUEQ07ynRzWk2UhvnFul1n/FsavHaNvZq3WAtThcZeJq5mDoD2ltK4WE1bVFRfwda4R0MAo59N6xo1eU0rOfqsphd3ddv67pZLjuMezEP7oZwYT/bGUMb0pUPh8X45QIGi8ewahai/q2AoBAd6RK533whgPZ9SEwdKV8TDHbCoN6bt0186SsNoGU3sO0qD1i4QiCbAQpjFcOx69XEVxcRV7rVeXqHZFznnbQCShWdbjbhrWLZn3KN8FOimetVvutdE4gu86qv+Sh+EnYO5vZM9q4NxYLw3Lb6pj5NNm8GzObjqoM8LwYFCPOhzpPWemjgQVUTDN3029E6qidIwWj7azR2lwWt7KIqmiJ5kcoeJdqWNXjAmV5epSQc8JsALa+LrxrlKTXXHvo+7e9tpSMwIrnqKUSqAQhvn+4lx9i28TM9Ms3kVyEVOCA5k5z311Oq+pyYORBXRcI7ambdwToMtZ+25z2nw2ghz8QHLlzkiycSDlXZVw4ZcXaymGcLjBcK00Ds0p+FQQ5TitpQI3UaCbTQfqj+LqTZmNWU+49mh+tIVEApBgRqoiKJqn68mAagiHubgn6cmToMtA6tSNqTBaz3L8gI4CLy25YkJNygOqjkg7crHC7m6WE3ldq4v/Vy7nLVHurlWTfqfol3oE9pCgmU0f8Y8bp+w+2M1+RMVpukKQYH8/bk8sC5TE1fEQ+8sNVEaDGKKnikNXjtH1EUJ3UiVSXgbJKRdeaiQq4vVJGvUpIa1fIia9PV+u9e7jf7v5vTbvaaM/1BN0sOPds2gNXUgisLDhIAYYmKISWykaoO2lYg8xFd1VWzFjatCf8L5/3/h1XlBxZMYtbqR+RatF+7MPXc8JJOMsjt9exAEF/IuvDZxRxyefG1iGbxfCy0/Zhk5Y118IBEJPpQziC9ItxdV+ofXpjZNdb6b6nhR96MbuSnFQhlWUcP4MJ1uuz7C37upJ7/7gigoZNgqtykn2RTxSW6ijjgcnLZvIhkFmTN74rAMHttAF43sbw6PSLdjd//GeCpdjXI3ObCrtnRu5aZWIEMZtISigVr1WHr1UYaYqmSFhHOZm2zMBFFUaIn6/lOMhWij+63MTdQRh09Y5j7TUYMkI7/ufBqsSAaP/QTgCAfAp8jBhKeeP7duUuZyEZatBmtmBnjHQNzKTaIBC6Ps88MQ/qxaqbtF6essOSOB61VeX853kw+F0W4KggqNYb7uvWGp4Xkej59R5ibqiMM58O4132kqapBkFNRtPhsRyaCxDrBQexg4+V94x4nHi92+yfoxXYqgWrYarJlZw8T6Wm7i3xB4FixPZEQWNthFbmqaMOJd+Jpln+2m+AP/cQXBhbLkr+wuqIJuvcxN1BGFRe/CqUGSUVi3vzRTkkFjbfxRjdgij1Cq3PXWTT6SCeRn6WqwZmYFYHU7N4lv9SJj7/wsaEdcKqONt/0wrVlJ5+8Fz3RJUBGilVLT+YV6A8uqpbuztZ9DrHn5vok74rARmIMeTUUNkozCuq2OHB3I4LG+0d84z/BFLuGkO1xGu31T/+tHZXjCarBmZoqpOMlNt6evDj1+zwKRmg7WsUKa+2aNF3ExvNHswT9SSHPXeCNpOOIaJOjEIm6YCI8U0twxNQAyFVchBeRQQo6OFNLcM+6wOwnFlZgtH7tBZ3WkkEaj0Wg0Go1Go9FoNBqNRqO5X/4BUyPtQsi2FJMAAAAASUVORK5CYII=" alt="vim-galore logo"></a>
+  <p style="margin: 0; color: #A9A6A6; font-family: 'Lucida Console', Consolas, monospace; font-size: 20px; letter-spacing: .1em;">
+  Всё, что нужно знать о Vim
+  </p>
+  <p>
+  Перевод с английского © <a href="https://web.archive.org/web/20230605025202/http://givi.olnd.ru/index.shtml">Гиви Хакеридзе</a>.
+  Оригинал: <a href="https://github.com/mhinz/vim-galore">https://github.com/mhinz/vim-galore</a>.<br>
+  См. также
+  <a href="https://web.archive.org/web/20230605025202/http://givi.olnd.ru/vim-galore/grok-vi.html">Ваша проблема с Vim заключается в том, что вы не въехали в vi</a>,
+  <a href="https://web.archive.org/web/20230605025202/http://givi.olnd.ru/vim-galore/vim-for-php-programmers-ru.html">Vim для (PHP-)программистов</a>.
+  </p>
+</div>
+<h3><a href="#intro-1">Введение</a></h3>
+<ul>
+<li><a href="#what-is-vim">Что есть Vim?</a></li>
+<li><a href="#the-vim-philosophy">Философия Vim</a></li>
+<li><a href="#first-steps">Первые шаги</a></li>
+<li><a href="#minimal-vimrc">Минимальный vimrc</a></li>
+<li><a href="#what-kind-of-vim-am-i-running">Какой именно Vim у меня работает?</a></li>
+<li><a href="#cheatsheets">Читшиты (шпаргалки)</a></li>
+</ul>
+<h3><a href="#basics-1">Основные составляющие</a></h3>
+<ul>
+<li><a href="#buffers-windows-tabs">Буферы, окна, табы</a></li>
+<li><a href="#active-loaded-listed-named-buffers">Активные, загруженные, списковые, именованные буферы</a></li>
+<li><a href="#argument-list">Список аргументов</a></li>
+<li><a href="#mappings">Мапинги</a></li>
+<li><a href="#mapleader">Мап-лидер</a></li>
+<li><a href="#registers">Регистры</a></li>
+<li><a href="#ranges">Диапазоны</a></li>
+<li><a href="#marks">Метки</a></li>
+<li><a href="#completion">Автозавершение</a></li>
+<li><a href="#motions-operators-text-objects">Перемещения, операторы, текстовые объекты</a></li>
+<li><a href="#autocmds">Автокоманды</a></li>
+<li><a href="#changelist-jumplist">Список изменений, список прыжков</a></li>
+<li><a href="#undo-tree">Дерево отмены</a></li>
+<li><a href="#quickfix-and-location-lists">Списки quickfix и местоположений</a></li>
+<li><a href="#macros">Макро</a></li>
+<li><a href="#colorschemes">Цветовые схемы</a></li>
+<li><a href="#folding">Свёртка</a></li>
+<li><a href="#sessions">Сессии</a></li>
+<li><a href="#locality">Локальность</a></li>
+</ul>
+<h4><a href="#usage-1">Использование</a></h4>
+<ul>
+<li><a href="#getting-help-offline">Получение справки офлайн</a></li>
+<li><a href="#getting-help-offline-alternative">Получение справки офлайн (альтернатива)</a></li>
+<li><a href="#getting-help-online">Получение справки онлайн</a></li>
+<li><a href="#autocmds-in-practice">Автокоманды на практике</a>
+<ul>
+<li><a href="#user-events">Пользовательские события</a></li>
+<li><a href="#nested-autocmds">Вложенные автокоманды</a></li>
+</ul>
+</li>
+<li><a href="#clipboard">Буфер обмена</a>
+<ul>
+<li><a href="#clipboard-usage-windows-osx">Использование буфера обмена (Windows, macOS)</a></li>
+<li><a href="#clipboard-usage-linux-bsd-">Использование буфера обмена (Linux, BSD...)</a></li>
+</ul>
+</li>
+<li><a href="#restore-cursor-position-when-opening-file">Восстановление позиции курсора при повторном открытии файла</a></li>
+<li><a href="#temporary-files">Временные файлы</a>
+<ul>
+<li><a href="#backup-files">Файлы резервной копии</a></li>
+<li><a href="#swap-files">Своп-файлы</a></li>
+<li><a href="#undo-files">Файлы отмены</a></li>
+<li><a href="#viminfo-files">Файлы viminfo</a></li>
+<li><a href="#example-configuration-for-temporary-files">Пример конфигурации временных файлов</a></li>
+</ul>
+</li>
+<li><a href="#editing-remote-files">Редактирование файлов на удалённом компьютере</a></li>
+<li><a href="#managing-plugins">Управление плагинами</a></li>
+<li><a href="#block-insert">Блочная вставка</a></li>
+<li><a href="#running-external-programs-and-using-filters">Запуск внешних программ и использование фильтров</a></li>
+<li><a href="#cscope">Cscope</a></li>
+<li><a href="#matchit">MatchIt</a></li>
+<li><a href="#true-colors">Полноцветная палитра</a></li>
+</ul>
+<h3><a href="#tips-1">Полезные советы</a></h3>
+<ul>
+<li><a href="#go-to-other-end-of-selected-text">Переход к другому концу выделенного текста</a></li>
+<li><a href="#saner-behavior-of-n-and-n">Разумное поведение n и N</a></li>
+<li><a href="#saner-command-line-history">Более умная история командной строки</a></li>
+<li><a href="#saner-ctrl-l">Улучшите CTRL-L</a></li>
+<li><a href="#disable-audible-and-visual-bells">Выключите аудио и визуальные звонки</a></li>
+<li><a href="#quickly-move-current-line">Быстрое перемещение текущей строки</a></li>
+<li><a href="#quickly-add-empty-lines">Быстрое добавление пустых строк</a></li>
+<li><a href="#quickly-edit-your-macros">Быстрое редактирование макро</a></li>
+<li><a href="#quickly-jump-to-header-or-source-file">Быстрый прыжок к заголовочному файлу или исходнику</a></li>
+<li><a href="#quickly-change-font-size-in-gui">Быстрая смена размера шрифта в GUI</a></li>
+<li><a href="#change-cursor-style-dependent-on-mode">Изменение стиля курсора в зависимости от режима</a></li>
+<li><a href="#dont-lose-selection-when-shifting-sidewards">Не теряйте выделение при сдвиге в сторону</a></li>
+<li><a href="#reload-a-file-on-saving">Перезагрузка файла при сохранении</a></li>
+<li><a href="#smarter-cursorline">Более умная линия курсора</a></li>
+<li><a href="#faster-keyword-completion">Более быстрое дополнение ключевых слов</a></li>
+<li><a href="#cosmetic-changes-to-colorschemes">Косметические изменения в цветовых схемах</a></li>
+</ul>
+<h3><a href="#commands-1">Команды</a></h3>
+<ul>
+<li><a href="#global">:global и :vglobal</a> - Выполнение команды во всех соответствующих условию строках.</li>
+<li><a href="#normal-and-execute">:normal и :execute</a> - Команда мечты скриптинга.</li>
+<li><a href="#redir-and-execute">:redir и execute()</a> - Захват вывода команд.</li>
+</ul>
+<h3><a href="#debugging-1">Решение проблем</a></h3>
+<ul>
+<li><a href="#general-tips">Общие рекомендации</a></li>
+<li><a href="#verbosity">Подробность сообщений</a></li>
+<li><a href="#profiling-startup-time">Профилирование времени запуска</a></li>
+<li><a href="#profiling-at-runtime">Профилирование во время работы</a></li>
+<li><a href="#debugging-vim-scripts">Отладка скриптов Vim</a></li>
+<li><a href="#debugging-syntax-files">Отладка файлов синтаксиса</a></li>
+</ul>
+<h3><a href="#miscellaneous-1">Разное</a></h3>
+<ul>
+<li><a href="#additional-resources">Дополнительные источники</a></li>
+<li><a href="#vim-distributions">Дистрибутивы Vim</a></li>
+<li><a href="#standard-plugins">Стандартные плагины</a></li>
+<li><a href="#map-capslock-to-control">Переназначьте CapsLock на Control</a></li>
+<li><a href="#generating-html-from-buffer">Создание HTML из текста в буфере</a></li>
+<li><a href="#easter-eggs">Пасхальные яйца</a></li>
+<li><a href="#why-hjkl-for-navigation">Почему для перемещения используются клавиши hjkl?</a></li>
+</ul>
+<h3><a href="#common-problems-1">Распространённые проблемы</a></h3>
+<ul>
+<li><a href="#editing-small-files-is-slow">Замедленное редактирование небольших файлов</a></li>
+<li><a href="#editing-huge-files-is-slow">Замедленное редактирование очень больших файлов</a></li>
+<li><a href="#bracketed-paste-or-why-do-i-have-to-set-paste-all-the-time">Вставка в скобках (или почему мне всё время приходится переустанавливать 'paste'?)</a></li>
+<li><a href="#delays-when-using-escape-key-in-terminal">Задержки в терминале при использовании клавиши escape</a></li>
+<li><a href="#function-search-undo">Сброс поиска в функции</a></li>
+</ul>
+<h3><a href="#technical-quirks-1">Технические особенности</a></h3>
+<ul>
+<li><a href="#newline-used-for-nul">Вместо NUL используется символ новой строки</a></li>
+</ul>
+<h3><a href="#terminology-1">Терминология</a></h3>
+<ul>
+<li><a href="#vim-script-vimscript-viml">Vim script? Vimscript? VimL?</a></li>
+</ul>
+<h3><a href="https://github.com/mhinz/vim-galore/blob/master/PLUGINS.md#colorschemes-1">Список цветовых схем</a></h3>
+<h3><a href="https://github.com/mhinz/vim-galore/blob/master/PLUGINS.md">Список плагинов</a></h3>
+<br>
+<h1 id="intro-1">Введение</h1>
+<h2 id="what-is-vim">Что есть Vim?</h2>
+<p><a href="http://www.vim.org/">Vim</a> это — текстовый редактор с длинной чередой предков,
+которая начинается с <a href="https://en.wikipedia.org/wiki/QED_(text_editor)">qed</a>.
+Его выпустил в 1991 году Брэм Мооленаар
+(<a href="https://en.wikipedia.org/wiki/Bram_Moolenaar">Bram Moolenaar</a>).</p>
+<p>Адрес проекта в Интернет: <a href="http://www.vim.org/index.php">vim.org</a>.</p>
+<p>Получение Vim: Используйте ваш любимый менеджер пакетов или посетите
+<a href="http://www.vim.org/download.php">страницу загрузки</a> на vim.org.</p>
+<p>Участвовать в обсуждении и задавать вопросы лучше всего через рассылку
+<a href="https://groups.google.com/forum/#!forum/vim_use">vim_use</a> или на IRC-канале
+(<a href="https://freenode.net/">Freenode</a>) <code>#vim</code>.</p>
+<p>Разработка находится на <a href="https://github.com/vim/vim">Github</a>, а её обсуждение —
+в списке рассылки <a href="https://groups.google.com/forum/#!forum/vim_dev">vim_dev</a>.</p>
+<p>Прочитайте
+<a href="http://www.viemu.com/a-why-vi-vim.html">Why, oh WHY, do those #?@! nutheads use vi?</a>,
+чтобы узнать об основных заблуждениях относительно Vim
+(<a href="https://habr.com/post/307084/">перевод на русский</a>).</p>
+<h2 id="the-vim-philosophy">Философия Vim</h2>
+<p>Vim придерживается философии модального редактирования. Это означает, что у него
+есть несколько режимов, и значения клавиш меняются в зависимости от режима. Вы
+перемещаетесь по файлу в <em>нормальном режиме</em>, вставляете текст в <em>режиме вставки</em>,
+выделяете строки в <em>визуальном режиме</em>, выполняете команды в <em>режиме командной
+строки</em>, и т.д. Поначалу это может показаться сложным, но имеет огромное преимущество:
+вам не нужно калечить свои пальцы, нажимая несколько клавиш сразу, вы просто нажимаете
+их одну за другой. Чем чаще задача встречается, тем меньше понадобится нажатий.</p>
+<p>Другая концепция, которая хорошо проявляет при модальном редактировании, это —
+операторы и перемещения.
+<em>Оператор</em> начинает некое действие, например, изменение, удаление или выделение текста.
+Затем при помощи <em>перемещения</em> вы указываете область текста, с которой вы хотите
+работать.
+Чтобы изменить всё, что находится между скобками, используйте <code>ci(</code> (читайте это как
+<em>change inner
+parentheses</em> — изменить внутри скобок). Чтобы удалить целый параграф текста,
+используйте <code>dap</code> (<em>delete
+around paragraph</em> — удалить вокруг параграфа).</p>
+<p>Глядя на то, как работают продвинутые пользователи Vim, можно заметить, что они как бы
+разговаривают на
+<em>языке Vim</em> или похожи на пианиста, играющего на своём инструменте. Сложные
+операции производятся небольшим количеством нажатий клавиш. Более того, они вообще
+не думают о клавишах, т.к. об этом позаботилась
+<a href="https://en.wikipedia.org/wiki/Muscle_memory">мышечная память</a>.
+Это уменьшает <a href="https://en.wikipedia.org/wiki/Cognitive_load">умственную нагрузку</a>,
+помогая сосредоточиться на основной задаче.</p>
+<h2 id="first-steps">Первые шаги</h2>
+<p>Vim поступает с интерактивным учебником, при помощи которого можно научиться основным
+вещам, которые вам необходимо знать. Его можно запустить командой в оболочке
+(добавьте параметр <code>ru</code>, чтобы читать учебник на русском — <em>пер.</em>):</p>
+<pre><code>$ vimtutor [ru]
+</code></pre>
+<p>Не откладывайте, даже если он покажется вам скучным, и пройдите упражнения.
+Редакторы или IDE, которые вы использовали ранее, скорее всего, были немодальными,
+поэтому
+работать, переключая режимы, поначалу будет казаться очень неудобным, но чем больше
+использовать Vim, тем сильнее он закрепится в
+<a href="https://en.wikipedia.org/wiki/Muscle_memory">мышечной памяти</a>.</p>
+<p>Vim основан на <a href="https://en.wikipedia.org/wiki/Stevie_(text_editor)">Stevie</a>, клоне
+<a href="https://ru.wikipedia.org/wiki/Vi">vi</a>, и поддерживает два режима работы:
+«совместимый» и «несовместимый». Использование Vim в режиме
+совместимости означает использование для настроек умолчаний vi, а не Vim.
+Пока вы не создадите пользовательский vimrc или запускаете Vim командой <code>vim -N</code>,
+подразумевается режим совместимости!
+Не используйте Vim в режиме совместимости.
+Просто не делайте этого.</p>
+<p>Далее:</p>
+<ol>
+<li>Создайте свой <a href="#minimal-vimrc">vimrc</a>.</li>
+<li>Первые недели держите наготове <a href="#cheatsheets">читшиты (шпаргалки)</a>.</li>
+<li>Прочитайте секцию <a href="#basics-1">Основные составляющие</a>, чтобы узнать об
+имеющихся возможностях.</li>
+<li>Учитесь по мере необходимости!
+Изучение Vim невозможно закончить (как ремонт — <em>пер</em>.).
+Если вы столкнулись с проблемой, просто загляните в Интернет.
+Будьте уверены, ваша проблема уже решена.
+Vim имеет прекрасную документацию, и знание навигации по ней — обязательно:
+<a href="#getting-help-offline">Получение справки офлайн</a>.</li>
+<li>Посмотрите <a href="#additional-resources">дополнительные ресурсы</a>.</li>
+</ol>
+<p>И ещё один совет:
+Пожалуйста, научитесь использовать Vim правильно, прежде чем начать добавлять
+разрекламированные <a href="#managing-plugins">плагины</a>, которые лишь воплощают функциональность,
+которая изначально есть в Vim.</p>
+<h2 id="minimal-vimrc">Минимальный vimrc</h2>
+<p>Пользовательский vimrc можно сохранить как <code>~/.vimrc</code> или в целях лучшей изоляции
+как <code>~/.vim/vimrc</code>.
+В последнем случае будет проще поместить всю конфигурацию в систему контроля версий
+и загрузить её, скажем, на Github.</p>
+<p>В сети можно найти много «минимальных vimrc», и, может быть, моя версия
+не настолько минимальна, как могла бы быть, но в ней есть хороший набор разумных
+настроек, с которого, я думаю, будет полезно начать.</p>
+<p>В конце концов, вам нужно прочитать про все упомянутые настройки и сделать выбор
+для себя. :-)</p>
+<p>Итак, он — здесь: <a href="https://github.com/mhinz/vim-galore/blob/master/static/minimal-vimrc.vim">минимальный vimrc</a>.</p>
+<p>Если вам интересно, то здесь —
+<a href="https://github.com/mhinz/dotfiles/blob/master/.vim/vimrc">мой vimrc</a>.</p>
+<p><strong>СОВЕТ</strong>:
+Большинство авторов плагинов поддерживают не по одному плагину и дополнительно публикуют
+свои vimrc на Github (часто в репозитории с названием «vim-config» или
+«dotfiles»), поэтому, найдя интересный плагин, посмотрите также страницу
+автора на Github и пробегитесь по репозиториям.</p>
+<h2 id="what-kind-of-vim-am-i-running">Какой именно Vim у меня работает?</h2>
+<p>Команда <code>:version</code> даёт всю необходимую информацию о том, как была скомпилирована
+версия Vim, работающая в данный момент.</p>
+<p>В первой строке выводится время компиляции и версия двоичного файла, например,
+7.4.  Одна из следующих строк содержит что-то вроде <code>Included patches: 1-1051</code>,
+это — номер патча (правки).  Таким образом, полная версия Vim —
+7.4.1051.</p>
+<p>Далее следует строка вроде <code>Tiny version without GUI</code>
+(малая версия без GUI)
+или <code>Huge version with GUI</code>
+(огромная версия с GUI).
+Отсюда можно узнать включена ли поддержка графического
+интерфейса (GUI), например, для запуска <code>gvim</code> в оболочке или командой <code>:gui</code> в Vim,
+запущенном в эмуляторе терминала.
+Другая важная часть — слова <code>Tiny</code> (малая) или <code>Huge</code> (огромная).
+Vim может быть скомпилирован с различным набором функциональностей: <code>tiny</code> (малый),
+<code>small</code> (небольшой), <code>normal</code> (нормальный), <code>big</code> (большой) и <code>huge</code> (огромный).</p>
+<p>Основная часть вывода команды <code>:version</code> занимает список функциональностей.
+<code>+clipboard</code> говорит, что при компиляции была включена функциональность работы
+с буфером обмена, а <code>-clipboard</code> — что она не была включена.</p>
+<p>Часть функциональности можно включить только во время компиляции.  Например,
+для того, чтобы работала команда <code>:prof</code>, нужен Vim с установленным набором
+<code>huge</code>, т.к.  этот набор включает функциональность <code>+profile</code>.</p>
+<p>Если это не ваш случай, и вы устанавливали Vim при помощи менеджера пакетов,
+попробуйте установить пакет <code>vim-x</code>, <code>vim-x11</code>, <code>vim-gtk</code>, <code>vim-gnome</code> или похожий,
+т.к. эти пакеты обычно идут с включенным набором huge.</p>
+<p>Проверить версию или наличие функциональности можно и программно:</p>
+<pre><code class="language-vim">" Сделать что-то, если версия Vim не меньше 7.4.42 и включена фунциональность +profile.
+if (v:version &gt; 704 || v:version == 704 &amp;&amp; has('patch42')) &amp;&amp; has('profile')
+  " сделать что-то
+endif
+</code></pre>
+<p>Справка:</p>
+<pre><code>:h :version
+:h feature-list
+:h +feature-list
+:h has-patch
+</code></pre>
+<h2 id="cheatsheets">Читшиты (шпаргалки)</h2>
+<ul>
+<li><a href="http://people.csail.mit.edu/vgod/vim/vim-cheat-sheet-en.png">http://people.csail.mit.edu/vgod/vim/vim-cheat-sheet-en.png</a></li>
+<li><a href="https://cdn.shopify.com/s/files/1/0165/4168/files/preview.png">https://cdn.shopify.com/s/files/1/0165/4168/files/preview.png</a></li>
+<li><a href="http://michael.peopleofhonoronly.com/vim/vim_cheat_sheet_for_programmers_screen.png">http://michael.peopleofhonoronly.com/vim/vim_cheat_sheet_for_programmers_screen.png</a></li>
+<li><a href="http://www.rosipov.com/images/posts/vim-movement-commands-cheatsheet.png">http://www.rosipov.com/images/posts/vim-movement-commands-cheatsheet.png</a></li>
+</ul>
+<p>Или быстро откройте читшит прямо в Vim: <a href="https://github.com/lifepillar/vim-cheat40">vim-cheat40</a>.</p>
+<h1 id="basics-1">Основные составляющие</h1>
+<h2 id="buffers-windows-tabs">Буферы, окна, табы</h2>
+<p>Vim — текстовый редактор.
+Текст, который виден на экране, является частью <strong>буфера</strong>.
+Каждый файл открывается в своём собственном буфере.
+Плагины отображают свою работу в своих собственных буферах. И т.д.</p>
+<p>Буферы имеют много атрибутов, например, можно ли изменять текст в буфере,
+или связан ли буфер с неким файлом, и его нужно синхронизировать при сохранении.</p>
+<p><strong>Окна</strong> — область <em>просмотра</em> буфера. Окна используются, если необходимо
+просматривать сразу несколько файлов или один в разных местах.</p>
+<p>И, пожалуйста, не называйте их <em>разбиениями</em>. Можно разбить окно на два, но это
+не сделает их <em>разбиениями</em>.</p>
+<p>Окна можно разделить вертикально или горизонтально, можно изменять их высоту или
+ширину. Т.е. расположить их так, как вам нужно.</p>
+<p><strong>Страница с вкладкой</strong> (или просто таб) это — коллекция окон. Таким образом,
+если нужно иметь несколько раскладок окон, используйте табы.</p>
+<p>В общем, если запустить Vim без аргументов, у вас будет один таб, в котором будет
+одно окно с одним буфером.</p>
+<p>Кстати говоря, список буферов — глобален, и у вас есть доступ к любому буферу
+из любого таба.</p>
+<h2 id="active-loaded-listed-named-buffers">Активные, загруженные, списковые, именованные буферы</h2>
+<p>Запустите Vim примерно так: <code>vim file1</code>. Содержимое файла будет загружено в буфер.
+Теперь у вас есть <strong>загруженный буфер</strong>. Содержимое буфера синхронизируется с
+диском (пишется обратно в файл) только при сохранении его в Vim.</p>
+<p>Т.к. содержимое буфера показано в окне, то этот буфер ещё и <strong>активный буфер</strong>.
+Теперь, если загрузить другой файл командой <code>:e file2</code>, <code>file1</code> станет <strong>скрытым
+буфером</strong>, а <code>file2</code> — активным.</p>
+<p>Оба буфера также — <strong>списковые</strong>, потому что они будут показаны в выводе
+команды <code>:ls</code>. Буферы плагинов или справки часто помечены как несписковые, т.к.
+это не обычные файлы, которые вы обычно редактируете в текстовом редакторе.
+И списковые и несписковые буферы вместе можно посмотреть командой <code>:ls!</code>.</p>
+<p><strong>Неименованные буферы</strong>, также часто используемые плагинами, это — буферы,
+которые не ассоциированы с именем файла. Например, <code>:enew</code> создаст неименованный
+пустой буфер. Добавьте некий текст и запишите его на диск командой <code>:w /tmp/foo</code>,
+и он станет именованным буфером.</p>
+<h2 id="argument-list">Список аргументов</h2>
+<p><a href="#buffers-windows-tabs">Глобальный список буферов</a> — вещь, специфичная для Vim.
+До него, в vi, использовался список аргументов, который в Vim тоже есть.</p>
+<p>Каждое имя файла, переданное Vim в командной строке оболочки, запоминается в списке
+аргументов. Таких списков может быть несколько: по умолчанию все аргументы
+помещаются в глобальный список аргументов, но при помощи команды <code>:arglocal</code>
+можно создать новый список аргументов, который будет локальным для данного окна.</p>
+<p>Просмотреть текущий список аргументов можно при помощи команды <code>:args</code>.
+Переключиться между файлами в списке — при помощи <code>:next</code>, <code>:previous</code>,
+<code>:first</code>, <code>:last</code> и др.  Изменить — при помощи <code>:argadd</code>, <code>:argdelete</code>
+или <code>:args</code> со списком файлов.</p>
+<p>Какой список использовать для работы с файлами, буферов или аргументов,
+— дело вкуса. По моему мнению, большинство использует исключительно
+список буферов.</p>
+<p>И, тем не менее, есть один важный приём с использованием списка аргументов:
+пакетная обработка при помощи <code>:argdo</code>! Вот пример простой переработки кода:</p>
+<pre><code class="language-vim">:args **/*.[ch]
+:argdo %s/foo/bar/ge | update
+</code></pre>
+<p>Эта команда заменяет все вхождения «foo» на «bar» во всех
+исходных и заголовочных файлах на C в текущем каталоге и ниже.</p>
+<p>Справка: <code>:h argument-list</code></p>
+<h2 id="mappings">Мапинги</h2>
+<p>(«Отображения», «переназначение клавиш» —
+слишком длинно — <em>прим. пер.</em>)</p>
+<p>С помощью команд семейства <code>:map</code> можно определять мапинги клавиш. Каждая команда
+из этого семейства определяет мапинги для определённого набора режимов.
+Технически говоря, у Vim-а 12 режимов, для 6 из которых можно использовать мапинг.
+Кроме того, некоторые команды действуют для нескольких режимов.</p>
+<table>
+<thead>
+<tr>
+<th>Рекурсивный</th>
+<th>Не рекурсивный</th>
+<th>Отмена</th>
+<th>Режимы</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:map</code></td>
+<td><code>:noremap</code></td>
+<td><code>:unmap</code></td>
+<td>нормальный, визуальный, ожидание-оператора</td>
+</tr>
+<tr>
+<td><code>:nmap</code></td>
+<td><code>:nnoremap</code></td>
+<td><code>:nunmap</code></td>
+<td>нормальный</td>
+</tr>
+<tr>
+<td><code>:xmap</code></td>
+<td><code>:xnoremap</code></td>
+<td><code>:xunmap</code></td>
+<td>визуальный</td>
+</tr>
+<tr>
+<td><code>:cmap</code></td>
+<td><code>:cnoremap</code></td>
+<td><code>:cunmap</code></td>
+<td>командная-строка</td>
+</tr>
+<tr>
+<td><code>:omap</code></td>
+<td><code>:onoremap</code></td>
+<td><code>:ounmap</code></td>
+<td>ожидание-оператора</td>
+</tr>
+<tr>
+<td><code>:imap</code></td>
+<td><code>:inoremap</code></td>
+<td><code>:iunmap</code></td>
+<td>вставка</td>
+</tr>
+</tbody>
+</table>
+<p>Например, эта команда определяет мапинг только для нормального режима:</p>
+<pre><code class="language-vim">:nmap &lt;space&gt; :echo "foo"&lt;cr&gt;
+</code></pre>
+<p>Отменим мапинг при помощи <code>:nunmap &lt;space&gt;</code>.</p>
+<p>Чтобы узнать о некоторых более редко используемых режимах (и их комбинациях),
+см.  <code>:h map-modes</code>.</p>
+<p>Дальше — больше. Есть одна проблема, которая может смутить новичков:
+<code>:nmap</code> — рекурсивна! Т.е. правая часть команды также участвует в мапинге.</p>
+<p>Допустим, был определён мапинг, который просто печатает «Foo»:</p>
+<pre><code class="language-vim">:nmap b :echo "Foo"&lt;cr&gt;
+</code></pre>
+<p>Но, что если мы замапим умолчальное поведение <code>b</code> (переход на одно слово влево) на
+другую клавишу?</p>
+<pre><code class="language-vim">:nmap a b
+</code></pre>
+<p>Нажимая <kbd>a</kbd>, мы ожидаем перехода к началу предыдущего слова, но
+вместо этого в командной строке печатается «Foo»! Это происходит потому,
+что до этого правая часть уже была переназначена на <code>:echo "Foo"&lt;cr&gt;</code>.</p>
+<p>Правильный способ решить эту проблему — использовать <em>нерекурсивный</em> мапинг:</p>
+<pre><code class="language-vim">:nnoremap a b
+</code></pre>
+<p>Правило: Всегда используйте нерекурсивное переназначение за исключением случаев,
+когда рекурсия действительно нужна.</p>
+<p>Проверяйте мапинги, запуская команду, не передавая ей правой стороны. И для
+примера, <code>:nmap</code> показывает все мапинги для нормального режима, а <code>:nmap &lt;Leader&gt;</code> — для мапингов, которые начинаются мап-лидера.</p>
+<p>Если захотите запретить стандартные мапинги, переназначьте их на специальный
+символ <code>&lt;nop&gt;</code>, например, <code>:noremap &lt;left&gt; &lt;nop&gt;</code>.</p>
+<p>Справка:</p>
+<pre><code>:h key-notation
+:h mapping
+:h 05.3
+</code></pre>
+<h2 id="mapleader">Мап-лидер</h2>
+<p>Мап-лидер это — просто заглушка, которая может использоваться для создания
+дополнительных мапингов, по умолчанию он назначен на <code>\</code>.</p>
+<pre><code class="language-vim">nnoremap &lt;leader&gt;h :helpgrep&lt;space&gt;
+</code></pre>
+<p>Такой мапинг вызывается командой <code>\h</code>. Если вместо этого вы хотите использовать
+<code>&lt;space&gt;h</code>:</p>
+<pre><code class="language-vim">let mapleader = ' '
+nnoremap &lt;leader&gt;h :helpgrep&lt;space&gt;
+</code></pre>
+<p>Кроме того, есть <code>&lt;LocalLeader&gt;</code>, напарник <code>&lt;Leader&gt;</code>, который предназначен
+для мапингов локальных для буфера, например, для использования в плагинах для
+конкретных типов файлов. По умолчанию он тоже назначен на <code>\</code>.</p>
+<p><strong>NB</strong>: Изменяйте мап-лидеры до остальных мапингов! При назначении мапинга
+с мап-лидером действует текущее значение <code>&lt;Leader&gt;</code>, которое не изменяется
+впоследствии при изменении самого мап-лидера. <code>:nmap &lt;Leader&gt;</code> покажет
+мапинги нормального режима с лидером, который установлен
+в данный момент. Поэтому дважды проверяйте ваши мапинги.</p>
+<p>См. также <code>:h mapleader</code> и <code>:h maplocalleader</code>.</p>
+<h2 id="registers">Регистры</h2>
+<p>Регистры это — ячейки, в которых сохраняется текст. Копирование в регистр
+называется <strong>yanking</strong> (вытаскивание, выдёргивание; далее будет употребляться
+«копирование» — <em>прим. пер.</em>), а извлечение из регистра —
+<strong>pasting</strong> (вставка).</p>
+<p>У Vim-а есть следующие регистры:</p>
+<table>
+<thead>
+<tr>
+<th>Тип</th>
+<th>Символ</th>
+<th>Кем заполняется?</th>
+<th>Только для чтения?</th>
+<th>Содержит текст откуда?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Безымянный</td>
+<td><code>"</code></td>
+<td>vim</td>
+<td>[ ]</td>
+<td>Последнее копирование или удаление. (<code>d</code>, <code>c</code>, <code>s</code>, <code>x</code>, <code>y</code>)</td>
+</tr>
+<tr>
+<td>Нумерованный</td>
+<td><code>0</code> to <code>9</code></td>
+<td>vim</td>
+<td>[ ]</td>
+<td>Регистр <code>0</code>: последнее копирование. Регистр <code>1</code>: последнее удаление. Регистр <code>2</code>: предыдущее перед последним удалением. И т.д. Представляйте регистры <code>1</code>-<code>9</code> как <a href="https://ru.wikipedia.org/wiki/%D0%9E%D1%87%D0%B5%D1%80%D0%B5%D0%B4%D1%8C_(%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5)">очередь</a> с 9 элементами только для чтения.</td>
+</tr>
+<tr>
+<td>Малое удаление</td>
+<td><code>-</code></td>
+<td>vim</td>
+<td>[ ]</td>
+<td>Последнее удаление, которое захватило меньше одной строки.</td>
+</tr>
+<tr>
+<td>Именованный</td>
+<td><code>a</code> to <code>z</code>, <code>A</code> to <code>Z</code></td>
+<td>пользователь</td>
+<td>[ ]</td>
+<td>Копирование в регистр <code>a</code> замещает его текст. Копирование в регистр <code>A</code> добавляет текст в регистр <code>a</code>.</td>
+</tr>
+<tr>
+<td>Только для чтения</td>
+<td><code>:</code>, <code>.</code>, <code>%</code></td>
+<td>vim</td>
+<td>[x]</td>
+<td><code>:</code>: последняя команда, <code>.</code>: последний вставленный текст, <code>%</code>: имя текущего файла.</td>
+</tr>
+<tr>
+<td>Альтернативный буфер</td>
+<td><code>#</code></td>
+<td>vim</td>
+<td>[ ]</td>
+<td>Обычно — имя буфера, который просматривался ранее в этом окне. См. <code>:h alternate-file</code></td>
+</tr>
+<tr>
+<td>Вычисление выражения</td>
+<td><code>=</code></td>
+<td>пользователь</td>
+<td>[ ]</td>
+<td>Результат вычисления выражения VimL. Например, если в режиме вставки набрать: <code>&lt;c-r&gt;=5+5&lt;cr&gt;</code>, то в этом буфере окажется «10».</td>
+</tr>
+<tr>
+<td>Выделение</td>
+<td><code>+</code>, <code>*</code></td>
+<td>vim</td>
+<td>[ ]</td>
+<td><code>*</code> и <code>+</code> — регистры <a href="#clipboard">буфера обмена</a>.</td>
+</tr>
+<tr>
+<td>Сброс</td>
+<td><code>~</code></td>
+<td>vim</td>
+<td>[x]</td>
+<td>Результат последней операции «drag'n'drop».</td>
+</tr>
+<tr>
+<td>Чёрная дыра</td>
+<td><code>_</code></td>
+<td>vim</td>
+<td>[ ]</td>
+<td>Предназначен для того, чтобы не влиять неявно на другие регистры. Например, <code>"_dd</code> удаляет текущую строку, не изменяя регистры <code>"</code>, <code>1</code>, <code>+</code>, <code>*</code>.</td>
+</tr>
+<tr>
+<td>Последний шаблон поиска</td>
+<td><code>/</code></td>
+<td>vim</td>
+<td>[ ]</td>
+<td>Последний шаблон, который использовался с <code>/</code>, <code>?</code>, <code>:global</code> и т.д.</td>
+</tr>
+</tbody>
+</table>
+<p>Пользователь может изменить любой регистр, который не «только для чтения»:</p>
+<pre><code class="language-vim">:let @/ = 'register'
+</code></pre>
+<p>После этой команды <kbd>n</kbd> переместит курсор к следующему вхождению
+«register».</p>
+<p>Есть некоторое количество исключений, когда регистры заполняются неявно, поэтому
+не забудьте прочитать <code>:h registers</code>.</p>
+<p>Копируйте при помощи <code>y</code> и вставляйте при помощи <code>p</code>/<code>P</code>, но помните, что Vim
+различает посимвольное и построчное визуальное выделение. См. <code>:h linewise</code>.</p>
+<p><strong>Пример: построчно</strong></p>
+<p><code>yy</code> (или просто <code>Y</code>) скопирует текущую строку. Переместите курсор в другое место и
+используйте <code>p</code>, чтобы вставить скопированное под текущей строкой или <code>P</code>,
+чтобы над.</p>
+<p><strong>Пример: посимвольно</strong></p>
+<p>Скопируйте первое слово в строке при помощи <code>0yw</code>, переместите курсор в другое
+место, вставьте скопированное после курсора в текущей строке при помощи <code>p</code> или
+перед ним при помощи <code>P</code>.</p>
+<p><strong>Пример: явное указание регистра</strong></p>
+<p><code>"aY</code> копирует текущую строку в регистр <code>a</code>. Перейдите на другую строку.
+<code>"AY</code> добавит эту строку в регистр <code>a</code>.</p>
+<p>Предлагаю немного поиграться со всеми этими регистрами, постоянно сверяясь
+с <code>:reg</code>, чтобы видеть что на самом деле происходит.</p>
+<p><strong>Забавный факт</strong>: В Emacs «yanking» соответствует вставке (или
+<em>повторная вставка ранее прибитого текста</em>, ориг. — <em>reinserting previously
+killed text</em>), а не копированию.</p>
+<h2 id="ranges">Диапазоны</h2>
+<p>Диапазоны достаточно просты для понимания, но многие вимеры не полностью осознают
+весь их потенциал.</p>
+<ul>
+<li>Многие команды принимают диапазоны в качестве параметра.</li>
+<li>Адрес указывает на некую строку.</li>
+<li>Диапазон это — единичный адрес или пара адресов, разделённых либо
+<code>,</code>, либо <code>;</code>.</li>
+<li>Диапазоны говорят команде, на какие строки воздействовать.</li>
+<li>Большинство команд по умолчанию работают только с текущей строкой.
+Заметным исключением из этого являются <code>:write</code> и <code>:global</code>, которые
+воздействуют на все строки.</li>
+</ul>
+<p>Использование диапазонов достаточно интуитивно, поэтому вот несколько примеров
+(<code>:d</code> используется в качестве сокращения <code>:delete</code>):</p>
+<table>
+<thead>
+<tr>
+<th>Команда</th>
+<th>Строки, на которые воздействует</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:d</code></td>
+<td>Текущая строка.</td>
+</tr>
+<tr>
+<td><code>:.d</code></td>
+<td>Текущая строка.</td>
+</tr>
+<tr>
+<td><code>:1d</code></td>
+<td>Первая строка.</td>
+</tr>
+<tr>
+<td><code>:$d</code></td>
+<td>Последняя строка.</td>
+</tr>
+<tr>
+<td><code>:1,$d</code></td>
+<td>Все строки.</td>
+</tr>
+<tr>
+<td><code>:%d</code></td>
+<td>Все строки (синтаксический сахар для <code>1,$</code>).</td>
+</tr>
+<tr>
+<td><code>:.,5d</code></td>
+<td>С текущей строки по 5.</td>
+</tr>
+<tr>
+<td><code>:,5d</code></td>
+<td>Также с текущей строки по 5.</td>
+</tr>
+<tr>
+<td><code>:,+3d</code></td>
+<td>Текущая строка и следующие 3.</td>
+</tr>
+<tr>
+<td><code>:1,+3d</code></td>
+<td>От первой строки до текущей + 3.</td>
+</tr>
+<tr>
+<td><code>:,-3d</code></td>
+<td>Текущая строка и предыдущие 3. (Vim сделает запрос, потому что это перевёрнутый диапазон.)</td>
+</tr>
+<tr>
+<td><code>:3,'xdelete</code></td>
+<td>С 3 строки до строки, помеченной <a href="#marks">меткой</a> <code>x</code>.</td>
+</tr>
+<tr>
+<td><code>:/^foo/,$delete</code></td>
+<td>Со строки, начинающейся с «foo» до конца.</td>
+</tr>
+<tr>
+<td><code>:/^foo/+1,$delete</code></td>
+<td>Со строки, следующей за строкой, которая начинается с «foo», до конца.</td>
+</tr>
+</tbody>
+</table>
+<p>Заметьте, что в качестве разделителя вместо <code>,</code> можно использовать <code>;</code>. Разница
+заключается в том, что в случае <code>от,до</code> <em>до</em> будет относительно текущей строки,
+а при использовании <code>от;до</code> <em>до</em> будет относительно <em>от</em>! Допустим, мы находимся
+на строке 5, <code>:1,+1d</code> удалит строки с 1 по 6, а <code>:1;+1d</code> удалит только строки
+1 и 2.</p>
+<p>Адресу <code>/</code> может предшествовать другой адрес. Это позволяет составлять <em>стек</em>
+шаблонов, например:</p>
+<pre><code class="language-vim">:/foo//bar//quux/d
+</code></pre>
+<p>Эта команда удалит первую строку, содержащую «quux» после первой
+строки, содержащей «bar», которая находится после первой строки,
+содержащей «foo», которая находится после текущей строки.
+(Как «<em>В доме, который построил Джек</em>» — <em>пер.</em>)</p>
+<p>Иногда Vim вставляет диапазон в начале командной строки автоматически. Например,
+начните визуальное выделение строк при помощи <code>V</code>, выделите несколько строк и
+наберите <code>:</code>. Командная строка будет начинаться диапазоном <code>'&lt;,'&gt;</code>, что означает,
+что команда будет использовать ранее выделенные строки в качестве диапазона.
+(Поэтому иногда можно встретить мапинги вроде <code>:vnoremap foo :&lt;c-u&gt;command</code>.
+Здесь <code>&lt;c-u&gt;</code> используется для удаления диапазона, потому что Vim сообщит об ошибке
+при передаче диапазона команде, которая его не использует.)</p>
+<p>Другой пример — использование <code>!!</code> в нормальном режиме. Эта команда
+заполнит командную строку символами <code>:.!</code>. Если это дополнить именем внешней
+программы, то её вывод заменит текущую строку. Таким приёмом можно заменить
+текущий абзац выводом команды <em>ls</em>, используя команду <code>:?^$?+1,/^$/-1!ls</code>.
+Фантастика!</p>
+<p>Справка:</p>
+<pre><code>:h cmdline-ranges
+:h 10.3
+</code></pre>
+<h2 id="marks">Метки</h2>
+<p>Метки используются для запоминания позиции в файле — номера строки и колонки.</p>
+<table>
+<thead>
+<tr>
+<th>Метки</th>
+<th>Кем устанавливаются</th>
+<th>Использование</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>a</code> - <code>z</code></td>
+<td>Пользователь</td>
+<td>Локальные для файла, т.е. имеют смысл только в одном файле. Прыжок к
+ метке в нижнем регистре означает прыжок внутри текущего файла.</td>
+</tr>
+<tr>
+<td><code>A</code> - <code>Z</code></td>
+<td>Пользователь</td>
+<td>Глобальные, т.е. имеют смысл на уровне нескольких файлов. Другое название — <em>файловые метки</em>. Прыжок к файловой метке может переключить на другой буфер.</td>
+</tr>
+<tr>
+<td><code>0</code> - <code>9</code></td>
+<td>viminfo</td>
+<td><code>0</code> — позиция во время последней записи файла viminfo. На практике это означает момент последнего завершения процесса Vim. <code>1</code> — позиция во время второго с краю завершения процесса Vim. И т.д.</td>
+</tr>
+</tbody>
+</table>
+<p>Поместите <code>'</code>/<code>g'</code> или <code>`</code>/<code>g`</code> перед меткой, чтобы переместиться
+к метке.</p>
+<p>Используйте <code>mm</code>, чтобы запомнить позицию в метке «m». Переместитесь
+в другое место в файле и прыгните обратно при помощи <code>'m</code> (первый непробельный
+символ) или <code>`m</code> (с точностью до колонки). Метки в нижнем регистре
+запоминаются при выходе из Vim, если вы скажете об этом вашему файлу viminfo,
+см. <code>:h viminfo-'</code>.</p>
+<p>Чтобы запомнить позицию в файловой метке «M», используйте <code>mM</code>.
+Переключитесь на другой буфер и вернитесь при помощи <code>'M</code> или <code>`M</code>.</p>
+<p>Другие перемещения:</p>
+<table>
+<thead>
+<tr>
+<th>Перемещение</th>
+<th>Прыжок к...</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>'[</code>, <code>`[</code></td>
+<td>Первая строка или символ ранее изменённого или скопированного текста.</td>
+</tr>
+<tr>
+<td><code>']</code>, <code>`]</code></td>
+<td>Последняя строка или символ ранее изменённого или скопированного текста.</td>
+</tr>
+<tr>
+<td><code>'&lt;</code>, <code>`&lt;</code></td>
+<td>Начальная строка или символ последнего визуального выделения.</td>
+</tr>
+<tr>
+<td><code>'&gt;</code>, <code>`&gt;</code></td>
+<td>Конечная строка или символ последнего визуального выделения.</td>
+</tr>
+<tr>
+<td><code>''</code>, <code>``</code></td>
+<td>Позиция до последнего прыжка.</td>
+</tr>
+<tr>
+<td><code>'"</code>, <code>`"</code></td>
+<td>Позиция в момент последнего выхода из текущего буфера.</td>
+</tr>
+<tr>
+<td><code>'^</code>, <code>`^</code></td>
+<td>Позиция, где закончилась последняя вставка.</td>
+</tr>
+<tr>
+<td><code>'.</code>, <code>`.</code></td>
+<td>Позиция, где производились последние изменения.</td>
+</tr>
+<tr>
+<td><code>'(</code>, <code>`(</code></td>
+<td>Начало текущего предложения.</td>
+</tr>
+<tr>
+<td><code>')</code>, <code>`)</code></td>
+<td>Конец текущего предложения.</td>
+</tr>
+<tr>
+<td><code>'{</code>, <code>`{</code></td>
+<td>Начало текущего параграфа.</td>
+</tr>
+<tr>
+<td><code>'}</code>, <code>`}</code></td>
+<td>Конец текущего параграфа.</td>
+</tr>
+</tbody>
+</table>
+<p>Метки можно использовать в <a href="#ranges">диапазонах</a>. Возможно, раньше вы уже
+видели такое и были удивлены: после визуального выделения текста и нажатия
+<code>:</code> командная строка начинается с <code>:'&lt;,'&gt;</code>, что означает, что последующая
+команда получит диапазон, обозначенный выделением.</p>
+<p>Для просмотра списка меток используйте <code>:marks</code>.
+Подробности см. <code>:h mark-motions</code>.</p>
+<h2 id="completion">Автозавершение</h2>
+<p>В режиме вставки Vim предоставляет множество видов автозавершения.
+При наличии нескольких совпадений всплывающее меню позволит выбрать то,
+что вам нужно.</p>
+<p>Типичные виды автозавершения это — теги, функции, импортированные из
+модулей или библиотек, имена файлов, словарь или просто слова из текущего
+буфера.</p>
+<p>Для всех видов автозавершения назначены сочетания клавиш, и все они
+начинаются с <code>&lt;c-x&gt;</code> (помните, что использовать их необходимо в режиме
+вставки).</p>
+<table>
+<thead>
+<tr>
+<th>Мапинг</th>
+<th>Вид</th>
+<th>Соответствующая тема справки</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;c-x&gt;&lt;c-l&gt;</code></td>
+<td>целые строки</td>
+<td><code>:h i^x^l</code></td>
+</tr>
+<tr>
+<td><code>&lt;c-x&gt;&lt;c-n&gt;</code></td>
+<td>ключевые слова из текущего файла</td>
+<td><code>:h i^x^n</code></td>
+</tr>
+<tr>
+<td><code>&lt;c-x&gt;&lt;c-k&gt;</code></td>
+<td>ключевые слова согласно опции <code>'dictionary'</code></td>
+<td><code>:h i^x^k</code></td>
+</tr>
+<tr>
+<td><code>&lt;c-x&gt;&lt;c-t&gt;</code></td>
+<td>ключевые слова согласно опции <code>'thesaurus'</code></td>
+<td><code>:h i^x^t</code></td>
+</tr>
+<tr>
+<td><code>&lt;c-x&gt;&lt;c-i&gt;</code></td>
+<td>ключевые слова из текущего и включенных файлов</td>
+<td><code>:h i^x^i</code></td>
+</tr>
+<tr>
+<td><code>&lt;c-x&gt;&lt;c-]&gt;</code></td>
+<td>теги</td>
+<td><code>:h i^x^]</code></td>
+</tr>
+<tr>
+<td><code>&lt;c-x&gt;&lt;c-f&gt;</code></td>
+<td>имена файлов</td>
+<td><code>:h i^x^f</code></td>
+</tr>
+<tr>
+<td><code>&lt;c-x&gt;&lt;c-d&gt;</code></td>
+<td>определения и макро</td>
+<td><code>:h i^x^d</code></td>
+</tr>
+<tr>
+<td><code>&lt;c-x&gt;&lt;c-v&gt;</code></td>
+<td>команды Vim</td>
+<td><code>:h i^x^v</code></td>
+</tr>
+<tr>
+<td><code>&lt;c-x&gt;&lt;c-u&gt;</code></td>
+<td>определённое пользователем (как указано в опции <code>'completefunc'</code>)</td>
+<td><code>:h i^x^u</code></td>
+</tr>
+<tr>
+<td><code>&lt;c-x&gt;&lt;c-o&gt;</code></td>
+<td>omni-завершение (как указано в опции <code>'omnifunc'</code>)</td>
+<td><code>:h i^x^o</code></td>
+</tr>
+<tr>
+<td><code>&lt;c-x&gt;s</code></td>
+<td>предложения проверки орфографии</td>
+<td><code>:h i^Xs</code></td>
+</tr>
+</tbody>
+</table>
+<p>Людей может смутить разница между автозавершением, определённым пользователем,
+и omni, но технически они делают одно дело. Они используют функцию, которая
+исследует текущую позицию и возвращает список предложений для завершения.
+Автозавершение определённое пользователем, соответствует его персональным
+задачам. (Сюрприз!) И может быть всем, чем угодно. Omni-завершение предназначено
+для целей специфичных для типа файла, например, для завершения членов структур
+или методов класса, и часто устанавливается плагинами для типа файла.</p>
+<p>Vim позволяет производить автозавершение сразу нескольких видов согласно
+установка опции <code>'complete'</code>. По умолчанию эта опция содержит достаточно много,
+поэтому вы можете укоротить её по своему вкусу. Вызывается такое автозавершение
+нажатием <code>&lt;c-n&gt;</code> (next, следующий) или <code>&lt;c-p&gt;</code> (previous, предыдущий), эти же
+клавиши используются для выбора пунктов во всплывающем меню. Дополнительно
+см. <code>:h i^n</code> и <code>:h 'complete'</code>.</p>
+<p>Просмотрите <code>:h 'completeopt'</code>, чтобы настроить поведение всплывающего окна.
+Настройки по умолчанию достаточно разумны, но я предпочитаю добавлять туда
+«noselect».</p>
+<p>Справка:</p>
+<pre><code>:h ins-completion
+:h popupmenu-keys
+:h new-omni-completion
+</code></pre>
+<h2 id="motions-operators-text-objects">Перемещения, операторы, текстовые объекты</h2>
+<p><strong>Перемещение</strong> сдвигает курсор. Всем известны <code>h</code>/<code>j</code>/<code>k</code>/<code>l</code>.
+Или <code>w</code> и <code>b</code>. Даже <code>/</code> — перемещение. Перед ними можно указать счётчик.
+<code>2?the&lt;cr&gt;</code> перепрыгнет ко второму предыдущему вхождению «the».</p>
+<p>См. <code>:h navigation</code> и всё, что ниже, обо всех доступных перемещениях.</p>
+<p><strong>Операторы</strong> воздействуют на регион текста, например,
+<code>d</code>, <code>~</code>, <code>gU</code>, <code>&gt;</code>. Их можно использовать в двух контекстах, в нормальном
+или визуальном режиме. В нормальном режиме сначала идёт оператор, за которым
+следует перемещение, например, <code>&gt;j</code>. В визуальном режиме оператор просто
+воздействует на выделение, например, <code>Vjd</code>.</p>
+<p>Как и перемещениям, операторам тоже можно указывать счётчик, например, <code>2gUw</code>
+приведёт к верхнему регистру остаток текущего слова и следующее за ним.
+Т.к. и перемещения, и операторы принимают счётчики, <code>2gU2w</code> работает так же,
+как два вызова <code>gU2w</code>.</p>
+<p>См. <code>:h operator</code> обо всех доступных операторах. Используйте <code>:set tildeop</code>,
+чтобы <code>~</code> работала как оператор.</p>
+<p><strong>Текстовые объекты</strong> воздействуют на окружающее пространство в
+противоположность перемещениям, которые действуют только в одном направлении.
+На самом деле, они действуют на объекты, например, на целое слово, целое
+предложение, на всё, что внутри скобок и т.д.</p>
+<p>Текстовые объекты нельзя использовать для перемещения курсора в нормальном
+режиме, т.к. даже самые многоопытные курсоры не могут прыгать в двух направлениях
+одновременно. Хотя это работает в визуальном режиме, потому что одна сторона
+объекта уже выбрана, и курсор просто прыгает к другой стороне.</p>
+<p>Текстовые объекты начинаются либо с <code>i</code> (представляйте как <em>inner</em> —
+внутри), либо с <code>a</code> (<em>around</em> — вокруг), за которым следует символ,
+обозначающий объект. С <code>i</code> он действует на сам объект, а с <code>a</code> — на
+объект и последующее пробельное пространство (пропуск). Например, <code>diw</code> удаляет
+текущее слово, а <code>ci(</code> изменяет всё, что находится внутри скобок.</p>
+<p>Текстовые объекты принимают счётчик. Допустим, имеем <code>((( )))</code>, и курсор
+находится между самыми внутренними скобками, тогда <code>d2a(</code> удалит 2 внутренние
+пары скобок и всё, что находилось между ними.</p>
+<p>См. <code>:h text-objects</code> обо всех доступных текстовых объектах.</p>
+<h2 id="autocmds">Автокоманды</h2>
+<p>В Vim после многих событий, например, сохранения буфера или запуска Vim,
+есть возможность произвести некие действия, которые называются <em>автокоманды</em>.</p>
+<p>Vim очень широко использует автокоманды. Вы мне не верите?
+Посмотрите вывод команды <code>:au</code>, но не пугайтесь её вывода. Это все
+те автокоманды, которые готовы к действию прямо сейчас!</p>
+<p>См. <code>:h {event}</code> с обзором всех доступных событий и <code>:h autocmd-events-abc</code>,
+где содержится больше деталей.</p>
+<p>Типичный пример — настройка для конкретного типа файла:</p>
+<pre><code class="language-vim">autocmd FileType ruby setlocal shiftwidth=2 softtabstop=2 comments-=:#
+</code></pre>
+<p>Но каким образом буфер вообще узнает, что он содержит код Ruby?
+А всё потому, что другая автокоманда определила это и установила
+соответствующий тип файла, что в свою очередь вызвало событие <code>FileType</code>.</p>
+<p>Первое, что все добавляют в свой vimrc, — <code>filetype on</code>. Это просто
+означает, что во время запуска читается файл <code>filetype.vim</code>, который
+настраивает автокоманды почти для всех типов файлов, существующих
+под солнцем.</p>
+<p>Если вы достаточно смелый, посмотрите на это: <code>:e $VIMRUNTIME/filetype.vim</code>.
+Поищите «Ruby» и вы увидите, что Vim определяет тип файла как
+Ruby просто по расширению:</p>
+<p><strong>NB</strong>: Автокоманды для одинаковых событий исполняются по мере создания.
+<code>:au</code> показывает их в правильной очерёдности.</p>
+<pre><code class="language-vim">au BufNewFile,BufRead *.rb,*.rbw  setf ruby
+</code></pre>
+<p>В этом случае события <code>BufNewFile</code> и <code>BufRead</code> наглухо закодированы в C-коде
+Vim и вызываются всякий раз, когда вы открываете файл при помощи <code>:e</code> и
+подобными командами. После этого в <code>filetype.vim</code> тестируются ещё сотни типов
+файлов.</p>
+<p>Подытожим. Vim интенсивно использует события и автокоманды, предоставляя при
+этом удобный интерфейс для работы с управляемой событиями системой и
+пользовательской настройки.</p>
+<p>Справка: <code>:h autocommand</code></p>
+<h2 id="changelist-jumplist">Список изменений, список прыжков</h2>
+<p>Позиции последних 100 изменений сохраняются в <strong>списке изменений</strong>. Несколько
+небольших изменений в одной строке объединяются, но сохраняется позиция последнего
+изменения (в случае, если вы добавили что-то посреди строки).</p>
+<p>При каждом прыжке в <strong>списке прыжков</strong> сохраняется позиция <em>до</em> прыжка.
+Список прыжков содержит до 100 записей. Каждое окно имеет свой список прыжков.
+При разбиении окна список прыжков копируется.</p>
+<p>Прыжок это — одна из следующих команд: <code>'</code>, <code>`</code>, <code>G</code>, <code>/</code>, <code>?</code>, <code>n</code>,
+<code>N</code>, <code>%</code>, <code>(</code>, <code>)</code>, <code>[[</code>, <code>]]</code>, <code>{</code>, <code>}</code>, <code>:s</code>, <code>:tag</code>, <code>L</code>, <code>M</code>, <code>H</code> и команды,
+которые начинают редактирование нового файла.</p>
+<table>
+<thead>
+<tr>
+<th>Список</th>
+<th>Список всех записей</th>
+<th>К предыдущей позиции</th>
+<th>К следующей позиции</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>список прыжков</td>
+<td><code>:jumps</code></td>
+<td><code>[счётчик]&lt;c-o&gt;</code></td>
+<td><code>[счётчик]&lt;c-i&gt;</code></td>
+</tr>
+<tr>
+<td>список изменений</td>
+<td><code>:changes</code></td>
+<td><code>[счётчик]g;</code></td>
+<td><code>[счётчик]g,</code></td>
+</tr>
+</tbody>
+</table>
+<p>В списке всех записей маркер <code>&gt;</code> указывает текущую позицию. Обычно
+он находится ниже текущей позиции с номером 1.</p>
+<p>Для того чтобы оба списка восстанавливались после перезапуска Vim, необходимо
+использовать файл viminfo и <code>:h viminfo-'</code>.</p>
+<p><strong>NB</strong>: Позиция перед последним прыжком дополнительно сохраняется как
+<a href="#marks">метка</a>, к ней можно перейти при помощи <code>``</code> или <code>''</code>.</p>
+<p>Справка:</p>
+<pre><code>:h changelist
+:h jumplist
+</code></pre>
+<h2 id="undo-tree">Дерево отмены</h2>
+<p>Последние изменения состояния текста не уходят в никуда. Можно использовать
+<em>отмену</em>, чтобы вернуть изменения и <em>повтор</em> для того, чтобы заново применить
+изменения.</p>
+<p>Важная деталь для понимания этого заключается в том, что структура данных,
+которая содержит последние изменения, представляет собой не
+<a href="https://ru.wikipedia.org/wiki/%D0%9E%D1%87%D0%B5%D1%80%D0%B5%D0%B4%D1%8C_(%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5)">очередь</a>,
+а
+<a href="https://ru.wikipedia.org/wiki/%D0%94%D0%B5%D1%80%D0%B5%D0%B2%D0%BE_(%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%82%D1%83%D1%80%D0%B0_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85)">дерево</a>!
+Ваши изменения это — узлы дерева, и каждый (кроме самого верхнего)
+имеет родителя. Каждый узел хранит информацию об изменённом тексте и
+времени изменения. Ветка это — последовательность узлов, которая начинается
+с любого узла и поднимется к самому верхнему узлу. Новые ветки создаются,
+когда вы отменяете изменение, а затем вставляете что-то ещё.</p>
+<pre><code>ifoo&lt;esc&gt;
+obar&lt;esc&gt;
+obaz&lt;esc&gt;
+u
+oquux&lt;esc&gt;
+</code></pre>
+<p>Теперь у вас есть 3 строки, и дерево отмены выглядит примерно так:</p>
+<pre><code>     foo(1)
+       /
+    bar(2)
+   /      \
+baz(3)   quux(4)
+</code></pre>
+<p>Дерево отмены имеет 4 изменения. Числа представляют <em>время</em>, когда созданы
+узлы.</p>
+<p>Есть два способа обхода этого дерева, назовём их <em>веточный</em> и <em>повременной</em>.</p>
+<p>Отмена (<code>u</code>) и повтор (<code>&lt;c-r&gt;</code>) работают веточно. Они поднимаются и спускаются
+по текущей ветке. <code>u</code> восстановит состояние текста, соответствующее узлу
+«bar». Следующее <code>u</code> — «foo». Теперь <code>&lt;c-r&gt;</code>
+вернёт к состоянию узла «bar», а очередное <code>&lt;c-r&gt;</code> —
+к «quux». (Способа достигнуть узла «baz» веточными
+командами не существует.)</p>
+<p>В противоположность этому, <code>g-</code> и <code>g+</code> работают повремённо. Так <code>g-</code> не вернёт
+к состоянию «bar», как это делает <code>u</code>, а вернёт к хронологически
+предыдущему состоянию, узлу «baz». Следующее <code>g-</code> вернёт к состоянию
+узла «bar» и так далее. Таким образом, <code>g-</code> и <code>g+</code> переходят
+вперёд и назад по состояниям во времени.</p>
+<table>
+<thead>
+<tr>
+<th>Мапинги / команды</th>
+<th>Действие</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[счётчик]u</code>, <code>:undo [счётчик]</code></td>
+<td>Отменить [счётчик] изменений.</td>
+</tr>
+<tr>
+<td><code>[счётчик]&lt;c-r&gt;</code>, <code>:redo</code></td>
+<td>Повторить [счётчик] изменений.</td>
+</tr>
+<tr>
+<td><code>U</code></td>
+<td>Отменить все изменения в строке, последующее отменяет отмену.</td>
+</tr>
+<tr>
+<td><code>[счётчик]g-</code>, <code>:earlier [счётчик]?</code></td>
+<td>Вернуться во времени [счётчик] раз. «?» может быть одним из «s», «m», «h», «d» или «f». Например, <code>:earlier 2d</code> вернёт состояние текста, которое было двое суток назад. <code>:earlier 1f</code> вернёт к состоянию, которое было в момент последнего сохранения файла.</td>
+</tr>
+<tr>
+<td><code>[счётчик]g+</code>, <code>:later [счётчик]?</code></td>
+<td>То же самое, но в другом направлении.</td>
+</tr>
+</tbody>
+</table>
+<p>Дерево отмены хранится в памяти и теряется при выходе из Vim. См.
+<a href="#undo-files">Файлы отмены</a>,
+где описано как организовать сохраняемую отмену.</p>
+<p>Если дерево отмены кажется вам запутанным, то
+<a href="https://github.com/mbbill/undotree">undotree</a>
+сделает для вас отличную работу по его визуализации.</p>
+<p>Справка:</p>
+<pre><code>:h undo.txt
+:h usr_32
+</code></pre>
+<h2 id="quickfix-and-location-lists">Списки quickfix и местоположений</h2>
+<p>Список quickfix это — это структура данных, которая содержит позиции в файле.
+В частности, список quickfix состоит из элементов, которые содержат имя файла, номер
+строки, возможно, колонку и описание.</p>
+<p>Типичный пример применения — сохранение сообщений об ошибках при компиляции
+или результатов работы grep.</p>
+<p>Для показа списка quickfix в Vim есть специальный тип буфера: буфер quickfix. Каждая
+строка показывает один элемент из списка quickfix.</p>
+<p>Для просмотра списка quickfix обычно открывают новое окно: окно quickfix.
+При этом предыдущее окно связывается с окном quickfix.</p>
+<p><code>&lt;cr&gt;</code> в буфере quickfix открывает выбранный элемент в связанном окне, а <code>&lt;c-w&gt;&lt;cr&gt;</code>
+— в новом окне.</p>
+<p>Список quickfix назван в честь функции «quick fix»
+<a href="https://en.wikipedia.org/wiki/Aztec_C">компилятора Aztec C</a>.</p>
+<p>На самом деле, существует два типа списков: quickfix и список местоположений.
+В основном, они ведут себя одинаково, но имеют некоторые различия:</p>
+<ul>
+<li>Список quickfix есть только один. Списков местоположений может быть несколько,
+по одному на каждое окно.</li>
+<li>Для навигации по ним используются немного разные команды.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Действие</th>
+<th>Quickfix</th>
+<th>Местоположение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>открыть окно</td>
+<td><code>:copen</code></td>
+<td><code>:lopen</code></td>
+</tr>
+<tr>
+<td>закрыть окно</td>
+<td><code>:cclose</code></td>
+<td><code>:lclose</code></td>
+</tr>
+<tr>
+<td>следующее вхождение</td>
+<td><code>:cnext</code></td>
+<td><code>:lnext</code></td>
+</tr>
+<tr>
+<td>предыдущее вхождение</td>
+<td><code>:cprevious</code></td>
+<td><code>:lprevious</code></td>
+</tr>
+<tr>
+<td>первое вхождение</td>
+<td><code>:cfirst</code></td>
+<td><code>:lfirst</code></td>
+</tr>
+<tr>
+<td>последнее вхождение</td>
+<td><code>:clast</code></td>
+<td><code>:llast</code></td>
+</tr>
+</tbody>
+</table>
+<p>Помните, что для того, чтобы эти команды работали, сами окна quickfix
+и местоположений открывать не обязательно.</p>
+<p>Дополнительную информацию и полный список команд см. <code>:h quickfix</code>.</p>
+<p>Для краткости, слова <em>quickfix</em> и <em>location</em> часто сокращаются до <em>qf</em> и <em>loc</em>
+соответственно.</p>
+<p><strong>Пример</strong>:</p>
+<p>Давайте используем нашего старого доброго друга <code>grep</code> для рекурсивного
+поиска файлов в текущем каталоге по некоторому запросу и поместим результат
+в список quickfix.</p>
+<pre><code class="language-vim">:let &amp;grepprg = 'grep -Rn $* .'
+:grep! foo
+&lt;вывод grep - нажимаем enter&gt;
+:copen
+</code></pre>
+<p>Любые файлы, содержащие строку «foo», будут показаны в окне
+quickfix.</p>
+<h2 id="macros">Макро</h2>
+<p>Vim позволяет <em>записывать</em> в <a href="#registers">регистр</a> набранные символы.
+Это отличный способ для автоматизации некоторых задач на лету. (Для более
+сложных задач вместо этого можно использовать
+скрипты Vim)</p>
+<ul>
+<li>Начните запись, набрав <code>q</code>, за которым следует имя регистра, например <code>q</code>.
+(командная строка обозначит это текстом «recording @q».)</li>
+<li>Закончите запись, нажав <code>q</code> ещё раз.</li>
+<li>Выполните макро при помощи <code>[счётчик]@q</code>.</li>
+<li>Повторите последнее выполненное макро при помощи <code>[счётчик]@@</code>.</li>
+</ul>
+<p><strong>Пример 1:</strong></p>
+<p>Вставить строку и повторить её 10 раз:</p>
+<pre><code>qq
+iabc&lt;cr&gt;&lt;esc&gt;
+q
+10@q
+</code></pre>
+<p>(То же самое можно сделать и без макро: <code>oabc&lt;esc&gt;10.</code>.
+<code>o</code> — начать новую строку ниже текущей, вставить символы «abc»,
+завершить ввод, <code>10.</code> — повторить ввод 10 раз.)</p>
+<p><strong>Пример 2:</strong></p>
+<p>Для добавления номеров всех строк в начале строки, начнём на первой строке
+и добавим к ней вручную «1. ». Увеличим число под курсором при
+помощи <code>&lt;c-a&gt;</code>, которая будет показана как <code>^A</code>.</p>
+<pre><code>qq
+0yf jP0^A
+q
+1000@q
+</code></pre>
+<p>Используя <code>1000@q</code>, мы просто надеемся, что файл содержит не более 1000 строк,
+но мы также можем использовать <em>рекурсивное макро</em>, которое будет исполняться,
+пока есть строки, к которым его можно применить:</p>
+<pre><code>qq
+0yf jP0^A@q
+q
+@q
+</code></pre>
+<p>(То же самое можно сделать без макро при помощи подстановки:
+<code>:%s/^/\=line('.') . '. '</code>)</p>
+<p>Обратите внимание, что я опять показал способ, как сделать то же самое без макро,
+но в основном, это работает только в случае таких простых примеров. Для сложной
+автоматизации макро — просто бомба!</p>
+<p>См. также: <a href="#quickly-edit-your-macros">Быстрое редактирование макро</a></p>
+<p>Справка:</p>
+<pre><code>:h recording
+:h 'lazyredraw'
+</code></pre>
+<h2 id="colorschemes">Цветовые схемы</h2>
+<p>Цветовые схемы это — способ стилизовать ваш Vim. Vim состоит из многих
+компонентов, и для каждого из них могут быть подобраны цвет переднего плана,
+фона, а также несколько других атрибутов вроде полужирного текста и т.д.
+Их можно задавать примерно так:</p>
+<pre><code class="language-vim">:highlight Normal ctermbg=1 guibg=red
+</code></pre>
+<p>Это приведет к прорисовке фона красным цветом. См. <code>:h :highlight</code> для
+дополнительной информации.</p>
+<p>Таким образом, цветовые схемы это в основном — набор команд <code>:highlight</code>.</p>
+<p>На самом деле, большинство цветовых схем это — 2 цветовых схемы!
+Пример выше задаёт цвета при помощи <code>ctermbg</code> и <code>guibg</code>. Первое (<code>cterm*</code>) будет
+использоваться, когда Vim запущен в эмуляторе терминала, например в xterm.
+Второе (<code>gui*</code>) будет использоваться в графическом окружении, таком как gvim
+или MacVim.</p>
+<p>Если так получилось, что вы используете цветовую схему в терминальном Vim-е,
+а цвета совсем не похожи на те, которые были на скриншоте, то, скорее всего, эта
+схема определяет цвета только для GUI. И наоборот, если при использовании
+графического Vim (например, gvim или MacVim) цвета выглядят «слетевшими»,
+возможно, в цветовой схеме определены цвета только для терминала.</p>
+<p>Последний вариант может быть «исправлен» разрешением использования
+полноцветной палитры (true colors) в Neovim или в Vim версии 7.4.1830 и новее.
+В этом случае терминальный Vim будет использовать определения  цветов для GUI,
+но это потребует того, чтобы соответствующий эмулятор терминала, а так же всё
+остальное программное обеспечение (например, tmux) могли работать с полноцветной
+палитрой. (<a href="https://gist.github.com/XVilka/8346728">Вот эта статья</a>
+содержит хороший обзор на тему цвета в терминале.)</p>
+<p>Справка:</p>
+<ul>
+<li><code>:h 'termguicolors'</code></li>
+<li><a href="https://github.com/mhinz/vim-galore/blob/master/PLUGINS.md#colorschemes-1">Список цветовых схем</a></li>
+<li><a href="#cosmetic-changes-to-colorschemes">Косметические изменения в цветовых схемах</a></li>
+</ul>
+<h2 id="folding">Свёртка</h2>
+<p>Каждый текст (например, исходный код программы) имеет некоторую структуру.
+Если текст структурирован, он может быть поделён на логические диапазоны.
+Это позволяет «завернуть» такой диапазон в одну строку и
+показывать вместо него короткое описание. Существует много команд для работы
+с такими диапазонами, называемыми <em>свёртками</em>
+(в <a href="https://sourceforge.net/projects/ruvim/">русском переводе</a>
+справки Vim используется термин <em>складка</em> — <em>прим. пер.</em>).
+Свёртки могут быть вложенными.</p>
+<p>В Vim есть несколько методов свёртки:</p>
+<table>
+<thead>
+<tr>
+<th>'foldmethod'</th>
+<th>Использование</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>diff</td>
+<td>Используется в окнах diff для свёртки неизменённого текста.</td>
+</tr>
+<tr>
+<td>expr</td>
+<td>Для определения диапазонов свёртки используется выражение <code>'foldexpr'</code>.</td>
+</tr>
+<tr>
+<td>indent</td>
+<td>Свёртки на основе отступов.</td>
+</tr>
+<tr>
+<td>manual</td>
+<td>Ручное создание свёртки при помощи команд <code>zf</code>, <code>zF</code> и <code>:fold</code>.</td>
+</tr>
+<tr>
+<td>marker</td>
+<td>Свёртки основанные на маркерах в тексте (часто в комментариях).</td>
+</tr>
+<tr>
+<td>syntax</td>
+<td>Свёртки основанные на синтаксисе, например, свёртка блоков <code>if</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>NB</strong>: Свёртка может потребовать интенсивных вычислений! Если вы испытываете
+снижение производительности (небольшие задержки при наборе текста), посмотрите
+<a href="https://github.com/Konfekt/FastFold">FastFold</a>, который предотвращает Vim
+от обновления свёрток, когда это не нужно.</p>
+<p>Справка:</p>
+<pre><code>:h usr_28
+:h folds
+</code></pre>
+<h2 id="sessions">Сессии</h2>
+<p>Если сохранить <strong>вид</strong> (<code>:h :mkview</code>), текущее состояние окна (плюс опции и
+мапинги) будут сохранены для дальнейшего использования (<code>:h :loadview</code>).</p>
+<p><strong>Сессия</strong> сохраняет вид всех окон плюс глобальные настройки. Такое сохранение
+создаёт снимок текущего состояния Vim и сохраняет его в файл сессии.
+Необходимо подчеркнуть: она сохраняет состояние на данный момент; всё, что будет
+сделано после сохранения
+сессии, не станет частью файла сессии. Для «обновления» сессии просто
+сохраните её заново.</p>
+<p>Это создаёт удобство для сохранения ваших <em>проектов</em> и простого переключения
+между ними.</p>
+<p>Попробуйте прямо сейчас! Откройте несколько окон и табов и дайте команду
+<code>:mksession! Foo.vim</code>. Если опустить имя файла, будет использовано <code>Session.vim</code>.
+Файл будет сохранён в текущем рабочем каталоге, посмотрите результат <code>:pwd</code>.
+Перезапустите Vim и выполните <code>:source Foo.vim</code>, и, вуаля, список буферов,
+раскладка окон, мапинги, текущий каталог и т.д. станут такими же, как и
+в момент сохранения сессии. Поработайте ещё немного и обновите сессию, перезаписав
+существующий файл сессии при помощи <code>:mksession! Foo.vim</code>.</p>
+<p>Нужно заметить, что файл сессии на самом деле — просто набор команд Vim,
+предназначенных для восстановления текущего состояния Vim,
+поэтому его можно запросто просмотреть: <code>:vs Foo.vim</code>.</p>
+<p>Можно сказать Vim что конкретно нужно сохранять в сессии, настроив
+<code>'sessionoptions'</code>.</p>
+<p>Для использования при написании скриптов Vim сохраняет имя последнего прочитанного
+или сохранённого файла сессии во внутренней переменной <code>v:this_session</code>.</p>
+<p>Справка:</p>
+<pre><code>:h Session
+:h 'sessionoptions'
+:h v:this_session
+</code></pre>
+<h2 id="locality">Локальность</h2>
+<p>Многие понятия, упоминаемые выше, имеют <em>локальных</em> партнёров:</p>
+<table>
+<thead>
+<tr>
+<th>Глобальный</th>
+<th>Локальный</th>
+<th>Видимость</th>
+<th>Справка</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:set</code></td>
+<td><code>:setlocal</code></td>
+<td>буфер или окно</td>
+<td><code>:h local-options</code></td>
+</tr>
+<tr>
+<td><code>:map</code></td>
+<td><code>:map &lt;buffer&gt;</code></td>
+<td>буфер</td>
+<td><code>:h :map-local</code></td>
+</tr>
+<tr>
+<td><code>:autocmd</code></td>
+<td><code>:autocmd * &lt;buffer&gt;</code></td>
+<td>буфер</td>
+<td><code>:h autocmd-buflocal</code></td>
+</tr>
+<tr>
+<td><code>:cd</code></td>
+<td><code>:lcd</code></td>
+<td>окно</td>
+<td><code>:h :lcd</code></td>
+</tr>
+<tr>
+<td><code>&lt;leader&gt;</code></td>
+<td><code>&lt;localleader&gt;</code></td>
+<td>буфер</td>
+<td><code>:h maplocalleader</code></td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://vimhelp.appspot.com/usr_41.txt.html#41.2">Переменные тоже имеют различные области видимости</a>.</p>
+<h1 id="usage-1">Использование</h1>
+<h2 id="getting-help-offline">Получение справки офлайн</h2>
+<p>Vim поставляется с великолепной документацией в виде одиночных текстовых
+файлов в специальном формате. Для доступа к конкретным местам этих файлов
+справки Vim использует систему тегов.</p>
+<p>Прежде всего прочитайте вот это: <code>:help :help</code>. Эта команда откроет файл
+<code>$VIMRUNTIME/doc/helphelp.txt</code> в новом окне и перепрыгнет в этом файле
+к тегу <code>:help</code>.</p>
+<p>Несколько простых правил:</p>
+<ul>
+<li>опции заключены в одиночные кавычки, например, <code>:h 'textwidth'</code></li>
+<li>функции VimL заканчиваются <code>()</code>, например, <code>:h reverse()</code></li>
+<li>команды начинаются с <code>:</code>, например, <code>:h :echo</code></li>
+</ul>
+<p>Для просмотра списка всех тегов, соответствующих запросу, набранному в данный
+момент, можно использовать <code>&lt;c-d&gt;</code> (это <kbd>ctrl</kbd>+<kbd>d</kbd>).</p>
+<p>Хотите посмотреть список всех функций VimL? Просто наберите <code>:h ()&lt;c-d&gt;</code>.
+Хотите посмотреть функции для работы с окнами? <code>:h win*()&lt;c-d&gt;</code>.</p>
+<p>Скоро это станет вашей второй натурой, но, особенно в начале, иногда
+вы не будете знать даже части тега того, что вы ищете. В голову вам
+могут прийти только некоторые ключевые слова, которые к этому относятся.
+И тогда вам на помощь придет <code>:helpgrep</code>!</p>
+<pre><code>:helpgrep backwards
+</code></pre>
+<p>Эта команда будет искать слово «backwards» во всех файлах
+документации и перепрыгнет к первому совпадению. Совпадения будут собраны
+в список quickfix. Используйте <code>:cn</code>/<code>:cp</code> для перехода к следующему/предыдущему
+совпадению. Или откройте окно quickfix при помощи <code>:copen</code>, перейдите
+к нужной записи и нажмите <code>&lt;cr&gt;</code> для перехода к этому совпадению.
+Всю правду об этом см. в <code>:h quickfix</code>.</p>
+<h2 id="getting-help-offline-alternative">Получение справки офлайн (альтернатива)</h2>
+<p>Этот список был подобран @chrisbra, одним из самых активных разработчиков Vim,
+и размещён в <a href="https://groups.google.com/forum/#!forum/vim_dev">vim_dev</a>.</p>
+<p>Здесь он размещён с небольшими изменениями.</p>
+<hr>
+<p>Если вы знаете что ищете, то обычно проще искать это в справочной системе.
+Потому что она организована в определённом стиле.</p>
+<p>Кроме того, справка имеет преимущество в том, что она относится к конкретной
+версии Vim, поэтому вам не будут попадаться устаревшие или добавленные позже
+темы.</p>
+<p>Очень важно научиться пользоваться справкой и понимать её язык.
+Здесь приводится несколько примеров (это далеко неполный список, и, возможно,
+я что-то и забыл).</p>
+<ol>
+<li>
+<p>Опции заключаются в одиночные кавычки. Поэтому вы можете использовать
+<code>:h 'list'</code>, чтобы открыть тему, посвящённую опции list.
+Если нужно найти какую-то опцию, то можно командой <code>:h options.txt</code> открыть
+страницу помощи, на которой описывается работа со всеми опциями, а затем найти
+нужную при помощи регулярных выражений, например, <code>/width</code>. Некоторые опции имеют
+своё пространство имён, например, <code>:h cpo-a</code>, <code>:h cpo-A</code>, <code>:h cpo-b</code> и т.д.</p>
+</li>
+<li>
+<p>Команды нормального режима используются как есть. Чтобы перейти к описанию
+команды «gt», используйте <code>:h gt</code>.</p>
+</li>
+<li>
+<p>Элементы регулярных выражений всегда начинаются с «/», поэтому
+<code>:h /\+</code> выдаст вам справку о квантификаторе «+» в регулярных
+выражениях Vim. Если вы хотите узнать всё о регулярных выражениях, начните
+с чтения <code>:h pattern.txt</code>.</p>
+</li>
+<li>
+<p>Комбинации клавиш. Обычно они начинаются с буквы, обозначающей режим,
+в котором комбинация используется. Например, <code>:h i_CTRL-X</code> приведёт к семейству
+команд CTRL-X режима вставки, которые используются для различных способов
+автодополнения. Нужно отметить, что одна и та же клавиша пишется всегда
+одинаково, т.е., Control всегда будет CTRL. Кроме того, для команд нормального
+режима буква «n» не добавляется, как в <code>:h CTRL-A</code>.
+В противоположность этому <code>:h c_CTRL-R</code> описывает то, что делает CTRL-R при
+вводе команд, <code>:h v_CTRL-A</code> говорит об увеличении чисел в визуальном режиме,
+а <code>:h g_CTRL-A</code> — о команде g&lt;C-A&gt; (т.е. после нажатия «g»
+нажимается &lt;Ctrl-A&gt;). Здесь «g» относится к команде нормального
+режима «g», которая всегда, чтобы
+что-то выполнить, ожидает вторую клавишу, как и команды,
+которые начинаются с «z».</p>
+</li>
+<li>
+<p>Регистры всегда начинаются с «кавычки», поэтому для поиска
+информации о специальном регистре «:» используйте <code>:h quote</code>.</p>
+</li>
+<li>
+<p>Описание языка сценариев Vim (VimL) находится в <code>:h eval.txt</code>.
+Некоторые аспекты языка
+рассматриваются в <code>:h expr-X</code>, где 'X' — одиночный символ, например,
+<code>:h expr-!</code> приведёт вас к топику, в котором описывается оператор VimL
+'!' (логическое отрицание). Не менее важна тема <code>:h function-list</code> для поиска
+краткого описания всех доступных функций.</p>
+</li>
+<li>
+<p>Мапинг обсуждается на странице справки <code>:h map.txt</code>. Чтобы найти информацию
+о команде <code>:imap</code>, используйте <code>:h mapmode-i</code>.
+Кроме того, чтобы найти информацию по некоторой подтеме, относящейся к
+мапингу, используйте <code>map-topic</code>, например, для мапинга, локального для
+буфера, — <code>:h :map-local</code> или <code>:h map_bar</code>, чтобы узнать, как в
+мапинге обрабатывается '|'.</p>
+</li>
+<li>
+<p>Определения команд обсуждаются в <code>:h command-*</code>, поэтому используйте
+<code>:h command-bang</code>, чтобы узнать об аргументе '!' в пользовательских
+командах.</p>
+</li>
+<li>
+<p>Команды управления окнами начинаются с CTRL-W, поэтому и соответствующая
+справка находится в <code>:h CTRL-W_*</code> (например, <code>:h CTRL-W_p</code> о переходе
+к ранее активному окну). Если вы ищете команду управления окнами, можно
+открыть <code>:h window.txt</code> и поискать её там.</p>
+</li>
+<li>
+<p>Команды Ex начинаются с «:», следовательно <code>:h :s</code> содержит
+описание команды «:s».</p>
+</li>
+<li>
+<p>Используйте CTRL-D после набора названия топика и позвольте Vim завершить
+набор из названий всех доступных топиков.</p>
+</li>
+<li>
+<p>Для поиска по всем страницам справки используйте <code>:helpgrep</code> (обычно
+в этот поиск попадает и справка по установленным плагинам). Как
+этим пользоваться см. <code>:h :helpgrep</code>. После того как будет найдена
+какая-то тема, все совпадения будут доступны в окне quickfix (или
+местоположений), которое можно открыть при помощи <code>:copen</code> или
+<code>:lopen</code>. Там можно использовать <code>/</code> для дополнительной фильтрации.</p>
+</li>
+<li>
+<p>Как использовать справку, описано в <code>:h helphelp</code>.</p>
+</li>
+<li>
+<p>Руководство пользователя. В нём в дружественной манере описывается содержимое
+тем справки для начинающих. Начните с <code>:h usr_toc.txt</code>, чтобы посмотреть
+содержание (наверное, вы так и подумали). Быстро проглядев эту страницу,
+можно найти, например, вхождение «Digraphs» и «Entering
+special characters» в части 24 (для перехода к этой странице справки
+используйте <code>:h usr_24.txt</code>).</p>
+</li>
+<li>
+<p>Группы подсветки синтаксиса начинаются с <code>hl-*</code>. Например, в
+<code>:h hl-WarningMsg</code> рассказывается о группе подсветки «WarningMsg».</p>
+</li>
+<li>
+<p>У подсветки синтаксиса есть своё пространство имён в «:syn-topic»,
+например, <code>:h syn-conceal</code> говорит о скрытых аргументах команды :syn.</p>
+</li>
+<li>
+<p>Команды quickfix обычно начинаются с «:c», а команды списка
+местоположений — с «:l».</p>
+</li>
+<li>
+<p>Об автокоманде BufWinLeave говорится в <code>:h BufWinLeave</code>.
+Кроме того, все возможные события описаны в <code>:h autocommands-events</code>.</p>
+</li>
+<li>
+<p>Аргументы командной строки начинаются с «-», соответственно
+<code>:h -f</code> приведёт вас к справке о ключе командной строки «-f» Vim.</p>
+</li>
+<li>
+<p>Дополнительные функциональности, включенные при компиляции, начинаются с
+«+», поэтому <code>:h +conceal</code> расскажет о поддержке опции conceal.</p>
+</li>
+<li>
+<p>Описания кодов ошибок можно искать как они есть. <code>:h E297</code> приведёт вас
+точно к описанию этого сообщения об ошибке. Но иногда описания кода
+ошибки нет, и она описывается вместе с командой, которая может её вызвать.
+Например, <code>:h E128</code> приведёт нас к описанию команды <code>:function</code>.</p>
+</li>
+<li>
+<p>Документация по включенным файлам подсветки синтаксиса обычно доступна как
+<code>:h ft-*-syntax</code>. Например, в <code>:h ft-c-syntax</code> говорится о подсветке синтаксиса
+языка C и возможных его настройках. Иногда приводятся описания omni-функций
+автодополнения (например, <code>:h ft-php-omni</code>) или плагинов типов файлов
+(<code>:h ft-tex-plugin</code>).</p>
+</li>
+</ol>
+<p>В начале страницы помощи могут приводиться ссылки на документацию пользователя,
+если она доступна (в ней команды описываются с точки зрения пользователя и
+менее детально). Например, в <code>:h pattern.txt</code> упоминаются темы из руководства
+пользователя <code>:h 03.9</code> и <code>:h usr_27</code>.</p>
+<h2 id="getting-help-online">Получение справки онлайн</h2>
+<p>Если у вас есть проблема, которую вы не можете разрешить самостоятельно,
+или вы нуждаетесь в подсказке для её решения, посмотрите список рассылки
+<a href="https://groups.google.com/forum/#!forum/vim_use">vim_use</a>.
+Ещё один отличный ресурс —
+<a href="https://de.wikipedia.org/wiki/Internet_Relay_Chat">IRC</a>.
+Канал <code>#vim</code>
+на <a href="https://freenode.net/">Freenode</a> — очень большой и обычно полон
+людьми, готовыми помочь.</p>
+<p>Если вы хотите сообщить об ошибке, используйте список рассылки
+<a href="https://groups.google.com/forum/#!forum/vim_dev">vim_dev</a>.</p>
+<h2 id="autocmds-in-practice">Автокоманды на практике</h2>
+<p>Любое событие можно вызвать прямо сейчас: <code>:doautocmd BufRead</code>.</p>
+<h3 id="user-events">Пользовательские события</h3>
+<p>Для плагинов полезно создавать свои, «Пользовательские»
+события:</p>
+<pre><code class="language-vim">function! Chibby()
+  " Здесь много чего происходит.
+  " И наконец...
+  doautocmd User ChibbyExit
+endfunction
+</code></pre>
+<p>Теперь пользователи вашего плагина смогут сделать всё, что угодно, когда Chibby
+закончит свою работу:</p>
+<pre><code class="language-vim">autocmd User ChibbyExit call ChibbyCleanup()
+</code></pre>
+<p>Кстати, если «перехватывающая» :autocmd отсутствует, :doautocmd будет
+выводить
+надоедливое сообщение «No matching autocommands». Вот почему многие
+плагины используют <code>silent doautocmd</code>. Но у этого есть недостаток в том, что вы не
+сможете использовать простое <code>echo "foo"</code> в :autocmd, вместо этого придётся
+использовать <code>unsilent echo "foo"</code>...</p>
+<p>Вот почему лучше проверять наличие обработчика автокоманды, а не надоедать
+выводом ненужных сообщений:</p>
+<pre><code class="language-vim">if exists('#User#ChibbyExit')
+  doautocmd User ChibbyExit
+endif
+</code></pre>
+<p>Справка: <code>:h User</code></p>
+<h3 id="nested-autocmds">Вложенные автокоманды</h3>
+<p>По умолчанию автокоманды не вкладываются друг в друга!
+Если autocmd исполняет команду, которая в свою очередь может создать другое
+событие, то это событие не будет создано.</p>
+<p>Допустим, при каждом запуске Vim вы хотите автоматически открывать ваш vimrc:</p>
+<pre><code class="language-vim">autocmd VimEnter * edit $MYVIMRC
+</code></pre>
+<p>Теперь, когда вы запустите Vim, он откроет ваш vimrc, но первое, что вы заметите,
+это то, что не будет никакой подсветки синтаксиса, хотя раньше она была.</p>
+<p>Проблема состоит в том, что <code>:edit</code> в вашей невложенной autocmd не вызовет события
+«BufRead», поэтому тип файла не получит значения «vim»,
+а<code>$VIMRUNTIME/syntax/vim.vim</code> не будет прочитан. См. <code>:au BufRead *.vim</code>.
+Вместо этого нужно использовать следующее:</p>
+<pre><code class="language-vim">autocmd VimEnter * nested edit $MYVIMRC
+</code></pre>
+<p>Справка: <code>:h autocmd-nested</code></p>
+<h2 id="clipboard">Буфер обмена</h2>
+<p>Требует включения <a href="#what-kind-of-vim-am-i-running">функциональности</a>:
+<code>+clipboard</code> и, возможно, <code>+xterm_clipboard</code>, если вам понадобится использовать
+опцию <code>'clipboard'</code> в Unix-системе без поддержки GUI.</p>
+<p>Справка:</p>
+<pre><code>:h 'clipboard'
+:h gui-clipboard
+:h gui-selections
+</code></pre>
+<p>См. также:
+<a href="#bracketed-paste-or-why-do-i-have-to-set-paste-all-the-time">Вставка в скобках (или почему мне всё время приходится переустанавливать 'paste'?)</a>.</p>
+<h3 id="clipboard-usage-windows-osx">Использование буфера обмена (Windows, macOS)</h3>
+<p>В Windows есть
+<a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ms649012(v=vs.85).aspx">буфер обмена</a>,
+а в macOS —
+<a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/PasteboardGuide106/Introduction/Introduction.html#//apple_ref/doc/uid/TP40008100-SW1">pasteboard</a>.</p>
+<p>Оба работают так, как этого ожидает большинство пользователей.
+Вы копируете выделенный текст при помощи <code>ctrl+c</code>/<code>cmd+c</code>
+и вставляете его в другом приложении при помощи <code>ctrl+v</code>/<code>cmd+v</code>.</p>
+<p>Нужно отметить, что скопированный текст реально копируется в буфер обмена,
+поэтому приложение, в котором вы скопировали текст, можно закрыть перед тем,
+как без проблем вставить в другом.</p>
+<p>Всякий раз, когда вы работаете с буфером обмена, его регистр <code>*</code> заполнен
+выделением. В Vim вы используете команды <code>"*y</code> и <code>"*p</code> для копирования в
+и вставки из буфера.</p>
+<p>Если вам не нравится каждый раз указывать регистр <code>*</code>, то добавьте это в ваш
+vimrc:</p>
+<pre><code class="language-vim">set clipboard=unnamed
+</code></pre>
+<p>Обычно все операции копирования/удаления/вставки работают с регистром <code>"</code>, но
+после этого в этих же целях будет использоваться регистр <code>*</code>, поэтому будет
+достаточно простых <code>y</code> и <code>p</code>.</p>
+<p>Позвольте повторить: использование вышеупомянутой опции означает, что каждое
+копирование/вставка, даже, если оно делается в границах одного окна Vim,
+будет изменять системный буфер обмена. Вам решать, полезно это для вас или нет.</p>
+<p>Если вам даже <code>y</code> набирать лениво, вы можете отправлять в буфер обмена любое
+визуальное выделение при помощи такой настройки:</p>
+<pre><code class="language-vim">set clipboard=unnamed,autoselect
+set guioptions+=a
+</code></pre>
+<p>Справка:</p>
+<pre><code>:h clipboard-unnamed
+:h autoselect
+:h 'go_a'
+</code></pre>
+<h3 id="clipboard-usage-linux-bsd-">Использование буфера обмена (Linux, BSD...)</h3>
+<p>Если в вашей системе используется <a href="http://www.x.org/wiki">X</a>, то тут всё работает
+немного по-другому.
+X реализует протокол
+<a href="http://www.x.org/releases/X11R7.7/doc/xproto/x11protocol.html">X Window System Protocol</a>,
+который был введён в мажорной версии 11 в 1987 году, поэтому X часто
+называют X11.</p>
+<p>До этого, в X10, использовались
+<a href="http://www.x.org/releases/X11R7.7/doc/xorg-docs/icccm/icccm.html#Peer_to_Peer_Communication_by_Means_of_Cut_Buffers">буферы вырезки</a>,
+которые работали подобно <em>буферу обмена</em> в том смысле, что скопированный текст
+хранился самими X, и был доступен всем остальным приложениям.
+Этот механизм в X существует до сих пор, но сейчас его использование
+не приветствуется, и большинство программ его вообще не используют.</p>
+<p>В настоящее время данные передаются между приложениями в терминах
+<a href="http://www.x.org/releases/X11R7.7/doc/xorg-docs/icccm/icccm.html#Peer_to_Peer_Communication_by_Means_of_Selections">выделений</a>.
+Из 3 определённых <em>атомов выделения</em>, на практике используются только 2:
+ОСНОВНОЕ и БУФЕР ОБМЕНА.</p>
+<p>Выделения работают примерно так:</p>
+<pre><code>Программа A: &lt;ctrl+c&gt;
+Программа A: заявляет о том, что захватила владение БУФЕРОМ ОБМЕНА
+Программа B: &lt;ctrl+v&gt;
+Программа B: узнала о том, БУФЕРОМ ОБМЕНА владеет Программа A
+Программа B: делает запрос к Программе A
+Программа A: отвечает на запрос и отправляет данные Программе B
+Программа B: получает данные из Программы A и вставляет их в своё окно
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Выделение</th>
+<th>Когда используется?</th>
+<th>Как вставить?</th>
+<th>Как получить доступ из Vim?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ОСНОВНОЕ</td>
+<td>Выделение текста</td>
+<td><code>средняя-кнопка-мыши</code>, <code>shift+insert</code></td>
+<td>регистр <code>*</code></td>
+</tr>
+<tr>
+<td>БУФЕР ОБМЕНА</td>
+<td>Выделение текста плюс <code>ctrl+c</code></td>
+<td><code>ctrl+v</code></td>
+<td>регистр <code>+</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>NB</strong>: Выделения (и даже выделения БУФЕРА ОБМЕНА) никогда не хранятся самим сервером
+X! Поэтому вы потеряете данные, скопированные при помощи <code>ctrl+c</code>, если закроете
+приложение.</p>
+<p>Используйте для вставки ОСНОВНОГО выделения <code>"*p</code>, а для копирования всего файла
+в БУФЕР ОБМЕНА — <code>"+y1G</code>.</p>
+<p>Если вам захочется пользоваться одним из этих регистров постоянно, попробуйте
+использовать:</p>
+<pre><code class="language-vim">set clipboard^=unnamed      " регистр *
+" или
+set clipboard^=unammedplus  " регистр +
+</code></pre>
+<p>(Присваивание вида <code>^=</code> используется, чтобы сначала подставить значение
+по умолчанию, см. <code>:h :set^=</code>.)</p>
+<p>Такая настройка сделает так, что все операции копирования/удаления/вставки
+будут вместо неименованного регистра <code>"</code> использовать либо регистр <code>*</code>, либо <code>+</code>.
+Кроме того, при помощи простых нажатий <code>y</code> и <code>p</code> у вас будет доступ к выделениям
+в X.</p>
+<p>Справка:</p>
+<pre><code class="language-vim">:h clipboard-unnamed
+:h clipboard-unnamedplus
+</code></pre>
+<h2 id="restore-cursor-position-when-opening-file">Восстановление позиции курсора при повторном открытии файла</h2>
+<p>При открытии файла курсор будет находиться в 1-й колонке 1-й строки.
+К счастью, файл viminfo запоминает <a href="#marks">метки</a>. Метка <code>"</code> содержит
+позицию в буфере при выходе из него.</p>
+<pre><code class="language-vim">autocmd BufReadPost *
+    \ if line("'\"") &gt; 1 &amp;&amp; line("'\"") &lt;= line("$") |
+    \   execute "normal! g`\"" |
+    \ endif
+</code></pre>
+<p>Читайте это так: Если метка <code>"</code> содержит номер строки больше, чем 1, и не больше,
+чем номер последней строки в файле, то перепрыгнуть к ней.</p>
+<pre><code>:h viminfo-'
+:h `quote
+:h g`
+</code></pre>
+<h2 id="temporary-files">Временные файлы</h2>
+<h3 id="backup-files">Файлы резервной копии</h3>
+<p>Перед сохранением файла Vim создаёт его резервную копию. Если запись
+на диск произошла успешно, резервная копия удаляется.</p>
+<p>Если установить <code>:set backup</code>, резервная копия будет сохранена.
+Это означает, что она будет содержать то же, что содержал оригинальный файл
+<em>до</em> последнего сохранения.</p>
+<p>При помощи <code>:set nobackup nowritebackup</code> можно полностью отменить сохранение
+резервной копии, но даже в нынешнее время этого делать не нужно.
+<code>'writebackup'</code> — функция безопасности, которая не позволит вам потерять
+оригинальный файл при сохранении, что рано или поздно может произойти,
+и не важно, сохраните ли вы резервную копию после записи или нет.</p>
+<p>Если вы часто используете Vim для редактирования очень больших файлов,
+<a href="#editing-huge-files-is-slow">чего, возможно, делать не стоит</a>, то для них
+можно отключить создание резервной копии при помощи <code>'backupskip'</code>.</p>
+<p>Vim различает два способа создания резервной копии: <em>копирование</em> и
+<em>переименование</em>.</p>
+<ul>
+<li><strong>Копирование</strong>
+<ol>
+<li>Создаётся и используется в качестве резервной полная копия файла.</li>
+<li>Оригинальный файл очищается, а затем заполняется содержимым буфера Vim.</li>
+</ol>
+</li>
+<li><strong>Переименование</strong>
+<ol>
+<li>Оригинальный файл переименовывается в резервную копию.</li>
+<li>Содержимое буфера Vim записывается в новый файл с именем оригинала.</li>
+</ol>
+</li>
+</ul>
+<p>Мельчайшие подробности см. <code>:h 'backupcopy'</code>.</p>
+<hr>
+<p>Демо:</p>
+<pre><code class="language-vim">:set backup backupskip= backupdir=. backupext=-backup
+:e /tmp/foo
+ifoo&lt;esc&gt;
+:w
+" Создаётся оригинальный файл, необходимости в резервной копии нет
+obar&lt;esc&gt;
+:w
+" создаётся резервная копия, а оригинальный файл обновляется
+</code></pre>
+<pre><code class="language-diff">$ diff -u /tmp/foo-backup /tmp/foo
+--- /tmp/foo-backup     2017-04-22 15:05:13.000000000 +0200
++++ /tmp/foo    2017-04-22 15:05:25.000000000 +0200
+@@ -1 +1,2 @@
+ foo
++bar
+</code></pre>
+<hr>
+<pre><code>:h backup
+:h write-fail
+</code></pre>
+<h3 id="swap-files">Своп-файлы</h3>
+<p>При редактировании файла несохранённые изменения записываются в своп-файл.</p>
+<p>Узнать имя текущего своп-файла можно при помощи <code>:swapname</code>. Отключить его
+— при помощи <code>:set noswapfile</code>.</p>
+<p>Своп-файл обновляется либо после набора 200 символов, либо когда ничего не
+печатается в течение 4 секунд. По окончании редактирования файла своп-файл
+удаляется. Как изменить периодичность см. <code>:h 'updatecount'</code> и
+<code>:h 'updatetime'</code>.</p>
+<p>При «вылете» Vim-а (например, при отключении электричества)
+вы потеряете все изменения с момента последней записи файла на диск, но
+своп-файл при этом удалён не будет. Теперь, при редактировании файла вновь,
+Vim предоставит шанс восстановить файл из своп-файла.</p>
+<p>При попытке двух людей редактировать один и тот же файл второй из них будет
+извещён, что своп-файл уже существует. Это предотвратит людей от сохранения
+различных версий файла. Если вам не нравится такое поведение, см.
+<code>:h 'directory'</code>.</p>
+<pre><code>:h swap-file
+:h usr_11
+</code></pre>
+<h3 id="undo-files">Файлы отмены</h3>
+<p><a href="#undo-tree">Дерево отмены</a> хранится в памяти и теряется при выходе их Vim.
+Если вы хотите, чтобы оно сохранялось, используйте <code>:set undofile</code>.
+Эта команда сохранит файл отмены для <code>~/foo.c</code> в <code>~/foo.c.un~</code>.</p>
+<pre><code>:h 'undofile'
+:h undo-persistence
+</code></pre>
+<h3 id="viminfo-files">Файлы viminfo</h3>
+<p>В то время, как файлы резервной копии, свопа и отмены используются для
+сохранения информации о состоянии редактируемых файлов, файл viminfo
+используется для сохранения всего остального, что будет утеряно при выходе из
+Vim.  Он содержит историю (командной строки, поиска, ввода), регистры, метки,
+список буферов, состояние глобальных переменных и т.д.</p>
+<p>По умолчанию файл viminfo записывается как <code>~/.viminfo</code>.</p>
+<pre><code>:h viminfo
+:h 'viminfo'
+</code></pre>
+<h3 id="example-configuration-for-temporary-files">Пример конфигурации временных файлов</h3>
+<p>Поместить все временные файлы в свои собственные каталоги в <code>~/.vim/files</code>:</p>
+<pre><code class="language-vim">" при необходимости создать каталог
+if !isdirectory($HOME.'/.vim/files') &amp;&amp; exists('*mkdir')
+  call mkdir($HOME.'/.vim/files')
+endif
+
+" файлы резервной копии
+set backup
+set backupdir   =$HOME/.vim/files/backup/
+set backupext   =-vimbackup
+set backupskip  =
+" своп-файлы
+set directory   =$HOME/.vim/files/swap//
+set updatecount =100
+" файлы отмены
+set undofile
+set undodir     =$HOME/.vim/files/undo/
+" viminfo-файлы
+set viminfo     ='100,n$HOME/.vim/files/info/viminfo
+</code></pre>
+<h2 id="editing-remote-files">Редактирование файлов на удалённом компьютере</h2>
+<p>В поставку Vim входит плагин netrw, который позволяет редактировать удалённые
+файлы. На самом деле он делает временную копию удалённого файла при помощи
+scp, открывает её в буфере, а при сохранении файла копирует его обратно
+на удалённый компьютер.</p>
+<p>Это очень удобно, если вы хотите использовать свою локальную конфигурацию, а
+не подключаться к серверу по ssh и пользоваться тем, что считает нужным
+администратор сервера.</p>
+<pre><code>:e scp://bram@awesome.site.com/.vimrc
+</code></pre>
+<p>Если у вас есть настроенный <code>~/.ssh/config</code>, это происходит автоматически:</p>
+<pre><code>Host awesome
+    HostName awesome.site.com
+    Port 1234
+    User bram
+</code></pre>
+<p>Допустим, что выше приведено содержимое <code>~/.ssh/config</code>, тогда эта
+команда тоже сработает:</p>
+<pre><code>:e scp://awesome/.vimrc
+</code></pre>
+<p>Похожим образом это можно сделать при помощи <code>~/.netrc</code>,
+см. <code>:h netrw-netrc</code>.</p>
+<p>Обязательно посмотрите <code>:h netrw-ssh-hack</code> и <code>:h g:netrw_ssh_cmd</code>.</p>
+<hr>
+<p>Ещё одна возможность — использовать
+<a href="https://wiki.archlinux.org/index.php/Sshfs">sshfs</a>, которая
+для локального монтирования удалённой файловой системы использует
+<a href="https://en.wikipedia.org/wiki/Filesystem_in_Userspace">FUSE</a>.</p>
+<h2 id="managing-plugins">Управление плагинами</h2>
+<p><a href="https://github.com/tpope/vim-pathogen">Pathogen</a>
+был первым популярным инструментом для управления плагинами.
+На самом деле он просто настраивает <em>runtimepath</em> (см. <code>:h 'rtp'</code>), чтобы
+подключались файлы из определённого каталога.
+Клонировать репозитории плагинов вам нужно вручную.</p>
+<p>Настоящие менеджеры плагинов предоставляют команды, которые помогают вам
+устанавливать и обновлять плагины прямо в Vim. Далее в алфавитном порядке
+перечисляются наиболее часто используемые менеджеры плагинов.</p>
+<p><a href="https://github.com/mhinz/vim-galore/blob/master/PLUGINS.md#plugin-managers">Список менеджеров плагинов</a></p>
+<h2 id="block-insert">Блочная вставка</h2>
+<p>Этот приём позволяет вставить определённый текст на нескольких смежных строках
+одним движением.
+См. вот это
+<a href="https://raw.githubusercontent.com/mhinz/vim-galore/master/static/images/content-block_insert.gif">демо</a>.</p>
+<p>Переключитесь в режим выделения визуального блока при помощи <code>&lt;c-v&gt;</code>.
+После этого перейдите на несколько строк вниз.
+Нажмите <code>I</code> или <code>A</code> и начинайте набор нужного текста.</p>
+<p>Поначалу будет казаться странным, но текст будет вставляться только в текущей строке,
+и только по окончании ввода этот же текст появится во всех остальных сроках,
+которые были отмечены при визуальном выделении.</p>
+<p>Простейший пример: <code>&lt;c-v&gt;3jItext&lt;esc&gt;</code>.</p>
+<p>Если у вас строки различной длины, и вы хотите добавить некий текст
+в конце каждой, то используйте это: <code>&lt;c-v&gt;3j$Atext&lt;esc&gt;</code>.</p>
+<p>Возможно, вам понадобиться поместить курсор где-то за пределами конца
+текущей строки. По умолчанию этого сделать нельзя, но можно установить опцию
+virtualedit:</p>
+<pre><code class="language-vim">set virtualedit=all
+</code></pre>
+<p>С этой настройкой <code>$10l</code> и <code>90|</code> позволят работать за пределами конца строки.</p>
+<p>Дополнительно см. <code>:h blockwise-examples</code>. Поначалу это будет выглядеть
+сложновато, но очень быстро станет второй натурой.</p>
+<p>Если вам хочется реальной фантастики, посмотрите
+<a href="https://github.com/terryma/vim-multiple-cursors">множественные курсоры</a>.</p>
+<h2 id="running-external-programs-and-using-filters">Запуск внешних программ и использование фильтров</h2>
+<p>Предупреждение: Vim однопоточен, поэтому запуск внешней программы будет
+блокировать всё остальное. Конечно, можно использовать программные
+интерфейсы Vim, например Lua, и использовать их многопоточность,
+но в настоящее время процесс Vim будет заблокирован всегда.
+В Neovim это исправлено при помощи специального API.</p>
+<p>(По всей видимости, Bram собирается добавить в Vim управление заданиями.
+Если у вас одна из свежих версий, см. <code>:helpgrep startjob</code>.)</p>
+<p>Для запуска задания используйте <code>:!</code>. Для просмотра списка файлов в текущем
+рабочем каталоге используйте <code>:!ls</code>. Для создания канала
+(<a href="https://ru.wikipedia.org/wiki/%D0%9F%D0%B5%D1%80%D0%B5%D0%BD%D0%B0%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B2%D0%B2%D0%BE%D0%B4%D0%B0-%D0%B2%D1%8B%D0%B2%D0%BE%D0%B4%D0%B0#%D0%9A%D0%BE%D0%BD%D0%B2%D0%B5%D0%B9%D0%B5%D1%80%D1%8B">конвейера</a>),
+как в оболочке, используйте <code>|</code>, например, <code>:!ls -1 | sort | tail -n5</code>.</p>
+<p>Без указания диапазона вывод <code>:!</code> будет показан в прокручиваемом окне.
+Но если диапазон указать, то строки будут
+<a href="https://ru.wikipedia.org/wiki/%D0%9F%D0%B5%D1%80%D0%B5%D0%BD%D0%B0%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B2%D0%B2%D0%BE%D0%B4%D0%B0-%D0%B2%D1%8B%D0%B2%D0%BE%D0%B4%D0%B0#%D0%A6%D0%B5%D0%BF%D0%BE%D1%87%D0%BA%D0%B0_%D0%BA%D0%BE%D0%BD%D0%B2%D0%B5%D0%B9%D0%B5%D1%80%D0%BE%D0%B2">отфильтрованы</a>.
+Это значит, что они будут переданы по каналу в
+<a href="https://ru.wikipedia.org/wiki/%D0%A1%D1%82%D0%B0%D0%BD%D0%B4%D0%B0%D1%80%D1%82%D0%BD%D1%8B%D0%B5_%D0%BF%D0%BE%D1%82%D0%BE%D0%BA%D0%B8#%D0%A1%D1%82%D0%B0%D0%BD%D0%B4%D0%B0%D1%80%D1%82%D0%BD%D1%8B%D0%B9_%D0%B2%D0%B2%D0%BE%D0%B4">стандартный ввод</a>
+программы–фильтра, а после обработки будут заменены
+<a href="https://ru.wikipedia.org/wiki/%D0%A1%D1%82%D0%B0%D0%BD%D0%B4%D0%B0%D1%80%D1%82%D0%BD%D1%8B%D0%B5_%D0%BF%D0%BE%D1%82%D0%BE%D0%BA%D0%B8#%D0%A1%D1%82%D0%B0%D0%BD%D0%B4%D0%B0%D1%80%D1%82%D0%BD%D1%8B%D0%B9_%D0%B2%D1%8B%D0%B2%D0%BE%D0%B4">стандартным выводом</a>
+фильтра.  Например, чтобы пронумеровать следующие 5 строк, используйте
+такую команду:</p>
+<pre><code>:.,+4!nl -ba -w1 -s' '
+</code></pre>
+<p>Т.к. набор диапазона — не всегда простое занятие, в Vim для удобства
+предусмотрены некоторые вспомогательные приёмы. Как всегда при работе
+с диапазонами, можно выделить строки в визуальном режиме и нажать <code>:</code>.
+Кроме того, есть ещё оператор <code>!</code>, который в качестве параметра принимает
+перемещение. Например, <code>!ip!sort</code> отсортирует строки в текущем параграфе.</p>
+<p>Хорошим примером применения фильтрации служит
+<a href="https://golang.org/">язык программирования Go</a>.
+У него достаточно жёсткие требования к форматированию, такие, что с
+компилятором для правильной расстановки отступов идёт фильтр, который
+называется <code>gofmt</code>.
+Поэтому плагины для Go часто предоставляют вспомогательную команду <code>:Fmt</code>,
+которая просто выполняет <code>:%!gofmt</code>, чем расставляет отступы во всём файле.</p>
+<p>Люди часто используют <code>:r !prog</code> для вставки вывода prog, после текущей строки,
+что удобно для скриптов, но делая это по ходу набора, я понял для себя,
+что вместо этого проще использовать <code>!!ls</code>, которая заменяет текущую строку.</p>
+<pre><code>:h filter
+:h :read!
+</code></pre>
+<h2 id="cscope">Cscope</h2>
+<p><a href="http://cscope.sourceforge.net/">Cscope</a> делает больше, чем
+<a href="http://ctags.sourceforge.net/">ctags</a>, но поддерживает только C (и
+в некоторой степени C++ и Java).</p>
+<p>В то время, как файлу с тегами известно только то, где символ определён,
+база данных cscope о ваших данных знает значительно больше:</p>
+<ul>
+<li>Где определён этот символ?</li>
+<li>Где этот символ используется?</li>
+<li>Каково определение этого глобального символа?</li>
+<li>Где эта переменная получает своё значение?</li>
+<li>Где в исходном файле находится эта функция?</li>
+<li>Какие функции вызывают эту функцию?</li>
+<li>Какие функции эта функция вызывает?</li>
+<li>Откуда появляется сообщение «out of space»?</li>
+<li>Где в структуре каталогов находится этот исходный файл?</li>
+<li>В какие файлы включен этот заголовочный файл?</li>
+</ul>
+<h3>1. Создайте базу данных</h3>
+<p>В корне вашего проекта сделайте следующее:</p>
+<pre><code class="language-sh">$ cscope -bqR
+</code></pre>
+<p>В текущем рабочем каталоге создадутся 3 файла: <code>cscope{,.in,.po}.out</code>.
+Думайте о них как о вашей базе данных.</p>
+<p>К сожалению, <code>cscope</code> по умолчанию анализирует только файлы <code>*.[c|h|y|l]</code>.
+Если вам нужно использовать cscope для проекта на Java, сделайте так:</p>
+<pre><code class="language-sh">$ find . -name "*.java" &gt; cscope.files
+$ cscope -bq
+</code></pre>
+<h3>2. Добавьте базу данных</h3>
+<p>Соединитесь с вашей свежесозданной базой данных:</p>
+<pre><code class="language-vim">:cs add cscope.out
+</code></pre>
+<p>Проверьте созданное соединение:</p>
+<pre><code class="language-vim">:cs show
+</code></pre>
+<p>(Да, вы можете добавлять несколько соединений.)</p>
+<h3>3. Сделайте запрос к базе данных</h3>
+<pre><code class="language-vim">:cs find &lt;тип&gt; &lt;запрос&gt;
+</code></pre>
+<p>Например, <code>:cs find d foo</code> покажет список всех функций, которые вызывает
+<code>foo(...)</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Тип</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>s</td>
+<td><strong>s</strong>ymbol: найти все ссылки на символ</td>
+</tr>
+<tr>
+<td>g</td>
+<td><strong>g</strong>lobal: найти глобальное(ные) определение(ния) символа</td>
+</tr>
+<tr>
+<td>c</td>
+<td><strong>c</strong>alls: найти все вызовы функции</td>
+</tr>
+<tr>
+<td>t</td>
+<td><strong>t</strong>ext: найти все вхождения текста</td>
+</tr>
+<tr>
+<td>e</td>
+<td><strong>e</strong>grep: поиск слова при помощи egrep</td>
+</tr>
+<tr>
+<td>f</td>
+<td><strong>f</strong>ile: открыть файл по имени</td>
+</tr>
+<tr>
+<td>i</td>
+<td><strong>i</strong>ncludes: найти файлы, которые включают этот файл</td>
+</tr>
+<tr>
+<td>d</td>
+<td><strong>d</strong>epends: найти функции, которые вызывает эта функция</td>
+</tr>
+</tbody>
+</table>
+<p>Предложу некоторые полезные мапинги, например:</p>
+<pre><code class="language-vim">nnoremap &lt;buffer&gt; &lt;leader&gt;cs :cscope find s  &lt;c-r&gt;=expand('&lt;cword&gt;')&lt;cr&gt;&lt;cr&gt;
+nnoremap &lt;buffer&gt; &lt;leader&gt;cg :cscope find g  &lt;c-r&gt;=expand('&lt;cword&gt;')&lt;cr&gt;&lt;cr&gt;
+nnoremap &lt;buffer&gt; &lt;leader&gt;cc :cscope find c  &lt;c-r&gt;=expand('&lt;cword&gt;')&lt;cr&gt;&lt;cr&gt;
+nnoremap &lt;buffer&gt; &lt;leader&gt;ct :cscope find t  &lt;c-r&gt;=expand('&lt;cword&gt;')&lt;cr&gt;&lt;cr&gt;
+nnoremap &lt;buffer&gt; &lt;leader&gt;ce :cscope find e  &lt;c-r&gt;=expand('&lt;cword&gt;')&lt;cr&gt;&lt;cr&gt;
+nnoremap &lt;buffer&gt; &lt;leader&gt;cf :cscope find f  &lt;c-r&gt;=expand('&lt;cfile&gt;')&lt;cr&gt;&lt;cr&gt;
+nnoremap &lt;buffer&gt; &lt;leader&gt;ci :cscope find i ^&lt;c-r&gt;=expand('&lt;cfile&gt;')&lt;cr&gt;$&lt;cr&gt;
+nnoremap &lt;buffer&gt; &lt;leader&gt;cd :cscope find d  &lt;c-r&gt;=expand('&lt;cword&gt;')&lt;cr&gt;&lt;cr&gt;
+</code></pre>
+<p>Таким образом, если <code>:tag</code> (или <code>&lt;c-]&gt;</code>) переходит к определению, используя
+файл с тегами, то <code>:cstag</code> делает то же самое, но при этом использует
+присоединённую базу данных cscope. Опция <code>'cscopetag'</code> заставляет <code>:tag</code>
+действовать подобно <code>:cstag</code> автоматически. Это очень удобно, если у вас есть
+мапинги для тегов.</p>
+<p>Справка: <code>:h cscope</code></p>
+<h2 id="matchit">MatchIt</h2>
+<p>Т.к. Vim написан на C, многие приёмы подразумевают синтаксис похожий на C.
+По умолчанию, если курсор находится на <code>{</code> или <code>#endif</code>, можно использовать <code>%</code>
+для прыжка к соответствующему <code>}</code> или <code>#ifdef</code>.</p>
+<p>Vim поставляется в комплекте с плагином matchit.vim, который по умолчанию
+не включен. Он позволяет <code>%</code> переходить также по тегам HTML, конструкциям
+if/else/endif языка VimL и добавляет несколько команд.</p>
+<h4>Установка для Vim 8</h4>
+<pre><code class="language-vim">" vimrc
+packadd! matchit
+</code></pre>
+<h4>Установка для Vim 7 и более ранних</h4>
+<pre><code class="language-vim">" vimrc
+runtime macros/matchit.vim
+</code></pre>
+<p>Документация matchit довольно обширна, поэтому я рекомендую единожды проделать
+следующее:</p>
+<pre><code class="language-vim">:!mkdir -p ~/.vim/doc
+:!cp $VIMRUNTIME/macros/matchit.txt ~/.vim/doc
+:helptags ~/.vim/doc
+</code></pre>
+<h4>Небольшое введение</h4>
+<p>Теперь плагин готов к использованию. См. <code>:h matchit-intro</code>, чтобы
+узнать о поддерживаемых командах, и <code>:h matchit-languages</code>, чтобы узнать
+о поддерживаемых языках.</p>
+<p>Там говорится о том, как просто определить свои пары соответствий:</p>
+<pre><code class="language-vim">autocmd FileType python let b:match_words = '\&lt;if\&gt;:\&lt;elif\&gt;:\&lt;else\&gt;'
+</code></pre>
+<p>После этого в любом файле на Python вы сможете обходить эти 3 выражения при
+помощи <code>%</code> (вперёд) и <code>g%</code> (назад).</p>
+<p>Help:</p>
+<pre><code>:h matchit-install
+:h matchit
+:h b:match_words
+</code></pre>
+<h2 id="true-colors">Полноцветная палитра</h2>
+<p>Использование полноцветной палитры (True color) в эмуляторе терминала означает
+возможность использования 24 бит для RGB-цвета. Это даёт 16777216 (2^24) цветов
+вместо обычных 256-и.</p>
+<p>Как говорится <a href="#colorschemes">здесь</a>, цветовые схемы на самом деле могут
+состоять из <em>двух</em> цветовых схем, одна с определениями для терминала (xterm),
+другая — для GUI (gvim). Это имело смысл, пока эмуляторы терминала
+не научились работать с полноцветной палитрой.</p>
+<p>После <code>:set termguicolors</code> Vim начинает выдавать escape-последовательности,
+которые понимает только эмулятор терминала, поддерживающий полноцветную палитру.
+Если ваши цвета выглядят странно, есть все шансы, что либо ваш эмулятор
+терминала не поддерживает полноцветную палитру, либо ваша цветовая схема не
+содержит определений цветов для GUI.</p>
+<p>Многие люди используют терминальный мультиплексор
+<a href="https://github.com/tmux/tmux/wiki">tmux</a>, который по существу находится между
+эмулятором терминала и Vim. Чтобы tmux начал <em>пропускать</em> полноцветные
+escape-последовательности, которые выдаёт Vim, необходимо в пользовательский
+<code>.tmux.conf</code> добавить следующее:</p>
+<pre><code>set-option -g  default-terminal 'tmux-256color'
+set-option -ga terminal-overrides ',xterm-256color:Tc'
+</code></pre>
+<ul>
+<li>Первая строка должна быть одинаковой у всех и означает <code>$TERM</code>, который
+будет использоваться <em>внутри</em> tmux.</li>
+<li>Вторая строка добавляет специфичную для tmux настройку <code>Tc</code> (true color)
+к остальным свойствам terminfo <code>xterm-256color</code>. Очевидно, что это
+подразумевает, что пользователь использует <code>TERM=xterm-256color</code> <em>вне</em> tmux.</li>
+</ul>
+<p>Подытожим, вот чеклист для включения полноцветной палитры:</p>
+<ul>
+<li>Прочитайте <code>:h 'termguicolors'</code>.</li>
+<li>Добавьте в ваш vimrc <code>set termguicolors</code>.</li>
+<li>Убедитесь, что ваша цветовая схема содержит определения для GUI. (Она должна
+содержать строки с <code>guifg</code> и <code>guibg</code>.)</li>
+<li>Убедитесь, что выбранный вами терминал поддерживает полноцветную палитру.</li>
+<li>Используете tmux? Сконфигурируйте его, добавив настройку <code>Tc</code>.</li>
+</ul>
+<p>Популярный справочник по цветам в терминале:
+<a href="https://gist.github.com/XVilka/8346728">https://gist.github.com/XVilka/8346728</a></p>
+<h1 id="tips-1">Полезные советы</h1>
+<h2 id="go-to-other-end-of-selected-text">Переход к другому концу выделенного текста</h2>
+<p>При визуальном выделении <code>o</code> и <code>O</code> перемещают курсор в противоположный конец.
+Чтобы увидеть разницу в их поведении, попробуйте блочное выделение.
+Пригодится для быстрого изменения размеров выделенного текста.</p>
+<pre><code>:h v_o
+:h v_O
+</code></pre>
+<h2 id="saner-behavior-of-n-and-n">Разумное поведение n и N</h2>
+<p>Направление, куда ведут <code>n</code> и <code>N</code>, зависит от того, какая команда использовалась,
+<code>/</code> или <code>?</code>, для начала поиска вперёд или назад соответственно.
+Меня это немного путает.</p>
+<p>Если вы хотите, чтобы <code>n</code> всегда искало вперёд, а <code>N</code> назад, используйте это:</p>
+<pre><code class="language-vim">nnoremap &lt;expr&gt; n  'Nn'[v:searchforward]
+xnoremap &lt;expr&gt; n  'Nn'[v:searchforward]
+onoremap &lt;expr&gt; n  'Nn'[v:searchforward]
+
+nnoremap &lt;expr&gt; N  'nN'[v:searchforward]
+xnoremap &lt;expr&gt; N  'nN'[v:searchforward]
+onoremap &lt;expr&gt; N  'nN'[v:searchforward]
+</code></pre>
+<h2 id="saner-command-line-history">Более умная история командной строки</h2>
+<p>Если вы похожи на меня, то используете <code>&lt;c-n&gt;</code> и <code>&lt;c-p&gt;</code> для перехода между
+предыдущим и следующим элементами соответственно. По умолчанию это работает
+и в командной строке и вызывает предыдущие и следующие команды из истории.</p>
+<p>Что ж, неплохо. Но <code>&lt;up&gt;</code> и <code>&lt;down&gt;</code> ещё полезнее! Они вызывают команды из
+истории, чьё начало соответствует содержимому командной строки.
+Например, <code>:echo &lt;up&gt;</code> могут заменить на <code>:echo "Vim рулит!"</code>.</p>
+<p>Конечно же, я не хочу, чтобы вам приходилось тянуться к клавишам стрелок:</p>
+<pre><code class="language-vim">cnoremap &lt;expr&gt; &lt;c-n&gt; wildmenumode() ? "\&lt;c-n&gt;" : "\&lt;down&gt;"
+cnoremap &lt;expr&gt; &lt;c-p&gt; wildmenumode() ? "\&lt;c-p&gt;" : "\&lt;up&gt;"
+</code></pre>
+<p>Здесь мы дополнительно различаем историю командной строки и меню дополнения.
+См. <code>:h 'wildmenu'</code>.</p>
+<p>Мне такое поведение пригождается помногу раз в день.</p>
+<h2 id="saner-ctrl-l">Улучшите CTRL-L</h2>
+<p>По умолчанию <code>&lt;c-l&gt;</code> очищает и перерисовывает содержимое экрана (как <code>:redraw!</code>).
+Следующий мапинг делает то же самое, плюс сбрасывает подсветку соответствий
+найденных путём <code>/</code>, <code>?</code> и т.д., исправляет подсветку синтаксиса (иногда Vim
+теряется в ней из-за сложности её правил) и вызывает обновление подсветки
+синтаксиса в режиме diff:</p>
+<pre><code class="language-vim">nnoremap &lt;leader&gt;l :nohlsearch&lt;cr&gt;:diffupdate&lt;cr&gt;:syntax sync fromstart&lt;cr&gt;&lt;c-l&gt;
+</code></pre>
+<h2 id="disable-audible-and-visual-bells">Выключите аудио и визуальные звонки</h2>
+<pre><code class="language-vim">set noerrorbells
+set novisualbell
+set t_vb=
+</code></pre>
+<p>См. <a href="http://vim.wikia.com/wiki/Disable_beeping">Vim Wiki: Disable beeping</a>.</p>
+<h2 id="quickly-move-current-line">Быстрое перемещение текущей строки</h2>
+<p>Иногда мне бывает нужен быстрый способ переместить текущую строку выше
+или ниже:</p>
+<pre><code class="language-vim">nnoremap [e  :&lt;c-u&gt;execute 'move -1-'. v:count1&lt;cr&gt;
+nnoremap ]e  :&lt;c-u&gt;execute 'move +'. v:count1&lt;cr&gt;
+</code></pre>
+<p>Эти мапинги принимают счётчик, поэтому <code>2]e</code> переместит текущую строку на
+2 строки ниже.</p>
+<h2 id="quickly-add-empty-lines">Быстрое добавление пустых строк</h2>
+<pre><code class="language-vim">nnoremap [&lt;space&gt;  :&lt;c-u&gt;put! =repeat(nr2char(10), v:count1)&lt;cr&gt;'[
+nnoremap ]&lt;space&gt;  :&lt;c-u&gt;put =repeat(nr2char(10), v:count1)&lt;cr&gt;
+</code></pre>
+<p>Теперь <code>5[&lt;space&gt;</code> вставит пять пустых строк над текущей.</p>
+<h2 id="quickly-edit-your-macros">Быстрое редактирование макро</h2>
+<p>Это — просто жемчужина! Мапинг берёт регистр (или <code>*</code> по умолчанию)
+и открывает его в окне командной строки. Нажмите <code>&lt;cr&gt;</code> по окончании
+редактирования для установки содержимого регистра.</p>
+<p>Я часто использую это для исправления опечаток, сделанных при записи макро.</p>
+<pre><code class="language-vim">nnoremap &lt;leader&gt;m  :&lt;c-u&gt;&lt;c-r&gt;&lt;c-r&gt;='let @'. v:register .' = '. string(getreg(v:register))&lt;cr&gt;&lt;c-f&gt;&lt;left&gt;
+</code></pre>
+<p>Используйте примерно так: <code>&lt;leader&gt;m</code> или <code>"q&lt;leader&gt;m</code>.</p>
+<p>Обратите внимание на использование <code>&lt;c-r&gt;&lt;c-r&gt;</code>, с целью убедиться, что <code>&lt;c-r&gt;</code>
+вставляется литерально. См. <code>:h c_^R^R</code>.</p>
+<h2 id="quickly-jump-to-header-or-source-file">Быстрый прыжок к заголовочному файлу или исходнику</h2>
+<p>Наверняка, эта техника может применяться ко многим типам файлов.
+Она устанавливает <em>файловые метки</em> (см. <code>:h marks</code>) при покидании заголовочного
+файла или исходника, поэтому вы можете быстро вернуться к файлу, который
+редактировали последним, при помощи <code>'C</code> или <code>'H</code> (см. <code>:h 'A</code>).</p>
+<pre><code class="language-vim">autocmd BufLeave *.{c,cpp} mark C
+autocmd BufLeave *.h       mark H
+</code></pre>
+<p><strong>NB</strong>: Эта информация сохраняется в файле viminfo, поэтому убедитесь,
+что <code>:set viminfo?</code> включает <code>:h viminfo-'</code>.</p>
+<h2 id="quickly-change-font-size-in-gui">Быстрая смена размера шрифта в GUI</h2>
+<p>Кажется, это было взято из конфига tpope:</p>
+<pre><code class="language-vim">command! Bigger  :let &amp;guifont = substitute(&amp;guifont, '\d\+$', '\=submatch(0)+1', '')
+command! Smaller :let &amp;guifont = substitute(&amp;guifont, '\d\+$', '\=submatch(0)-1', '')
+</code></pre>
+<h2 id="change-cursor-style-dependent-on-mode">Изменение стиля курсора в зависимости от режима</h2>
+<p>Мне нравится использовать курсор в форме блока в нормальном режиме,
+в форме буквы I в режиме вставки и в виде подчёркивания в режиме замены.
+В том числе и при работе в tmux.</p>
+<pre><code class="language-vim">if empty($TMUX)
+  let &amp;t_SI = "\&lt;Esc&gt;]50;CursorShape=1\x7"
+  let &amp;t_EI = "\&lt;Esc&gt;]50;CursorShape=0\x7"
+  let &amp;t_SR = "\&lt;Esc&gt;]50;CursorShape=2\x7"
+else
+  let &amp;t_SI = "\&lt;Esc&gt;Ptmux;\&lt;Esc&gt;\&lt;Esc&gt;]50;CursorShape=1\x7\&lt;Esc&gt;\\"
+  let &amp;t_EI = "\&lt;Esc&gt;Ptmux;\&lt;Esc&gt;\&lt;Esc&gt;]50;CursorShape=0\x7\&lt;Esc&gt;\\"
+  let &amp;t_SR = "\&lt;Esc&gt;Ptmux;\&lt;Esc&gt;\&lt;Esc&gt;]50;CursorShape=2\x7\&lt;Esc&gt;\\"
+endif
+</code></pre>
+<p>Это просто сообщит Vim, что при входе/выходе из режима вставки нужно
+напечатать определённую последовательность символов
+(<a href="https://ru.wikipedia.org/wiki/%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D1%8F%D1%8E%D1%89%D0%B0%D1%8F_%D0%BF%D0%BE%D1%81%D0%BB%D0%B5%D0%B4%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D1%8C">управляющая последовательность</a>).
+Терминал, в котором работает Vim, или программа, которая находится между ним
+и терминалом
+(например, <a href="https://tmux.github.io/">tmux</a>),
+обработает и применит её.</p>
+<p>Однако здесь есть одна проблема: существует множество реализаций эмуляторов
+терминала, и не все они используют одинаковые последовательности для
+выполнения одних и тех же действий. Последовательности, которые использованы
+выше, возможно, не заработают в вашей конфигурации. Она может вообще
+не поддерживать различные стили курсора. Обратитесь к документации.</p>
+<p>Вышеприведённый пример работает в iTerm2.</p>
+<h2 id="dont-lose-selection-when-shifting-sidewards">Не теряйте выделение при сдвиге в сторону</h2>
+<p>После выделения одной или более строк вы можете использовать <code>&lt;</code> и <code>&gt;</code> для
+сдвига и в сторону. К сожалению, после этого вы сразу же потеряете выделение.</p>
+<p>Для восстановления выделения можно использовать <code>gv</code>,
+поэтому проблему можно обойти примерно так:</p>
+<pre><code class="language-vim">xnoremap &lt;  &lt;gv
+xnoremap &gt;  &gt;gv
+</code></pre>
+<p>Теперь с вашим визуальным выделением без проблем можно использовать
+<code>&gt;&gt;&gt;&gt;&gt;</code>.</p>
+<p><strong>NB</strong>: Того же самого можно достигнуть при помощи команды <code>.</code>, которая
+повторяет последнее изменение.</p>
+<h2 id="reload-a-file-on-saving">Перезагрузка файла при сохранении</h2>
+<p>При помощи <a href="#autocmds">автокоманд</a> с файлом можно сделать всё, что угодно,
+например, запустить в случае дот-файла (настроек) или пропустить через линтер
+для нахождения синтаксических ошибок в вашем исходном коде.</p>
+<pre><code class="language-vim">autocmd BufWritePost $MYVIMRC source $MYVIMRC
+autocmd BufWritePost ~/.Xdefaults call system('xrdb ~/.Xdefaults')
+</code></pre>
+<h2 id="smarter-cursorline">Более умная линия курсора</h2>
+<p>Мне нравится линия курсора, но мне нравится использовать её только в активном
+окне, когда я не нахожусь в режиме вставки:</p>
+<pre><code class="language-vim">autocmd InsertLeave,WinEnter * set cursorline
+autocmd InsertEnter,WinLeave * set nocursorline
+</code></pre>
+<h2 id="faster-keyword-completion">Более быстрое дополнение ключевых слов</h2>
+<p>Дополнение ключевых слов (<code>&lt;c-n&gt;</code>/<code>&lt;c-p&gt;</code>) пытается сделать дополнение из всего,
+что перечислено в опции <code>complete</code>. По умолчанию она включает теги (которые
+могут надоедать) и сканирование всех включенных файлов (что может быть очень
+медленным). Если вы сможете прожить без всего этого, отключите:</p>
+<pre><code class="language-vim">set complete-=i   " запретить сканирование включаемых файлов
+set complete-=t   " запретить поиск тегов
+</code></pre>
+<h2 id="cosmetic-changes-to-colorschemes">Косметические изменения в цветовых схемах</h2>
+<p>Всегда используйте тёмно-серую строку статуса, какая бы ни была выбрана цветовая
+схема:</p>
+<pre><code class="language-vim">autocmd ColorScheme * highlight StatusLine ctermbg=darkgray cterm=NONE guibg=darkgray gui=NONE
+</code></pre>
+<p>Это будет работать при любом использовании <code>:colorscheme ...</code>. При желании
+воздействовать только на определённую цветовую схему:</p>
+<pre><code class="language-vim">autocmd ColorScheme desert highlight StatusLine ctermbg=darkgray cterm=NONE guibg=darkgray gui=NONE
+</code></pre>
+<p>Это будет работать только для <code>:colorscheme desert</code>.</p>
+<h1 id="commands-1">Команды</h1>
+<p>Полезные команды, которые неплохо бы знать. Используйте <code>:h :&lt;command name&gt;</code>,
+чтобы узнать о них больше, например, <code>:h :global</code>.</p>
+<h2 id="global">:global и :vglobal</h2>
+<p>Выполнение команды во всех соответствующих условию строках. Например,
+<code>:global /regexp/ print</code> будет использовать <code>:print</code> для всех строк, которые
+содержат «regexp» (регулярное выражение).</p>
+<p>Забавный факт: Возможно, всем известен старый добрый grep, программа–фильтр,
+которую написал Ken Thompson. Что же она делает? Она печатает все строки, которые
+соответствуют некоторому регулярному выражению! Теперь давайте угадаем, как
+выглядит короткая форма <code>:global /regexp/ print</code>? Правильно! Это —
+<code>:g/re/p</code>. Ken Thompson был вдохновлён командой <code>:global</code> редактора vi, когда
+писал свой grep.</p>
+<p>Вопреки своему имени, <code>:global</code> только по умолчанию работает во всех строках,
+но может принимать и диапазон. Допустим, вы хотите использовать <code>:delete</code> для
+всех строк, содержащих «foo», до первой пустой (которая соответствует
+регулярному выражению <code>^$</code>):</p>
+<pre><code class="language-vim">:,/^$/g/foo/d
+</code></pre>
+<p>Для выполнения команд на всех строках, которые <em>не</em> соответствуют шаблону,
+используйте <code>:global!</code> или его псевдоним <code>:vglobal</code> (представляйте <em>inVerse</em>
+— инверсно).</p>
+<h2 id="normal-and-execute">:normal и :execute</h2>
+<p>Эти команды часто используются в скриптах Vim.</p>
+<p>При помощи <code>:normal</code> вы можете выполнять команды нормального режима в командной
+строке.  Например, <code>:normal! 4j</code> переместит курсор на 4 строки вниз (без
+использования каких либо дополнительных мапингов для «j» из-за
+присутствия «!»).</p>
+<p>Не забывайте, что <code>:normal</code> также может принимать <a href="#ranges">диапазон</a>,
+поэтому <code>:%norm! Iabc</code> добавит «abc» в начало всех строк файла.</p>
+<p>При помощи <code>:execute</code> можно смешивать команды и выражения. Допустим, что
+вы редактируете файл с исходным кодом на C и хотите переключиться на его
+заголовочный файл:</p>
+<pre><code class="language-vim">:execute 'edit' fnamemodify(expand('%'), ':r') . '.h'
+</code></pre>
+<p>Обе команды часто используются вместе. Например, вы хотите переместить курсор
+вниз на «n» строк:</p>
+<pre><code class="language-vim">:let n = 4
+:execute 'normal!' n . 'j'
+</code></pre>
+<h2 id="redir-and-execute">:redir и execute()</h2>
+<p>Многие команды выводят сообщения, а <code>:redir</code> позволяет перенаправить этот вывод.
+Можно сделать перенаправление в файл, <a href="#registers">регистр</a> или переменную.</p>
+<pre><code class="language-vim">:redir =&gt; var
+:reg
+:redir END
+:echo var
+:" Ради шутки давайте также поместим это в текущий буфер.
+:put =var
+</code></pre>
+<p>В Vim 8 есть ещё более короткий путь:</p>
+<pre><code class="language-vim">:put =execute('reg')
+</code></pre>
+<p>Справка:</p>
+<pre><code>:h :redir
+:h execute()
+</code></pre>
+<h1 id="debugging-1">Решение проблем</h1>
+<h2 id="general-tips">Общие рекомендации</h2>
+<p>Если вы столкнулись со странным поведением, попробуйте воспроизвести
+его примерно так:</p>
+<pre><code>vim -u NONE -N
+</code></pre>
+<p>Эта команда запустит Vim без vimrc (т.е. с настройками по умолчанию),
+но в несовместимом режиме (когда используются настройки по умолчанию Vim, а не vi).
+(См. <code>:h --noplugin</code> о других вариантах того, что загружать при запуске.)</p>
+<p>Если проблема всё ещё воспроизводится, то, скорее всего, это баг
+в самом Vim! Сообщите об этом в рассылке
+<a href="https://groups.google.com/forum/#!forum/vim_dev">vim_dev</a>.
+В большинстве случаев проблема не будет решена сразу, и вам придется продолжить
+исследование.</p>
+<p>Часто плагины привносят новое/изменённое/неправильное поведение.
+Например, если что-то происходит при сохранении, проверьте
+<code>:verb au BufWritePost</code>, чтобы получить список потенциальных виновников.</p>
+<p>Если вы используете менеджер плагинов, отключайте их по очереди, пока не
+найдёте причину.</p>
+<p>Проблема до сих пор не решена? Если это не плагин, то она должна скрываться
+в ваших настройках, таких как опции или автокоманды и т.д.</p>
+<p>Пришло время двоичного поиска. Многократно разбивайте пространство поиска
+надвое, пока не найдёте виновную строку. Согласно природе деления на два,
+многих шагов это не потребует .</p>
+<p>На практике это работает примерно так: поместите посередине вашего vimrc команду
+<code>:finish</code>. Vim пропустит всё, что находится после неё, Если проблема всё ещё
+возникает, то её причина находится в верхней половине. Переместите <code>:finish</code>
+в середину <em>этой</em> половины. В противном случае проблема кроется в неактивной
+нижней половине. Переместите <code>:finish</code> в <em>её</em> середину. И так далее.</p>
+<h2 id="verbosity">Подробность сообщений</h2>
+<p>Ещё один полезный способ наблюдать за тем, что в данный момент делает Vim,
+это — увеличение уровня подробности сообщений. В настоящее время Vim
+поддерживает 9 различных уровней. Полный список см. <code>:h 'verbose'</code>.</p>
+<pre><code class="language-vim">:e /tmp/foo
+:set verbose=2
+:w
+:set verbose=0
+</code></pre>
+<p>При таком уровне будут показаны все прочитанные файлы, например, файл отмены
+или плагины, которые участвуют в сохранении.</p>
+<p>Если вы хотите увеличить уровень подробности только для одной команды, то для
+этого есть <code>:verbose</code>, которую нужно просто поставить перед любой другой
+командой. В качестве счётчика она принимает уровень подробности, который
+по умолчанию равен 1.</p>
+<pre><code class="language-vim">:verb set verbose
+"  verbose=1
+:10verb set verbose
+"  verbose=10
+</code></pre>
+<p>Команда часто используется с уровнем по умолчанию 1 для просмотра, где была
+установлена опция в последний раз:</p>
+<pre><code class="language-vim">:verb set ai?
+"      Last set from ~/.vim/vimrc
+</code></pre>
+<p>Естественно, что чем больше уровень подробности, тем большим он делает вывод.
+Но не нужно пугаться, вывод можно перенаправить в файл:</p>
+<pre><code class="language-vim">:set verbosefile=/tmp/foo | 15verbose echo "foo" | vsplit /tmp/foo
+</code></pre>
+<p>Можно выбрать уровень подробности при запуске при помощи опции <code>-V</code>. По
+умолчанию используется уровень 10. Например, <code>vim -V5</code>.</p>
+<h2 id="profiling-startup-time">Профилирование времени запуска</h2>
+<p>Кажется, что Vim медленно запускается? Время похрустеть числами:</p>
+<pre><code>vim --startuptime /tmp/startup.log +q &amp;&amp; vim /tmp/startup.log
+</code></pre>
+<p>Первая колонка — самая важная, потому что в ней показано абсолютное
+затраченное время. Если между двух строк имеется большая разница во времени,
+то вторая строка — либо очень большой файл, либо файл с ошибочным кодом
+на VimL, с которым стоит разобраться.</p>
+<h2 id="profiling-at-runtime">Профилирование во время работы</h2>
+<p>Для этого требуется <a href="#what-kind-of-vim-am-i-running">функциональность</a> <code>+profile</code></p>
+<p>Vim предоставляет встроенную функциональность для профилирования во время выполнения,
+которая является отличным инструментом для поиска медленного кода в вашем
+окружении.</p>
+<p>Команда <code>:profile</code> имеет целый набор подкоманд для указания что нужно
+профилировать.</p>
+<p>Если вы хотите профилировать <em>всё подряд</em>, сделайте так:</p>
+<pre><code>:profile start /tmp/profile.log
+:profile file *
+:profile func *
+&lt;сделайте что-нибудь в Vim&gt;
+:qa
+</code></pre>
+<p>Vim хранит информацию о профилировании в памяти и сохраняет журнал работы
+только при выходе. (В Neovim это исправлено при помощи <code>:profile dump</code>).</p>
+<p>Давайте взглянем на <code>/tmp/profile.log</code>. Тут показан весь код, который выполнялся
+во время профилирования. Каждая строка, как долго она выполнялась, и сколько
+времени на это ушло.</p>
+<p>Перейдите в конец лога. Там есть два раздела: FUNCTIONS SORTED ON TOTAL TIME
+(функции, отсортированные по полному времени работы) и FUNCTIONS SORTED ON SELF
+TIME (функции, отсортированные по собственному времени), оба они на вес золота.
+Быстрого взгляда достаточно, чтобы определить, какая функция работала слишком
+долго.</p>
+<p>Команду <code>:profile</code> можно использовать и во время запуска:</p>
+<pre><code>$ vim --cmd 'prof start prof.log | prof file * | prof func *' test.c
+:q
+$ tail -50 prof.log
+</code></pre>
+<h2 id="debugging-vim-scripts">Отладка скриптов Vim</h2>
+<p>Если вы раньше пользовались отладчиком в командной строке, то очень быстро
+освоите <code>:debug</code>.</p>
+<p>Просто добавьте <code>:debug</code> перед любой командой, и вы попадёте в режим отладки.
+То есть, выполнение остановится перед первой строкой, которая должна быть
+выполнена, и эта строка будет показана.</p>
+<p>Информацию о 6 доступных командах отладчика см. <code>:h &gt;cont</code> и ниже, и заметьте,
+что, как и в gdb и похожих отладчиках, можно использовать короткие формы, т.е.
+<code>c</code>, <code>q</code>, <code>n</code>, <code>s</code>, <code>i</code>, и <code>f</code>.</p>
+<p>Кроме этих команд, можно использовать любую другую команду Vim, например,
+<code>:echo myvar</code>, которая исполнится в контексте текущей позиции в коде.</p>
+<p>При помощи простой команды <code>:debug 1</code> вы попадаете в среду
+<a href="https://ru.wikipedia.org/wiki/REPL">REPL</a>.</p>
+<p>Было бы мучительно, если бы для прохода каждой строки нужно было бы
+использовать отдельный шаг, поэтому, конечно, мы можем определять точки
+останова. (Точки останова потому так и называются, что выполнение останавливается
+при их достижении, поэтому вы можете запросто пропустить код, который
+вам не интересен.) Подробнее см. <code>:h :breakadd</code>, <code>:h :breakdel</code>, и <code>:h :breaklist</code>.</p>
+<p>Допустим, вам захотелось узнать, какой код исполняется каждый раз, когда
+вы сохраняете файл:</p>
+<pre><code class="language-vim">:au BufWritePost
+" signify  BufWritePost
+"     *         call sy#start()
+:breakadd func *start
+:w
+" Breakpoint in "sy#start" line 1
+" Entering Debug mode.  Type "cont" to continue.
+" function sy#start
+" line 1: if g:signify_locked
+&gt;s
+" function sy#start
+" line 3: endif
+&gt;
+" function sy#start
+" line 5: let sy_path = resolve(expand('%:p'))
+&gt;q
+:breakdel *
+</code></pre>
+<p>Как можно видеть, использование <code>&lt;cr&gt;</code> повторяет предыдущую команду отладчика,
+в данном примере — <code>s</code>.</p>
+<p><code>:debug</code> можно комбинировать с настройкой <a href="#verbosity">подробности сообщений</a>.</p>
+<h2 id="debugging-syntax-files">Отладка файлов синтаксиса</h2>
+<p>Файлы синтаксиса часто бывают причиной замедления из-за ошибочных и/или сложных
+регулярных выражений. Если при компиляции включена
+<a href="#what-kind-of-vim-am-i-running">функциональность</a> <code>+profile</code>, Vim
+предоставляет очень полезную команду <code>:syntime</code>.</p>
+<pre><code class="language-vim">:syntime on
+" нажмите несколько раз &lt;c-l&gt; для обновления содержимого окна, которое вызовет повторное применение правил раскраски синтаксиса
+:syntime off
+:syntime report
+</code></pre>
+<p>Вывод содержит важные данные. Например, можно увидеть, какое регулярное
+выражение занимает много времени и должно быть оптимизировано, или какое
+выражение вызывается постоянно, но при этом ничему не соответствует.</p>
+<p>См. <code>:h :syntime</code>.</p>
+<h1 id="miscellaneous-1">Разное</h1>
+<h2 id="additional-resources">Дополнительные источники</h2>
+<table>
+<thead>
+<tr>
+<th>Источник</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.moolenaar.net/habits.html">Seven habits of effective text editing</a></td>
+<td>«<a href="http://www.moolenaar.net/habits_ru.html">Семь привычек эффективного редактирования текстов</a>», статья Брэма Мооленаара, автора Vim.</td>
+</tr>
+<tr>
+<td><a href="http://www.moolenaar.net/habits_2007.pdf">Seven habits of effective text editing 2.0 (PDF)</a></td>
+<td>См. выше. Презентация.</td>
+</tr>
+<tr>
+<td><a href="http://www.ibm.com/developerworks/views/linux/libraryview.jsp?sort_order=asc&amp;sort_by=Title&amp;search_by=scripting+the+vim+editor">IBM DeveloperWorks: Scripting the Vim editor</a></td>
+<td>Серия из пяти частей, посвящённая написанию скриптов Vim.</td>
+</tr>
+<tr>
+<td><a href="http://learnvimscriptthehardway.stevelosh.com/">Learn Vimscript the Hard Way</a></td>
+<td>Разработка плагинов Vim с нуля.</td>
+</tr>
+<tr>
+<td><a href="https://pragprog.com/titles/dnvim2/practical-vim-second-edition">Practical Vim (2nd Edition)</a></td>
+<td>Просто лучшая книга о Vim.</td>
+</tr>
+<tr>
+<td><a href="https://www.amazon.com/Modern-Vim-Development-Environment-Neovim/dp/168050262X/">Modern Vim</a></td>
+<td>Введение в экосистему плагинов Vim от автора книги Practical Vim.</td>
+</tr>
+<tr>
+<td><a href="http://www.viemu.com/a-why-vi-vim.html">Why, oh WHY, do those #?@! nutheads use vi?</a></td>
+<td>«<a href="https://habr.com/post/307084/">Почему, ну почему, эти #?@! придурки используют vi?</a>» — Развенчание некоторых заблуждений относительно Vim.</td>
+</tr>
+<tr>
+<td><a href="https://web.archive.org/web/20230605025202/http://stackoverflow.com/a/1220118">Your problem with Vim is that you don't grok vi</a></td>
+<td>«<a href="http://givi.olnd.ru/vim-galore/grok-vi.html">Ваша проблема с Vim заключается в том, что вы не въехали в vi</a>» — Лаконично, информативно и корректно. Просто — жемчужина.</td>
+</tr>
+</tbody>
+</table>
+<h4>Скринкасты</h4>
+<ul>
+<li><a href="http://vimcasts.org/episodes/archive">vimcasts.org</a></li>
+<li><a href="https://www.youtube.com/channel/UCXPHFM88IlFn68OmLwtPmZA">wincent'а</a></li>
+<li><a href="http://derekwyatt.org/vim/tutorials/index.html">Derek'а Wyatt'а</a></li>
+</ul>
+<h2 id="vim-distributions">Дистрибутивы Vim</h2>
+<p>Дистрибутивы Vim это — готовые наборы настроек и плагинов для Vim.</p>
+<p>Продвинутые пользователи знают, как настроить свой редактор, поэтому дистрибутивы
+предназначены в основном для начинающих. Задумайтесь над этим, и вам в голову
+придёт парадоксальная мысль: неужели добавление чего-то, с чем тоже нужно
+будет разбираться, сделает жизнь проще?</p>
+<p>Я понимаю, что многие люди не хотят тратить многие часы на настройку редактора
+(на самом деле, однажды начав, вы никогда не закончите настраивать ваш vimrc),
+но использовать Vim эффективно можно только потратив время на то,
+чтобы хорошо его изучить.</p>
+<p>Повторяйте за мной: «Программист обязан знать свои инструменты».</p>
+<p>В любом случае, если вы конечно, понимаете, что делаете, вы
+вдохновитесь некоторыми дистрибутивами:</p>
+<ul>
+<li><a href="http://cream.sourceforge.net/">cream</a></li>
+<li><a href="https://github.com/carlhuda/janus.git">janus</a></li>
+<li><a href="https://github.com/SpaceVim/SpaceVim">spacevim</a></li>
+<li><a href="https://github.com/spf13/spf13-vim">spf13</a></li>
+</ul>
+<h2 id="standard-plugins">Стандартные плагины</h2>
+<p>Для многих будет сюрпризом, но Vim идёт с набором стандартных
+плагинов. Некоторые из них загружаются по умолчанию (<code>:e $VIMRUNTIME/plugin</code>),
+некоторые нет (<code>:e $VIMRUNTIME/pack/dist/opt</code>). См. <code>:h pack-add</code> как
+запускать последние.</p>
+<p>Однако большинство плагинов, которые загружаются по умолчанию, никогда
+не используются. Отключите их, если посчитаете нужным. Они по-прежнему будут
+отображаться как загруженные (<code>:scriptnames</code>), но на самом деле из них будет
+прочитано всего несколько начальных строк, оставшиеся Vim отбросит. Весь
+дальнейший код (мапинги, команды, логика) обработан не будет.</p>
+<table>
+<thead>
+<tr>
+<th>Плагин</th>
+<th>Отключите его при помощи...</th>
+<th>Справка</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2html</td>
+<td><code>let g:loaded_2html_plugin = 1</code></td>
+<td><code>:h 2html</code></td>
+</tr>
+<tr>
+<td>getscript</td>
+<td><code>let g:loaded_getscriptPlugin = 1</code></td>
+<td><code>:h pi_getscript</code></td>
+</tr>
+<tr>
+<td>gzip</td>
+<td><code>let g:loaded_gzip = 1</code></td>
+<td><code>:h pi_gzip</code></td>
+</tr>
+<tr>
+<td>logipat</td>
+<td><code>let g:loaded_logipat = 1</code></td>
+<td><code>:h pi_logipat</code></td>
+</tr>
+<tr>
+<td>matchparen</td>
+<td><code>let g:loaded_matchparen = 1</code></td>
+<td><code>:h pi_paren</code></td>
+</tr>
+<tr>
+<td>netrw</td>
+<td><code>let g:loaded_netrwPlugin = 1</code></td>
+<td><code>:h pi_netrw</code></td>
+</tr>
+<tr>
+<td>rrhelper</td>
+<td><code>let g:loaded_rrhelper = 1</code></td>
+<td><code>:e $VIMRUNTIME/plugin/rrhelper.vim</code></td>
+</tr>
+<tr>
+<td>spellfile</td>
+<td><code>let g:loaded_spellfile_plugin = 1</code></td>
+<td><code>:h spellfile.vim</code></td>
+</tr>
+<tr>
+<td>tar</td>
+<td><code>let g:loaded_tarPlugin = 1</code></td>
+<td><code>:h pi_tar</code></td>
+</tr>
+<tr>
+<td>vimball</td>
+<td><code>let g:loaded_vimballPlugin = 1</code></td>
+<td><code>:h pi_vimball</code></td>
+</tr>
+<tr>
+<td>zip</td>
+<td><code>let g:loaded_zipPlugin = 1</code></td>
+<td><code>:h pi_zip</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="map-capslock-to-control">Переназначьте CapsLock на Control</h2>
+<p>CapsLock — самая бесполезная клавиша на клавиатуре, но, т.к. она находится
+в <a href="https://raw.githubusercontent.com/mhinz/vim-galore/master/static/images/content-homerow.png">домашнем ряду</a>,
+до неё гораздо проще дотянуться, чем до клавиши Control.
+Если вы много программируете, переназначение CapsLock на Control — отличный
+способ предотвратить или, хотя бы, уменьшить
+<a href="https://de.wikipedia.org/wiki/Repetitive-Strain-Injury-Syndrom">RSI</a>.</p>
+<p>Внимание! Как только вы начнёте этим пользоваться, жить без этого вы уже не
+сможете.</p>
+<p><strong>macOS</strong>:</p>
+<p><code>System Preferences -&gt; Keyboard -&gt; Keyboard Tab -&gt; Modifier Keys</code>.
+Измените «CapsLock» на «Control».</p>
+<p><strong>Linux</strong>:</p>
+<p>Для того чтобы изменить назначение клавиш в X, добавьте это в ваш <code>~/.xmodmap</code>:</p>
+<pre><code>remove Lock = Caps_Lock
+keysym Caps_Lock = Control_L
+add Control = Control_L
+</code></pre>
+<p>После этого запустите его при помощи <code>$ xmodmap ~/.xmodmap</code>.</p>
+<p>В качестве альтернативы можно использовать
+<a href="https://github.com/oblitum/caps2esc">caps2esc</a>
+или
+<a href="https://github.com/alols/xcape">xcape</a>.</p>
+<p><strong>Windows</strong>:</p>
+<p>См. <a href="http://superuser.com/questions/764782/map-caps-lock-to-control-in-windows-8-1">superuser.com: Map Caps-Lock to Control in Windows
+8.1</a>.</p>
+<h2 id="generating-html-from-buffer">Создание HTML из текста в буфере</h2>
+<p>Создавайте из текста в буфере HTML при помощи команды <code>:TOhtml</code> из
+<a href="#standard-plugins">стандартного плагина</a> 2html.
+Вывод можно использовать для печати или просто для публикации в сети.</p>
+<p>Команда создаёт новый буфер с тем же именем, к которому добавляется <code>.html</code>.
+Цвета будут теми же, как они выглядят в Vim. Они зависят от
+<a href="#colorschemes">цветовой схемы</a>.</p>
+<p>У плагина есть несколько опций для тонкой настройки вывода, например для
+указания кодировки и шрифта.</p>
+<p>См. <code>:h :TOhtml</code>.</p>
+<h2 id="easter-eggs">Пасхальные яйца</h2>
+<table>
+<thead>
+<tr>
+<th>Команда</th>
+<th>Сообщение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:Ni!</code></td>
+<td><code>Do you demand a shrubbery?</code> — <em><a href="https://ru.wikipedia.org/wiki/%D0%9C%D0%BE%D0%BD%D1%82%D0%B8_%D0%9F%D0%B0%D0%B9%D1%82%D0%BE%D0%BD_%D0%B8_%D0%A1%D0%B2%D1%8F%D1%89%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9_%D0%93%D1%80%D0%B0%D0%B0%D0%BB%D1%8C">Ты ищешь кустарник?</a></em></td>
+</tr>
+<tr>
+<td><code>:h 'sm'</code></td>
+<td><code>NOTE: Use of the short form is rated PG).</code> — <em>NB: Использование краткой формы попало в рейтинги <a href="https://en.wikipedia.org/wiki/PG#Film_ratings">PG</a> —  <a href="https://web.archive.org/web/20230605025202/https://ru.wikipedia.org/wiki/%D0%A0%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%B9_%D0%BA%D0%BE%D0%BD%D1%82%D1%80%D0%BE%D0%BB%D1%8C">родительского контроля</a>. (<code>sm</code> это — как бы «садо-мазо». Но, это таки пасхалка.)</em></td>
+</tr>
+<tr>
+<td><code>:h 42</code></td>
+<td><code>What is the meaning of life, the universe and everything? 
+Douglas Adams, the only person who knew what this question really was 
+about is now dead, unfortunately.  So now you might wonder what the 
+meaning of death is...</code> — <em><a href="https://ru.wikipedia.org/wiki/%D0%90%D0%B2%D1%82%D0%BE%D1%81%D1%82%D0%BE%D0%BF%D0%BE%D0%BC_%D0%BF%D0%BE_%D0%B3%D0%B0%D0%BB%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5_(%D1%81%D0%B5%D1%80%D0%B8%D1%8F_%D1%80%D0%BE%D0%BC%D0%B0%D0%BD%D0%BE%D0%B2)">Главный вопрос жизни, вселенной и всего такого</a>.
+ К&nbsp;сожалению, Дуглас Адамс, единственный, кто на самом деле знал, в
+ чём именно состоит этот вопрос, теперь не с нами. Теперь, возможно, вы 
+задумаетесь <s>о смысле смерти</s> о том, ради чего стоит прожить жизнь...</em></td>
+</tr>
+<tr>
+<td><code>:h UserGettingBored</code></td>
+<td><code>When the user presses the same key 42 times. Just kidding! :-)</code> — <em>(<a href="#autocmds">Автокоманда</a> ПользовательЗаскучал.) Когда пользователь нажимает одну и ту же клавишу 42 раза. Просто прикол! :-)</em></td>
+</tr>
+<tr>
+<td><code>:h bar</code></td>
+<td><code>Ceci n'est pas une pipe.</code> — <em>Это не перенаправление (<a href="https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D0%BD%D0%B2%D0%B5%D0%B9%D0%B5%D1%80_(Unix)">канал</a>) в смысле shell.</em></td>
+</tr>
+<tr>
+<td><code>:h holy-grail</code></td>
+<td><code>You found it, Arthur!</code> — <em>Артур! Ты его нашёл!</em></td>
+</tr>
+<tr>
+<td><code>:h map-modes</code></td>
+<td><code>:nunmap can also be used outside of a monastery.</code> — <em><code>:nunmap</code> можно использовать даже за пределами монастыря</em>.</td>
+</tr>
+<tr>
+<td><code>:help!</code></td>
+<td><code>E478: Don't panic!</code> — <a href="https://ru.wikipedia.org/wiki/%D0%90%D0%B2%D1%82%D0%BE%D1%81%D1%82%D0%BE%D0%BF%D0%BE%D0%BC_%D0%BF%D0%BE_%D0%B3%D0%B0%D0%BB%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5_(%D1%81%D0%B5%D1%80%D0%B8%D1%8F_%D1%80%D0%BE%D0%BC%D0%B0%D0%BD%D0%BE%D0%B2)"><em>Без паники!</em></a> (Не получается? При использовании в буфере справки (<code>buftype=help</code>) это работает как <code>:h help.txt</code>.)</td>
+</tr>
+<tr>
+<td><code>:smile</code></td>
+<td>Попробуйте сами. ;-) Добавлено в версии 7.4.1005.</td>
+</tr>
+<tr>
+<td><code>:hi!</code></td>
+<td><code>Greetings, Vim user!</code> — <em>Приветствую, пользователь Vim!</em></td>
+</tr>
+</tbody>
+</table>
+<p>(Перевёл, как понял, с помощью автора (особенно про <em>родительский контроль</em>) — <em>пер.</em>)</p>
+<h2 id="why-hjkl-for-navigation">Почему для перемещения используются клавиши hjkl?</h2>
+<p><a href="https://ru.wikipedia.org/wiki/%D0%94%D0%B6%D0%BE%D0%B9,_%D0%91%D0%B8%D0%BB%D0%BB">Билл Джой</a>
+писал
+<a href="https://ru.wikipedia.org/wiki/Vi">vi</a>,
+предшественника Vim, за
+<a href="https://en.wikipedia.org/wiki/ADM-3A">ADM-3A</a>,
+у которого не было дополнительных клавиш со стрелками, а вместо них, как вы наверно догадались,
+использовались <code>h</code> <code>j</code> <code>k</code> <code>l</code>.</p>
+<p>Раскладка клавиатуры: <a href="https://raw.githubusercontent.com/mhinz/vim-galore/master/static/images/content-adm-3a-layout.jpg">кликните</a></p>
+<p>Это так же объясняет, почему для обозначения домашнего каталога в Unix
+используется <code>~</code>.</p>
+<h1 id="common-problems-1">Распространённые проблемы</h1>
+<h2 id="editing-small-files-is-slow">Замедленное редактирование небольших файлов</h2>
+<p>Есть две вещи, которые могут очень сильно повлиять на производительность:</p>
+<ol>
+<li>Сложные <strong>регулярные выражения</strong>. В частности, ранее люди наблюдали
+замедление из-за синтаксиса Ruby.
+(См. также <a href="#debugging-syntax-files">Отладка файлов синтаксиса</a>.)</li>
+<li><strong>Обновление экрана</strong>. Для некоторых функций необходимо обновление всех
+экранных строк.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Типичная причина</th>
+<th>Почему?</th>
+<th>Решение?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:set cursorline</code></td>
+<td>Причина перерисовки всех строк.</td>
+<td><code>:set nocursorline</code></td>
+</tr>
+<tr>
+<td><code>:set cursorcolumn</code></td>
+<td>Причина перерисовки всех строк.</td>
+<td><code>:set nocursorcolumn</code></td>
+</tr>
+<tr>
+<td><code>:set relativenumber</code></td>
+<td>Причина перерисовки всех строк.</td>
+<td><code>:set norelativenumber</code></td>
+</tr>
+<tr>
+<td><code>:set foldmethod=syntax</code></td>
+<td>Если файл подсветки синтаксиса уже медленно работает, то это ещё более ухудшает положение.</td>
+<td><code>:set foldmethod=manual</code>, <code>:set foldmethod=marker</code> или <a href="https://github.com/Konfekt/FastFold">FastFold</a></td>
+</tr>
+<tr>
+<td><code>:set synmaxcol=3000</code></td>
+<td>Из-за внутреннего представления Vim вообще имеет проблемы с длинными
+ строками. Эта настройка говорит, что подсветку нужно делать только до 
+3000-й колонки.</td>
+<td><code>:set synmaxcol=200</code></td>
+</tr>
+<tr>
+<td>matchparen.vim</td>
+<td>Загружается по умолчанию. Для поиска соответствующей скобки использует регулярные выражения.</td>
+<td>Отключить плагин: <code>:h matchparen</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>NB</strong>: Вам это понадобится только, если вы действительно испытываете
+неудобство от замедления работы. В большинстве случаев всё упомянутое работает
+достаточно хорошо.</p>
+<h2 id="editing-huge-files-is-slow">Замедленное редактирование очень больших файлов</h2>
+<p>Основная проблема с большими файлами состоит в том, что Vim читает файл
+полностью. Это всё из-за внутреннего устройства буферов.
+(<a href="https://groups.google.com/forum/#!topic/vim_dev/oY3i8rqYGD4/discussion">Обсуждение на vim_dev@</a>)</p>
+<p>Если вам нужно только читать файл, то хорошим решением будет
+<code>tail hugefile | vim -</code>.</p>
+<p>Если вы сможете какое-то время пережить без подсветки синтаксиса и плагинов:</p>
+<pre><code>$ vim -u NONE -N
+</code></pre>
+<p>Это должно сделать навигацию значительно быстрее, особенно потому, что
+для подсветки синтаксиса не будут использоваться регулярные выражения.
+Необходимо также сказать Vim, чтобы он не использовал своп-файлы и
+файлы viminfo, чтобы избежать долгих задержек при их записи:</p>
+<pre><code>$ vim -n -u NONE -i NONE -N
+</code></pre>
+<p>Подведя итог, скажем: постарайтесь не использовать Vim, если собираетесь
+работать с действительно огромным файлом. :\</p>
+<h2 id="bracketed-paste-or-why-do-i-have-to-set-paste-all-the-time">Вставка в скобках (или почему мне всё время приходится переустанавливать 'paste'?)</h2>
+<p>Режим вставки в скобках (bracketed paste mode) позволяет эмуляторам терминала
+различать набираемый текст и текст, который вставляется из буфера обмена.</p>
+<p>Сталкивались ли вы с таким, что после вставки в Vim кода программы всё выглядело
+испорченным?</p>
+<p>Это происходит только тогда, когда вы вставляете при помощи <code>cmd+v</code>,
+<code>shift-insert</code>, <code>middle-click</code> и т.д., потому что вы просто вбрасываете текст
+в эмуляторе терминала. Vim не знает, что вы вставляете текст, он думает, что
+вы просто нереально быстрый наборщик. И, соответственно, пытается подстроить
+отступы и всё портит.</p>
+<p>Очевидно, что проблема не возникает, если вы вставляете из регистров Vim,
+например, <code>"+p</code>, потому что в этом случае Vim знает, что вы действительно
+вставляете текст.</p>
+<p>Чтобы обойти это, вам необходимо использовать <code>:set paste</code>, чтобы текст
+вставлялся как есть. См. <code>:h 'paste'</code>  <code>:h 'pastetoggle'</code>.</p>
+<p>Если вы сыты по горло постоянным переключением <code>'paste'</code>, посмотрите в сторону
+прекрасного плагина, который будет это делать за вас:
+<a href="https://github.com/ConradIrwin/vim-bracketed-paste">bracketed-paste</a>.</p>
+<p>Дополнительно
+<a href="http://cirw.in/blog/bracketed-paste">вот здесь</a>
+почитайте статью автора плагина.</p>
+<p><strong>Neovim</strong>: Neovim пытается сгладить всё это и устанавливает режим
+вставки в скобках автоматически, если эмулятор терминала такое поддерживает.</p>
+<h2 id="delays-when-using-escape-key-in-terminal">Задержки в терминале при использовании клавиши escape</h2>
+<p>Если вы живёте в командной строке, то, скорее всего, используете
+так называемый <em>эмулятор терминала</em>, такой как xterm, gnome-terminal, iTerm2
+и т.д. (в противоположность реальному
+<a href="https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D0%BC%D0%BF%D1%8C%D1%8E%D1%82%D0%B5%D1%80%D0%BD%D1%8B%D0%B9_%D1%82%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D0%B0%D0%BB">терминалу</a>).</p>
+<p>Как и их предки, эмуляторы терминалов для управления такими вещами, как
+перемещение курсора, изменения цвета текста и т.д. используют
+<a href="https://ru.wikipedia.org/wiki/%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D1%8F%D1%8E%D1%89%D0%B8%D0%B5_%D0%BF%D0%BE%D1%81%D0%BB%D0%B5%D0%B4%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D0%B8_ANSI">эскейп-последовательности</a>
+(или <em>управляющие последовательности</em>).
+Это просто строки ASCII-символов, которые начинаются с символа escape
+(в <a href="https://en.wikipedia.org/wiki/Caret_notation">caret-нотации</a> изображается
+как <code>^[</code>). При получении такой строки эмулятор терминала ищет в базе данных
+<a href="https://ru.wikipedia.org/wiki/Terminfo">terminfo</a> соответствующее
+действие.</p>
+<p>Чтобы сделать проблему более понятной, я расскажу сначала про таймауты мапингов.
+Они возникают, когда между мапингами есть неопределённость:</p>
+<pre><code class="language-vim">:nnoremap ,a  :echo 'foo'&lt;cr&gt;
+:nnoremap ,ab :echo 'bar'&lt;cr&gt;
+</code></pre>
+<p>Оба эти мапинга работают, как и ожидается, но после того, как было набрано <code>,a</code>,
+будет задержка в 1 секунду, потому что Vim ждёт, будет ли следующей клавишей
+<code>b</code>.</p>
+<p>Escape-последовательности представляют собой такую же проблему:</p>
+<ul>
+<li><code>&lt;esc&gt;</code> очень часто используется для возвращения в нормальный режим или
+для остановки действия.</li>
+<li>Клавиши курсора кодируются как escape-последовательности.</li>
+<li>Vim ожидает, что комбинация с <kbd>Alt</kbd> (так называемой <em>Мета-клавишей</em>)
+пошлёт правильный 8-битный символ с установленным старшим битом, но многие
+эмуляторы терминала этого не поддерживают (или не включают эту возможность
+по умолчанию) и посылают вместо этого escape-последовательность.</li>
+</ul>
+<p>Вы можете проверить это примерно так: <code>vim -u NONE -N</code> и набрать <code>i&lt;c-v&gt;&lt;left&gt;</code>,
+и вы увидите вставленную последовательность, которая начинается с пары <code>^[</code>,
+изображающей символ escape.</p>
+<p>В итоге, Vim находится в жёстких временных рамках, когда различает набранный
+символ <code>&lt;esc&gt;</code> и настоящую escape-последовательность.</p>
+<p>По умолчанию Vim использует <code>:set timeout timeoutlen=1000</code>, поэтому он
+задерживается при неопределённости мапингов <em>и</em> кодов клавиш на 1 секунду.
+Это разумное значение для мапингов, но для кодов клавиш можно задать
+свой таймаут, и это будет хорошим решением проблемы в целом:</p>
+<pre><code class="language-vim">set timeout           " для мапингов
+set timeoutlen=1000   " значение по умолчанию
+set ttimeout          " для кодов клавиш
+set ttimeoutlen=10    " небольшое незаметное значение
+</code></pre>
+<p>В <code>:h ttimeout</code> вы найдёте небольшую таблицу, в которой показаны взаимоотношения
+между этими опциями.</p>
+<p>Если между Vim и эмулятором терминала у вас находится tmux, добавьте так же
+это в ваш <code>~/.tmux.conf</code>:</p>
+<pre><code class="language-tmux">set -sg escape-time 0
+</code></pre>
+<h2 id="function-search-undo">Сброс поиска в функции</h2>
+<ul>
+<li>Шаблоны поиска в команде (<code>/</code>, <code>:substitute</code>, ...) изменяют «последний
+использованный шаблон поиска». (Он хранится в регистре <code>/</code>; напечатать
+его можно при помощи <code>:echo @/</code>).</li>
+<li>Элементарные изменения текста можно повторить при помощи <code>.</code>. (Оно хранится
+в регистре <code>.</code>; напечатать его можно при помощи <code>:echo @.</code>).</li>
+</ul>
+<p>Однако, обе эти вещи <em>не</em> происходят, если вы делаете их в функции! Поэтому
+не так просто подсвечивать слова поиска из функции или повторить изменения
+текста, сделанные с её помощью.</p>
+<p>Справка: <code>:h function-search-undo</code></p>
+<h1 id="technical-quirks-1">Технические особенности</h1>
+<h2 id="newline-used-for-nul">Вместо NUL используется символ новой строки</h2>
+<p>Символ NUL (<code>\0</code>) в файле хранится в памяти как символ новой строки (<code>\n</code>),
+а в буфере отображается как <code>^@</code>.</p>
+<p>Дополнительно см. <code>man 7 ascii</code> и <code>:h NL-used-for-Nul</code>.</p>
+<h1 id="terminology-1">Терминология</h1>
+<h2 id="vim-script-vimscript-viml">Vim script? Vimscript? VimL?</h2>
+<p>Термины <code>Vim script</code>, <code>Vimscript</code> и <code>VimL</code> обозначают одно и то же:
+язык программирования, который используется для написания скриптов Vim.
+Несмотря на то, что патчем
+<a href="https://github.com/vim/vim/commit/b544f3c81f1e6a50322855681ac266ffaa8e313c">8.0.360</a>
+все упоминания <code>VimL</code> были заменены на <code>Vim script</code>, который теперь можно рассматривать
+в качестве официального термина, <code>VimL</code> в Интернете распространён достаточно широко.</p>
+<p>Не имеет значения, какой термин будете использовать вы, всем всё будет понятно.</p>
+</html>
